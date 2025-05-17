@@ -1,7 +1,21 @@
+import sinon, { stub } from 'sinon'
 import { BookFactory } from '#database/factories/BookFactory'
 import { BookService } from '#services/BookService'
 import { test } from '@japa/runner'
 import { BookCategoryEnum } from '../../../app/enums/BookCategoryEnum.js'
+import BookNotFoundException from '#exceptions/BookNotFoundException'
+import Book from '#models/book'
+import app from '@adonisjs/core/services/app'
+import { BookSaveDTO } from '../../../app/dtos/BookSaveDTO.js'
+
+const bookToSave = {
+  title: 'any_title',
+  description: 'any_description',
+  author: 'any_author',
+  category: BookCategoryEnum.BIBLE,
+  price: 999,
+  stock: 100,
+}
 
 test.group('Services book service', (t) => {
   t.setup(async () => {
@@ -27,5 +41,40 @@ test.group('Services book service', (t) => {
 
     const booksOthers = await sut.getBooksByCategory(BookCategoryEnum.OTHERS)
     expect(booksOthers.length).toBe(5)
+  })
+
+  test('it should create a new book', async ({ expect }) => {
+    const sut = new BookService()
+
+    const newBook = await sut.create(bookToSave)
+
+    expect(
+      newBook.serialize({
+        fields: {
+          omit: ['id'],
+        },
+      })
+    ).toEqual(bookToSave)
+  })
+
+  test("it should return an exception if book doesn't exists", async ({ expect }) => {
+    stub(Book, 'find').resolves(null)
+    const sut = new BookService()
+
+    const promise = sut.update(1, bookToSave)
+    expect(promise).rejects.toThrow(new BookNotFoundException())
+  })
+
+  test('it should return a book updated on update book', async ({ expect }) => {
+    const book = await BookFactory.create()
+    const sut = new BookService()
+
+    const bookToUpdate: BookSaveDTO = {
+      ...bookToSave,
+      description: 'another_description',
+    }
+    const bookUpdated = await sut.update(book.id, bookToUpdate)
+
+    expect(bookUpdated.description).toBe(bookToUpdate.description)
   })
 })

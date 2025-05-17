@@ -1,6 +1,7 @@
 import { BookFactory } from '#database/factories/BookFactory'
 import { BookService } from '#services/BookService'
 import { test } from '@japa/runner'
+import { BookCategoryEnum } from '../../../app/enums/BookCategoryEnum.js'
 
 test.group('Services book service', (t) => {
   t.setup(async () => {
@@ -16,15 +17,15 @@ test.group('Services book service', (t) => {
 
   test('it should return books in database by category', async ({ expect }) => {
     const sut = new BookService()
-    const booksScience = await sut.getBooksByCategory('science')
+    const booksScience = await sut.getBooksByCategory(BookCategoryEnum.SCIENCE)
     expect(booksScience.length).toBe(10)
 
-    const booksBible = await sut.getBooksByCategory('bible')
+    const booksBible = await sut.getBooksByCategory(BookCategoryEnum.BIBLE)
     expect(booksBible.length).toBe(0)
 
-    BookFactory.merge({ category: 'others' }).createMany(5)
+    BookFactory.merge({ category: BookCategoryEnum.OTHERS }).createMany(5)
 
-    const booksOthers = await sut.getBooksByCategory('others')
+    const booksOthers = await sut.getBooksByCategory(BookCategoryEnum.OTHERS)
     expect(booksOthers.length).toBe(5)
   })
 })

@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
 import Order from './order.js'
 import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BookCategoryEnum } from '../enums/BookCategoryEnum.js'
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -26,7 +27,7 @@ export default class Book extends BaseModel {
   declare stock: number
 
   @column()
-  declare category: string
+  declare category: BookCategoryEnum
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

@@ -31,5 +31,7 @@ export class BookService {
     if (!bookToDelete) {
       throw new BookNotFoundException()
     }
+
+    await bookToDelete.delete()
   }
 }

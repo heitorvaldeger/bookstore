@@ -25,4 +25,11 @@ export class BookService {
 
     return await bookToUpdate.merge(book).save()
   }
+
+  async delete(bookId: number) {
+    const bookToDelete = await Book.find(bookId)
+    if (!bookToDelete) {
+      throw new BookNotFoundException()
+    }
+  }
 }

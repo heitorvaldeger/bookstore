@@ -1,11 +1,10 @@
-import sinon, { stub } from 'sinon'
+import { stub } from 'sinon'
 import { BookFactory } from '#database/factories/BookFactory'
 import { BookService } from '#services/BookService'
 import { test } from '@japa/runner'
 import { BookCategoryEnum } from '../../../app/enums/BookCategoryEnum.js'
 import BookNotFoundException from '#exceptions/BookNotFoundException'
 import Book from '#models/book'
-import app from '@adonisjs/core/services/app'
 import { BookSaveDTO } from '../../../app/dtos/BookSaveDTO.js'
 
 const bookToSave = {
@@ -84,5 +83,14 @@ test.group('Services book service', (t) => {
 
     const promise = sut.delete(1)
     expect(promise).rejects.toThrow(new BookNotFoundException())
+  })
+
+  test('it should delete a book with success', async ({ expect }) => {
+    const book = await BookFactory.create()
+    const sut = new BookService()
+    await sut.delete(book.id)
+
+    const bookDeleted = await Book.find(book.id)
+    expect(bookDeleted).toBeFalsy()
   })
 })

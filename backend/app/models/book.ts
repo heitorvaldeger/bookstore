@@ -25,6 +25,9 @@ export default class Book extends BaseModel {
   @column()
   declare stock: number
 
+  @column()
+  declare category: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

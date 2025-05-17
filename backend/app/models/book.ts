@@ -1,7 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
-import Order from './order.js'
-import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { BookCategoryEnum } from '../enums/BookCategoryEnum.js'
 
 export default class Book extends BaseModel {
@@ -34,7 +32,4 @@ export default class Book extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime
-
-  @manyToMany(() => Order)
-  declare orders: ManyToMany<typeof Order>
 }

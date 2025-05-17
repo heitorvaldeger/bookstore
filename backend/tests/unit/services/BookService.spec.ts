@@ -57,7 +57,7 @@ test.group('Services book service', (t) => {
     ).toEqual(bookToSave)
   })
 
-  test("it should return an exception if book doesn't exists", async ({ expect }) => {
+  test("it should return an exception on update if book doesn't exists", async ({ expect }) => {
     stub(Book, 'find').resolves(null)
     const sut = new BookService()
 
@@ -76,5 +76,13 @@ test.group('Services book service', (t) => {
     const bookUpdated = await sut.update(book.id, bookToUpdate)
 
     expect(bookUpdated.description).toBe(bookToUpdate.description)
+  })
+
+  test("it should return an exception on delete if book doesn't exists", async ({ expect }) => {
+    stub(Book, 'find').resolves(null)
+    const sut = new BookService()
+
+    const promise = sut.delete(1)
+    expect(promise).rejects.toThrow(new BookNotFoundException())
   })
 })

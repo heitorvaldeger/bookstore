@@ -62,8 +62,8 @@ test.group('Services book service', (t) => {
     stub(Book, 'find').resolves(null)
     const sut = new BookService()
 
-    const promise = sut.update(1, bookToSave)
-    expect(promise).rejects.toThrow(new BookNotFoundException())
+    const updatePromise = sut.update(1, bookToSave)
+    expect(updatePromise).rejects.toThrow(new BookNotFoundException())
   })
 
   test('it should return a book updated on update book', async ({ expect }) => {
@@ -83,8 +83,8 @@ test.group('Services book service', (t) => {
     stub(Book, 'find').resolves(null)
     const sut = new BookService()
 
-    const promise = sut.delete(1)
-    expect(promise).rejects.toThrow(new BookNotFoundException())
+    const deletePromise = sut.delete(1)
+    expect(deletePromise).rejects.toThrow(new BookNotFoundException())
   })
 
   test('it should delete a book with success', async ({ expect }) => {

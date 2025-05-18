@@ -95,4 +95,22 @@ test.group('Services order service', (t) => {
       ],
     })
   })
+
+  test('it should create a new order with correct values', async ({ expect }) => {
+    const sut = new OrderService()
+
+    const books = await BookFactory.createMany(10)
+    const booksToOrder = books.map((book) => ({
+      id: book.id,
+      quantity: 5,
+      title: book.title,
+    }))
+    const newOrder = await sut.create({ books: booksToOrder })
+    await newOrder.load('books')
+
+    expect(newOrder).toBeTruthy()
+    expect(newOrder.id).toBeTruthy()
+    expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
+    expect(newOrder.books.length).toBe(10)
+  })
 })

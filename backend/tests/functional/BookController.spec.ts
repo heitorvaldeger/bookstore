@@ -220,4 +220,9 @@ test.group('Book Controller', (group) => {
 
     expect(response.status()).toBe(204)
   })
+
+  test("/DELETE - return 404 if a book doesn't exists on delete", async ({ client, expect }) => {
+    const response = await client.delete(`/books/99999`)
+    expect(response.status()).toBe(404)
+  })
 })

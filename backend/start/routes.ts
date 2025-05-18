@@ -19,5 +19,6 @@ router.get('/', async () => {
 router
   .group(() => {
     router.get('', [BookController, 'getAll'])
+    router.get('filter', [BookController, 'getBooksByCategory'])
   })
   .prefix('books')

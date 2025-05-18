@@ -1,6 +1,4 @@
-import BookNotFoundException from '#exceptions/BookNotFoundException'
 import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
-import BookOutStockException from '#exceptions/OrderCreateForBooksException'
 import Book from '#models/book'
 import Order from '#models/order'
 import { OrderCreateDTO } from '../dtos/OrderCreateDTO.js'

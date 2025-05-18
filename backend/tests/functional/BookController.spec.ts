@@ -133,4 +133,18 @@ test.group('Book Controller', (group) => {
       ],
     })
   })
+
+  test('/POST - return 200 if book was updated with success', async ({ client, expect }) => {
+    const book = await BookFactory.create()
+    const response = await client.put(`/books/${book.id}`).json({
+      title: 'another_title',
+      description: 'another_description',
+    })
+
+    const body = response.body()
+
+    expect(response.status()).toBe(200)
+    expect(body.title).toBe('another_title')
+    expect(body.description).toBe('another_description')
+  })
 })

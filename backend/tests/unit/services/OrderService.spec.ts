@@ -1,8 +1,11 @@
+import { BookFactory } from '#database/factories/BookFactory'
 import { OrderFactory } from '#database/factories/OrderFactory'
 import Order from '#models/order'
 import { OrderService } from '#services/OrderService'
 import { test } from '@japa/runner'
 import { randomInt } from 'node:crypto'
+import { OrderStatusEnum } from '../../../app/enums/OrderStatusEnum.js'
+import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
 
 test.group('Services order service', (t) => {
   let order: Order
@@ -31,5 +34,65 @@ test.group('Services order service', (t) => {
     }))
 
     expect(orders[0].items).toEqual(books)
+  })
+
+  test("it should return errors if any book doesn't exists", async ({ expect }) => {
+    const sut = new OrderService()
+
+    const books = await BookFactory.createMany(2)
+    const booksToOrder = books.map((book) => ({
+      id: book.id,
+      quantity: 5,
+      title: book.title,
+    }))
+    const newOrderPromise = sut.create({
+      books: [
+        ...booksToOrder,
+        {
+          id: 999,
+          quantity: 10,
+          title: 'any_title',
+        },
+      ],
+    })
+
+    expect(newOrderPromise).rejects.toThrow(new OrderCreateForBooksException([]))
+    expect(newOrderPromise).rejects.toMatchObject({
+      errors: [
+        {
+          bookId: 999,
+          bookTitle: 'any_title',
+          error: 'Book any_title not found',
+        },
+      ],
+    })
+  })
+
+  test("it should return errors if any book doesn't stock avaiable", async ({ expect }) => {
+    const sut = new OrderService()
+
+    const books = await BookFactory.createMany(2)
+    const booksToOrder = books.map((book) => ({
+      id: book.id,
+      quantity: 5,
+      title: book.title,
+    }))
+    booksToOrder[0].quantity = 300
+    const bookBase = booksToOrder[0]
+
+    const newOrderPromise = sut.create({
+      books: booksToOrder,
+    })
+
+    expect(newOrderPromise).rejects.toThrow(new OrderCreateForBooksException([]))
+    expect(newOrderPromise).rejects.toMatchObject({
+      errors: [
+        {
+          bookId: bookBase.id,
+          bookTitle: bookBase.title,
+          error: `Book ${bookBase.title} out of stock`,
+        },
+      ],
+    })
   })
 })

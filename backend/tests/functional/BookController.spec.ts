@@ -225,4 +225,21 @@ test.group('Book Controller', (group) => {
     const response = await client.delete(`/books/99999`)
     expect(response.status()).toBe(404)
   })
+
+  test('/DELETE - return 422 if id passed is invalid on delete', async ({ client, expect }) => {
+    const response = await client.delete(`/books/any_value`)
+
+    const body = response.body()
+
+    expect(response.status()).toBe(422)
+    expect(body).toEqual({
+      errors: [
+        {
+          field: 'id',
+          message: 'The id field format is invalid',
+          rule: 'regex',
+        },
+      ],
+    })
+  })
 })

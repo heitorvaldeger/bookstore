@@ -8,6 +8,7 @@
 */
 
 const BookController = () => import('#controllers/BookController')
+const OrderController = () => import('#controllers/OrderController')
 import router from '@adonisjs/core/services/router'
 
 router
@@ -20,3 +21,9 @@ router
     router.delete('/:id', [BookController, 'delete'])
   })
   .prefix('books')
+
+router
+  .group(() => {
+    router.post('/', [OrderController, 'create'])
+  })
+  .prefix('orders')

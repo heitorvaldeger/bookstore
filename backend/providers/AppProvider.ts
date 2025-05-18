@@ -1,4 +1,5 @@
 import { BookService } from '#services/BookService'
+import { OrderService } from '#services/OrderService'
 import type { ApplicationService } from '@adonisjs/core/types'
 
 export default class AppProvider {
@@ -15,6 +16,10 @@ export default class AppProvider {
   async boot() {
     this.app.container.bind(BookService, async () => {
       return this.app.container.make(BookService)
+    })
+
+    this.app.container.bind(OrderService, async () => {
+      return this.app.container.make(OrderService)
     })
   }
 

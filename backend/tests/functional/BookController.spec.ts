@@ -213,4 +213,11 @@ test.group('Book Controller', (group) => {
       ],
     })
   })
+
+  test('/DELETE - return 200 if book was deleted with success', async ({ client, expect }) => {
+    const book = await BookFactory.create()
+    const response = await client.delete(`/books/${book.id}`)
+
+    expect(response.status()).toBe(204)
+  })
 })

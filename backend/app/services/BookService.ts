@@ -1,11 +1,10 @@
 import BookNotFoundException from '#exceptions/BookNotFoundException'
 import Book from '#models/book'
 import { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
-import { BookFilterDTO } from '../dtos/BookFilterDTO.js'
 import { BookSaveDTO } from '../dtos/BookSaveDTO.js'
 
 export class BookService {
-  private filters: BookFilterDTO = {}
+  private qSearch: string = ''
 
   async getAll() {
     return await Book.query().orderBy('id').select()
@@ -17,13 +16,13 @@ export class BookService {
     })
   }
 
-  async getBooksByFilter(filters: BookFilterDTO) {
+  async getBooksByFilter(qSearch: string) {
     const qBook = Book.query()
-    this.filters = filters
+    this.qSearch = qSearch
     const books = await this.filterByAuthor(qBook)
       .filterByDescription(qBook)
       .filterByTitle(qBook)
-      .filter(qBook)
+      .getQuery(qBook)
       .select()
 
     return books
@@ -52,30 +51,30 @@ export class BookService {
   }
 
   private filterByAuthor(query: ModelQueryBuilderContract<typeof Book, Book>) {
-    if (this.filters.author) {
-      query.whereILike('author', `%${this.filters.author}%`)
+    if (this.qSearch) {
+      query.orWhereILike('author', `%${this.qSearch}%`)
     }
 
     return this
   }
 
   private filterByDescription(query: ModelQueryBuilderContract<typeof Book, Book>) {
-    if (this.filters.description) {
-      query.whereILike('description', `%${this.filters.description}%`)
+    if (this.qSearch) {
+      query.orWhereILike('description', `%${this.qSearch}%`)
     }
 
     return this
   }
 
   private filterByTitle(query: ModelQueryBuilderContract<typeof Book, Book>) {
-    if (this.filters.title) {
-      query.whereILike('title', `%${this.filters.title}%`)
+    if (this.qSearch) {
+      query.orWhereILike('title', `%${this.qSearch}%`)
     }
 
     return this
   }
 
-  private filter(query: ModelQueryBuilderContract<typeof Book, Book>) {
+  private getQuery(query: ModelQueryBuilderContract<typeof Book, Book>) {
     return query
   }
 }

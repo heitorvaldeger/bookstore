@@ -106,16 +106,12 @@ test.group('Services book service', (t) => {
     ]).createMany(2)
 
     const sut = new BookService()
-    const books = await sut.getBooksByFilter({
-      author: 'george',
-    })
+    const books = await sut.getBooksByFilter('george')
 
     expect(books.length).toBe(1)
     expect(books[0].author).toBe('George Orwell')
 
-    const anotherBooks = await sut.getBooksByFilter({
-      author: 'carrol',
-    })
+    const anotherBooks = await sut.getBooksByFilter('carrol')
 
     expect(anotherBooks.length).toBe(1)
     expect(anotherBooks[0].author).toBe('Lewis Carrol')
@@ -131,16 +127,12 @@ test.group('Services book service', (t) => {
       },
     ]).createMany(2)
     const sut = new BookService()
-    const books = await sut.getBooksByFilter({
-      title: 'alice',
-    })
+    const books = await sut.getBooksByFilter('alice')
 
     expect(books.length).toBe(1)
     expect(books[0].title).toBe('Alice no País das Maravilhas')
 
-    const anotherBooks = await sut.getBooksByFilter({
-      title: '1984',
-    })
+    const anotherBooks = await sut.getBooksByFilter('1984')
 
     expect(anotherBooks.length).toBe(1)
     expect(anotherBooks[0].title).toBe('1984')
@@ -156,15 +148,11 @@ test.group('Services book service', (t) => {
       },
     ]).createMany(2)
     const sut = new BookService()
-    const books = await sut.getBooksByFilter({
-      description: 'any',
-    })
+    const books = await sut.getBooksByFilter('any description')
 
     expect(books.length).toBe(1)
 
-    const anotherBooks = await sut.getBooksByFilter({
-      author: 'another',
-    })
+    const anotherBooks = await sut.getBooksByFilter('another description')
 
     expect(anotherBooks.length).toBe(1)
   })

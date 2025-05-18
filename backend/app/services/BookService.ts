@@ -11,7 +11,12 @@ export class BookService {
   }
 
   async getBookById(id: number) {
-    return await Book.find(id)
+    const book = await Book.find(id)
+    if (!book) {
+      throw new BookNotFoundException()
+    }
+
+    return book
   }
 
   async getBooksByFilter(qSearch: string) {

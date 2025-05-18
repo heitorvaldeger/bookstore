@@ -2,6 +2,7 @@ import { BookFactory } from '#database/factories/BookFactory'
 import Book from '#models/book'
 import { test } from '@japa/runner'
 import { OrderStatusEnum } from '../../app/enums/OrderStatusEnum.js'
+import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
 
 test.group('Order Controller', (group) => {
   let booksFactory: Book[] = []
@@ -77,5 +78,70 @@ test.group('Order Controller', (group) => {
 
     expect(response.status()).toBe(201)
     expect(response.body().status).toBe(OrderStatusEnum.PENDING)
+  })
+
+  test("/POST - return some error with 400 if any book doesn't exist", async ({
+    client,
+    expect,
+  }) => {
+    const booksPayload = booksFactory.map((book) => ({
+      id: book.id,
+      title: book.title,
+      quantity: 2,
+    }))
+
+    const response = await client.post('/orders').json({
+      books: [
+        ...booksPayload,
+        {
+          id: 999,
+          title: 'any_title',
+          quantity: 3,
+        },
+      ],
+    })
+
+    const exception = new OrderCreateForBooksException([
+      { bookId: 999, bookTitle: 'any_title', error: 'Book any_title not found' },
+    ])
+    expect(response.status()).toBe(400)
+    expect(response.body()).toEqual({
+      message: exception.message,
+      code: exception.code,
+      errors: exception.errors,
+    })
+  })
+
+  test('/POST - return some error with 400 if book stock is not avaiable', async ({
+    client,
+    expect,
+  }) => {
+    const booksPayload = booksFactory.map((book) => ({
+      id: book.id,
+      title: book.title,
+      quantity: 2,
+    }))
+
+    booksPayload[0].quantity = 2000
+
+    const baseBook = booksPayload[0]
+
+    const response = await client.post('/orders').json({
+      books: booksPayload,
+    })
+
+    const exception = new OrderCreateForBooksException([
+      {
+        bookId: baseBook.id,
+        bookTitle: baseBook.title,
+        error: `Book ${baseBook.title} out of stock`,
+      },
+    ])
+    expect(response.status()).toBe(400)
+    expect(response.body()).toEqual({
+      message: exception.message,
+      code: exception.code,
+      errors: exception.errors,
+    })
   })
 })

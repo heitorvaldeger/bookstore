@@ -36,6 +36,12 @@ test.group('Services book service', (t) => {
     expect(book?.serialize()).toEqual(booksFactory[0].serialize())
   })
 
+  test("it should return an exception if book doesn't exists", async ({ expect }) => {
+    const sut = new BookService()
+    const getBookByIdPromise = sut.getBookById(-1)
+    expect(getBookByIdPromise).rejects.toThrow(new BookNotFoundException())
+  })
+
   test('it should create a new book', async ({ expect }) => {
     const sut = new BookService()
 
@@ -50,7 +56,9 @@ test.group('Services book service', (t) => {
     ).toEqual(bookToSave)
   })
 
-  test("it should return an exception on update if book doesn't exists", async ({ expect }) => {
+  test("it should return an exception on update if book doesn't exists on find", async ({
+    expect,
+  }) => {
     stub(Book, 'find').resolves(null)
     const sut = new BookService()
 

@@ -77,4 +77,23 @@ test.group('Book Controller', (group) => {
       ],
     })
   })
+
+  test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
+    const payload = {
+      title: 'any_title',
+      description: 'any_description',
+      author: 'any_author',
+      imageURL: 'https://any-url.com',
+      category: BookCategoryEnum.BIBLE,
+      price: 999,
+      stock: 100,
+    }
+    const response = await client.post('/books').json(payload)
+
+    const { id, ...body } = response.body()
+
+    expect(response.status()).toBe(200)
+    expect(id).toBeTruthy()
+    expect(body).toEqual(payload)
+  })
 })

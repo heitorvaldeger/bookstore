@@ -11,6 +11,7 @@ const bookToSave = {
   title: 'any_title',
   description: 'any_description',
   author: 'any_author',
+  imageURL: 'any_image',
   category: BookCategoryEnum.BIBLE,
   price: 999,
   stock: 100,

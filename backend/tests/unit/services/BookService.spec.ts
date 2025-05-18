@@ -18,8 +18,9 @@ const bookToSave = {
 }
 
 test.group('Services book service', (t) => {
+  let booksFactory: Book[] = []
   t.setup(async () => {
-    await BookFactory.createMany(10)
+    booksFactory = await BookFactory.createMany(10)
   })
 
   test('it should return all books in database', async ({ expect }) => {
@@ -29,18 +30,10 @@ test.group('Services book service', (t) => {
     expect(books.length).toBe(10)
   })
 
-  test('it should return books in database by category', async ({ expect }) => {
+  test('it should return a book in database by id', async ({ expect }) => {
     const sut = new BookService()
-    const booksScience = await sut.getBooksByCategory(BookCategoryEnum.SCIENCE)
-    expect(booksScience.length).toBe(10)
-
-    const booksBible = await sut.getBooksByCategory(BookCategoryEnum.BIBLE)
-    expect(booksBible.length).toBe(0)
-
-    BookFactory.merge({ category: BookCategoryEnum.OTHERS }).createMany(5)
-
-    const booksOthers = await sut.getBooksByCategory(BookCategoryEnum.OTHERS)
-    expect(booksOthers.length).toBe(5)
+    const book = await sut.getBookById(booksFactory[0].id)
+    expect(book?.serialize()).toEqual(booksFactory[0].serialize())
   })
 
   test('it should create a new book', async ({ expect }) => {

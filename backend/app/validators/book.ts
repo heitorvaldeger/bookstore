@@ -1,9 +1,12 @@
 import vine from '@vinejs/vine'
 import { BookCategoryEnum } from '../enums/BookCategoryEnum.js'
 
-export const getBooksByCategoryValidator = vine.compile(
+export const getBookByIdValidator = vine.compile(
   vine.object({
-    categoryName: vine.enum(BookCategoryEnum),
+    id: vine
+      .string()
+      .regex(/^\d+$/)
+      .transform((value) => Number(value)),
   })
 )
 

@@ -10,10 +10,8 @@ export class BookService {
     return await Book.query().orderBy('id').select()
   }
 
-  async getBooksByCategory(category: string) {
-    return await Book.findManyBy({
-      category,
-    })
+  async getBookById(id: number) {
+    return await Book.find(id)
   }
 
   async getBooksByFilter(qSearch: string) {

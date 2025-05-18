@@ -16,26 +16,20 @@ test.group('Book Controller', (group) => {
     expect(response.body()).toEqual(booksFactory.map((book) => book.serialize()))
   })
 
-  test('/GET - return 200 with books list if filter by category passed', async ({
-    client,
-    expect,
-  }) => {
-    await BookFactory.merge({
-      category: BookCategoryEnum.OTHERS,
-    }).createMany(3)
-    const response = await client.get(`/books/category/${BookCategoryEnum.OTHERS}`)
+  test('/GET - return 200 with a book if id valid is provided', async ({ client, expect }) => {
+    const response = await client.get(`/books/search/${booksFactory[0].id}`)
 
-    const books = response.body()
+    const book = response.body()
 
     expect(response.status()).toBe(200)
-    expect(books.length).toBe(3)
+    expect(booksFactory[0].serialize()).toEqual(book)
   })
 
-  test('/GET - return 422 get books by category filter if field is invalid', async ({
+  test('/GET - return 422 if id invalid is provided on get book by id', async ({
     client,
     expect,
   }) => {
-    const response = await client.get('/books/category/any_value')
+    const response = await client.get('/books/search/any_value')
 
     const body = response.body()
 
@@ -43,12 +37,9 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The selected categoryName is invalid',
-          rule: 'enum',
-          field: 'categoryName',
-          meta: {
-            choices: Object.values(BookCategoryEnum),
-          },
+          field: 'id',
+          message: 'The id field format is invalid',
+          rule: 'regex',
         },
       ],
     })
@@ -94,7 +85,7 @@ test.group('Book Controller', (group) => {
     expect(anotherBody.length).toBe(2)
   })
 
-  test('/GET - return 200 on get books by search if query search is provided', async ({
+  test('/GET - return 422 on get books by search if query search is not provided', async ({
     client,
     expect,
   }) => {

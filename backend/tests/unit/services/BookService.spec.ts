@@ -94,4 +94,78 @@ test.group('Services book service', (t) => {
     const bookDeleted = await Book.find(book.id)
     expect(bookDeleted).toBeFalsy()
   })
+
+  test('it should filter a book list by author', async ({ expect }) => {
+    await BookFactory.merge([
+      {
+        author: 'George Orwell',
+      },
+      {
+        author: 'Lewis Carrol',
+      },
+    ]).createMany(2)
+
+    const sut = new BookService()
+    const books = await sut.getBooksByFilter({
+      author: 'george',
+    })
+
+    expect(books.length).toBe(1)
+    expect(books[0].author).toBe('George Orwell')
+
+    const anotherBooks = await sut.getBooksByFilter({
+      author: 'carrol',
+    })
+
+    expect(anotherBooks.length).toBe(1)
+    expect(anotherBooks[0].author).toBe('Lewis Carrol')
+  })
+
+  test('it should filter a book list by title', async ({ expect }) => {
+    await BookFactory.merge([
+      {
+        title: 'Alice no País das Maravilhas',
+      },
+      {
+        title: '1984',
+      },
+    ]).createMany(2)
+    const sut = new BookService()
+    const books = await sut.getBooksByFilter({
+      title: 'alice',
+    })
+
+    expect(books.length).toBe(1)
+    expect(books[0].title).toBe('Alice no País das Maravilhas')
+
+    const anotherBooks = await sut.getBooksByFilter({
+      title: '1984',
+    })
+
+    expect(anotherBooks.length).toBe(1)
+    expect(anotherBooks[0].title).toBe('1984')
+  })
+
+  test('it should filter a book list by description', async ({ expect }) => {
+    await BookFactory.merge([
+      {
+        author: 'any description for a book',
+      },
+      {
+        author: 'another description for a book',
+      },
+    ]).createMany(2)
+    const sut = new BookService()
+    const books = await sut.getBooksByFilter({
+      description: 'any',
+    })
+
+    expect(books.length).toBe(1)
+
+    const anotherBooks = await sut.getBooksByFilter({
+      author: 'another',
+    })
+
+    expect(anotherBooks.length).toBe(1)
+  })
 })

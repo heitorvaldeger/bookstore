@@ -96,4 +96,41 @@ test.group('Book Controller', (group) => {
     expect(id).toBeTruthy()
     expect(body).toEqual(payload)
   })
+
+  test('/POST - return 422 if book fields is invalid', async ({ client, expect }) => {
+    const response = await client.post('/books').json({})
+
+    const body = response.body()
+
+    expect(response.status()).toBe(422)
+    expect(body).toEqual({
+      errors: [
+        {
+          message: 'The title field must be defined',
+          rule: 'required',
+          field: 'title',
+        },
+        {
+          message: 'The author field must be defined',
+          rule: 'required',
+          field: 'author',
+        },
+        {
+          message: 'The stock field must be defined',
+          rule: 'required',
+          field: 'stock',
+        },
+        {
+          message: 'The price field must be defined',
+          rule: 'required',
+          field: 'price',
+        },
+        {
+          message: 'The category field must be defined',
+          rule: 'required',
+          field: 'category',
+        },
+      ],
+    })
+  })
 })

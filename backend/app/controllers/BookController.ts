@@ -2,7 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 import { BookService } from '#services/BookService'
 import { inject } from '@adonisjs/core'
-import { getBooksByCategoryValidator } from '#validators/book'
+import { createOrUpdateBookValidator, getBooksByCategoryValidator } from '#validators/book'
 
 @inject()
 export default class BookController {
@@ -22,6 +22,16 @@ export default class BookController {
       const payload = await getBooksByCategoryValidator.validate(request.all())
       const books = await this.bookService.getBooksByCategory(payload.category)
       return response.status(200).json(books.map((book) => book.serialize()))
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async create({ request, response }: HttpContext) {
+    try {
+      const payload = await createOrUpdateBookValidator.validate(request.all())
+      const book = await this.bookService.create(payload)
+      return response.status(200).json(book.serialize())
     } catch (error) {
       throw error
     }

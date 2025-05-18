@@ -23,9 +23,7 @@ test.group('Book Controller', (group) => {
     await BookFactory.merge({
       category: BookCategoryEnum.OTHERS,
     }).createMany(3)
-    const response = await client.get('/books/filter').qs({
-      category: BookCategoryEnum.OTHERS,
-    })
+    const response = await client.get(`/books/category/${BookCategoryEnum.OTHERS}`)
 
     const books = response.body()
 
@@ -33,33 +31,11 @@ test.group('Book Controller', (group) => {
     expect(books.length).toBe(3)
   })
 
-  test('/GET - return 422 get books by category filter if field is not provided', async ({
-    client,
-    expect,
-  }) => {
-    const response = await client.get('/books/filter')
-
-    const body = response.body()
-
-    expect(response.status()).toBe(422)
-    expect(body).toEqual({
-      errors: [
-        {
-          message: 'The category field must be defined',
-          rule: 'required',
-          field: 'category',
-        },
-      ],
-    })
-  })
-
   test('/GET - return 422 get books by category filter if field is invalid', async ({
     client,
     expect,
   }) => {
-    const response = await client.get('/books/filter').qs({
-      category: 'any_value',
-    })
+    const response = await client.get('/books/category/any_value')
 
     const body = response.body()
 
@@ -67,9 +43,9 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The selected category is invalid',
+          message: 'The selected categoryName is invalid',
           rule: 'enum',
-          field: 'category',
+          field: 'categoryName',
           meta: {
             choices: Object.values(BookCategoryEnum),
           },

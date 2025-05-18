@@ -5,6 +5,7 @@ import { inject } from '@adonisjs/core'
 import {
   createBookValidator,
   getBooksByCategoryValidator,
+  getBooksByFilter,
   updateBookValidator,
 } from '#validators/book'
 
@@ -23,8 +24,18 @@ export default class BookController {
 
   async getBooksByCategory({ request, response }: HttpContext) {
     try {
-      const payload = await getBooksByCategoryValidator.validate(request.all())
-      const books = await this.bookService.getBooksByCategory(payload.category)
+      const payload = await getBooksByCategoryValidator.validate(request.params())
+      const books = await this.bookService.getBooksByCategory(payload.categoryName)
+      return response.status(200).json(books.map((book) => book.serialize()))
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async getBooksByFilter({ request, response }: HttpContext) {
+    try {
+      const payload = await getBooksByFilter.validate(request.qs())
+      const books = await this.bookService.getBooksByFilter(payload.q)
       return response.status(200).json(books.map((book) => book.serialize()))
     } catch (error) {
       throw error

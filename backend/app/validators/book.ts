@@ -3,7 +3,13 @@ import { BookCategoryEnum } from '../enums/BookCategoryEnum.js'
 
 export const getBooksByCategoryValidator = vine.compile(
   vine.object({
-    category: vine.enum(BookCategoryEnum),
+    categoryName: vine.enum(BookCategoryEnum),
+  })
+)
+
+export const getBooksByFilter = vine.compile(
+  vine.object({
+    q: vine.string(),
   })
 )
 

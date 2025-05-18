@@ -1,6 +1,7 @@
 import { BookFactory } from '#database/factories/BookFactory'
 import Book from '#models/book'
 import { test } from '@japa/runner'
+import { OrderStatusEnum } from '../../app/enums/OrderStatusEnum.js'
 
 test.group('Order Controller', (group) => {
   let booksFactory: Book[] = []
@@ -61,5 +62,20 @@ test.group('Order Controller', (group) => {
         },
       ],
     })
+  })
+
+  test('/POST - return 201 with creation a book on success', async ({ client, expect }) => {
+    const booksPayload = booksFactory.map((book) => ({
+      id: book.id,
+      title: book.title,
+      quantity: 2,
+    }))
+
+    const response = await client.post('/orders').json({
+      books: booksPayload,
+    })
+
+    expect(response.status()).toBe(201)
+    expect(response.body().status).toBe(OrderStatusEnum.PENDING)
   })
 })

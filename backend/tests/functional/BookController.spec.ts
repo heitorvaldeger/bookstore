@@ -72,24 +72,12 @@ test.group('Book Controller', (group) => {
           'Uma história sobre amor, classe social e orgulho, centrada na vida de Elizabeth Bennet e Mr. Darcy na Inglaterra do século XIX.',
       },
       {
-        author: 'J.K. Rowling',
-        title: 'Harry Potter e a Pedra Filosofal',
-        description:
-          'O início da jornada de um jovem bruxo que descobre um mundo mágico enquanto enfrenta forças das trevas em Hogwarts.',
-      },
-      {
         author: 'Haruki Murakami',
         title: 'Kafka à Beira-Mar',
         description:
           'Uma história surreal e simbólica sobre um adolescente que foge de casa e um homem idoso com habilidades misteriosas.',
       },
-      {
-        author: 'Gabriel García Márquez',
-        title: 'Cem Anos de Solidão',
-        description:
-          'A saga mágica e trágica da família Buendía, marcada por ciclos de solidão e acontecimentos sobrenaturais na cidade fictícia de Macondo.',
-      },
-    ]).createMany(5)
+    ]).createMany(3)
     const [response, anotherResponse] = await Promise.all([
       client.get(`/books/search`).qs({ q: 'George' }),
       client.get(`/books/search`).qs({ q: 'história' }),
@@ -193,6 +181,17 @@ test.group('Book Controller', (group) => {
     expect(response.status()).toBe(200)
     expect(body.title).toBe('another_title')
     expect(body.description).toBe('another_description')
+  })
+
+  test("/PUT - return 404 if a book doesn't exists on update", async ({ client, expect }) => {
+    const response = await client.put(`/books/9999`).json({
+      title: 'another title',
+    })
+
+    const body = response.body()
+
+    expect(response.status()).toBe(404)
+    expect(body).toEqual({ code: 'E_BOOK_NOT_FOUND', message: 'Book not found' })
   })
 
   test('/PUT - return 422 if some field is invalid on update', async ({ client, expect }) => {

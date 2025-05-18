@@ -54,6 +54,77 @@ test.group('Book Controller', (group) => {
     })
   })
 
+  test('/GET - return 200 on get books by search if query search is provided', async ({
+    client,
+    expect,
+  }) => {
+    await BookFactory.merge([
+      {
+        author: 'George Orwell',
+        title: '1984',
+        description:
+          'Um romance distópico sobre um regime totalitário que controla todos os aspectos da vida dos cidadãos, incluindo seus pensamentos.',
+      },
+      {
+        author: 'Jane Austen',
+        title: 'Orgulho e Preconceito',
+        description:
+          'Uma história sobre amor, classe social e orgulho, centrada na vida de Elizabeth Bennet e Mr. Darcy na Inglaterra do século XIX.',
+      },
+      {
+        author: 'J.K. Rowling',
+        title: 'Harry Potter e a Pedra Filosofal',
+        description:
+          'O início da jornada de um jovem bruxo que descobre um mundo mágico enquanto enfrenta forças das trevas em Hogwarts.',
+      },
+      {
+        author: 'Haruki Murakami',
+        title: 'Kafka à Beira-Mar',
+        description:
+          'Uma história surreal e simbólica sobre um adolescente que foge de casa e um homem idoso com habilidades misteriosas.',
+      },
+      {
+        author: 'Gabriel García Márquez',
+        title: 'Cem Anos de Solidão',
+        description:
+          'A saga mágica e trágica da família Buendía, marcada por ciclos de solidão e acontecimentos sobrenaturais na cidade fictícia de Macondo.',
+      },
+    ]).createMany(5)
+    const [response, anotherResponse] = await Promise.all([
+      client.get(`/books/search`).qs({ q: 'George' }),
+      client.get(`/books/search`).qs({ q: 'história' }),
+    ])
+
+    const body = response.body()
+
+    expect(response.status()).toBe(200)
+    expect(body.length).toBe(1)
+    expect(body[0].author).toBe('George Orwell')
+
+    const anotherBody = anotherResponse.body()
+    expect(response.status()).toBe(200)
+    expect(anotherBody.length).toBe(2)
+  })
+
+  test('/GET - return 200 on get books by search if query search is provided', async ({
+    client,
+    expect,
+  }) => {
+    const response = await client.get(`/books/search`)
+
+    const body = response.body()
+    expect(response.status()).toBe(422)
+    expect(body).toEqual({
+      errors: [
+        {
+          message: 'The q field must be defined',
+          rule: 'required',
+          field: 'q',
+        },
+      ],
+    })
+  })
+
   test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
     const payload = {
       title: 'any_title',

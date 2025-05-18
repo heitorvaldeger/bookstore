@@ -4,6 +4,7 @@ import { BookService } from '#services/BookService'
 import { inject } from '@adonisjs/core'
 import {
   createBookValidator,
+  deleteBookValidator,
   getBooksByCategoryValidator,
   getBooksByFilter,
   updateBookValidator,
@@ -61,6 +62,17 @@ export default class BookController {
       const book = await this.bookService.update(id, payload)
 
       return response.status(200).json(book)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async delete({ request, response }: HttpContext) {
+    try {
+      const { id } = await deleteBookValidator.validate(request.params())
+      const book = await this.bookService.delete(id)
+
+      return response.status(204).json(book)
     } catch (error) {
       throw error
     }

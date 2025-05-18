@@ -40,3 +40,12 @@ export const updateBookValidator = vine.compile(
     category: vine.enum(BookCategoryEnum).optional(),
   })
 )
+
+export const deleteBookValidator = vine.compile(
+  vine.object({
+    id: vine
+      .string()
+      .regex(/^\d+$/)
+      .transform((value) => Number(value)),
+  })
+)

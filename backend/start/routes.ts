@@ -17,5 +17,6 @@ router
     router.get('category/:categoryName', [BookController, 'getBooksByCategory'])
     router.post('', [BookController, 'create'])
     router.put(':id', [BookController, 'update'])
+    router.delete(':id', [BookController, 'delete'])
   })
   .prefix('books')

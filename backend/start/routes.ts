@@ -7,6 +7,7 @@
 |
 */
 
+const BookController = () => import('#controllers/BookController')
 import router from '@adonisjs/core/services/router'
 
 router.get('/', async () => {
@@ -14,3 +15,9 @@ router.get('/', async () => {
     hello: 'world',
   }
 })
+
+router
+  .group(() => {
+    router.get('', [BookController, 'getAll'])
+  })
+  .prefix('books')

@@ -4,7 +4,7 @@ import { BookSaveDTO } from '../dtos/BookSaveDTO.js'
 
 export class BookService {
   async getAll() {
-    return await Book.all()
+    return await Book.query().orderBy('id').select()
   }
 
   async getBooksByCategory(category: string) {

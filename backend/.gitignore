@@ -7,6 +7,7 @@ tmp
 .env
 .env.local
 .env.production.local
+.env.production
 .env.development.local
 
 # Frontend assets compiled code
@@ -23,3 +24,5 @@ yarn-error.log
 
 # Platform specific
 .DS_Store
+
+bookstore-db

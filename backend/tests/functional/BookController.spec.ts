@@ -134,7 +134,7 @@ test.group('Book Controller', (group) => {
     })
   })
 
-  test('/POST - return 200 if book was updated with success', async ({ client, expect }) => {
+  test('/PUT - return 200 if book was updated with success', async ({ client, expect }) => {
     const book = await BookFactory.create()
     const response = await client.put(`/books/${book.id}`).json({
       title: 'another_title',
@@ -146,5 +146,25 @@ test.group('Book Controller', (group) => {
     expect(response.status()).toBe(200)
     expect(body.title).toBe('another_title')
     expect(body.description).toBe('another_description')
+  })
+
+  test('/PUT - return 422 if some field is invalid on update', async ({ client, expect }) => {
+    const book = await BookFactory.create()
+    const response = await client.put(`/books/${book.id}`).json({
+      price: 'any_value',
+    })
+
+    const body = response.body()
+
+    expect(response.status()).toBe(422)
+    expect(body).toEqual({
+      errors: [
+        {
+          message: 'The price field must be a number',
+          rule: 'number',
+          field: 'price',
+        },
+      ],
+    })
   })
 })

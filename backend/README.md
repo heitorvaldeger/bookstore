@@ -70,6 +70,10 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 5. Execução sem o docker
   - Preencha o arquivo .env com os seguintes valores:
     ```bash
+      # ⚠️ A versão utilizada do PostgreSQL para o projeto foi a 16
+      # ⚠️ É necessário criar um banco de dados com o mesmo nome escolhido no .env
+      # ⚠️ Informe as mesmas credenciais no .env do seu banco de dados
+
       TZ=UTC
       PORT=3333
       HOST=localhost
@@ -82,10 +86,7 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
       DB_PASSWORD="root"
       DB_DATABASE=bookstore
       SESSION_DRIVER=cookie
-
-      # PS: Ajuste esse valores de acordo com a configuração do seu ambiente, além de ser necessário a criação do banco e passar as credenciais corretamente
     ```
-
   - Instale as dependências e execute as migrações:
     ```bash
       npm install
@@ -94,5 +95,6 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
   - Execute o servidor
     ```bash
+      # O servidor será iniciado na porta escolhida no .env
       node ace serve
     ```

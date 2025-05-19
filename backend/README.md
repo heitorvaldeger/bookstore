@@ -11,6 +11,7 @@ API desenvolvida que permite a criação, listagem, edição e exclusão de livr
 - Sinon (Mock e Fakes)
 - Docker (v24.0.7)
 - Node (> v20.17.0)
+- c8 (criação de relatório de cobertura de teste)
 
 ## Sobre a arquitetura
 A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas (three-tier architecture), tendo um foco na criação dos recursos de acordo com as necessidades, sem adicionar complexidade extras para o projeto, e com um olhar maior nos testes unitários e de integração com o objetivo de atingir a maior cobertura possível
@@ -21,6 +22,7 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 - Foco maior em testes unitários e de integração
 - Escolha de campo soft delete na exclusão de um livro, visto que, a exclusão de um livro poderia acarretar na remoção dos pedidos já vinculados
 - Tratamento de exceções customizadas e seguindo o contexto de sua ação
+- Adotei que o preço livro ficasse como múltiplo de 100, para evitar problemas de ponto flutuante
   
 ## Passos para execução
 
@@ -64,6 +66,11 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
       npm run up
     ```
+  - Será criada as credenciais automaticamente:
+    ```bash
+      email: mail@mail.com
+      password: 1234
+    ```
 
 5. Execução sem o docker
   - Preencha o arquivo .env com os seguintes valores:
@@ -84,10 +91,23 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
       DB_DATABASE=bookstore
       SESSION_DRIVER=memory
     ```
-  - Instale as dependências e execute as migrações:
+  - Execute os comandos
     ```bash
-      npm install && node ace migration:run
+      # Instala as dependências
+      npm install
+      
+      # Executa as migrações
+      node ace migration:run
+      
+      # Executa os seeders para o banco de dados
+      node ace db:seed
     ```
+
+   - Será criada as credenciais automaticamente:
+      ```bash
+        email: mail@mail.com
+        password: 1234
+      ```
 
   - Execute o servidor (ouvindo na porta escolhida no .env)
     ```bash
@@ -120,6 +140,8 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     ```bash
       npm run test
     ```
+
+    ![alt text](coverage.png)
 
 ⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente
 

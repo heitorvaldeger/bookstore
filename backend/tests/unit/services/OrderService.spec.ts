@@ -7,6 +7,7 @@ import { randomInt } from 'node:crypto'
 import { OrderStatusEnum } from '../../../app/enums/OrderStatusEnum.js'
 import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
 import db from '@adonisjs/lucid/services/db'
+import Book from '#models/book'
 
 test.group('Services order service', (t) => {
   let order: Order
@@ -115,5 +116,29 @@ test.group('Services order service', (t) => {
     expect(newOrder.id).toBeTruthy()
     expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
     expect(newOrder.books.length).toBe(10)
+  })
+
+  test('it should discount quantity correctly on create order', async ({ expect }) => {
+    const sut = new OrderService()
+
+    const book = await BookFactory.merge({ stock: 5 }).create()
+    const newOrder = await sut.create({
+      books: [
+        {
+          id: book.id,
+          quantity: 2,
+          title: book.title,
+        },
+      ],
+    })
+    await newOrder.load('books')
+
+    const bookFromDb = await Book.find(book.id)
+
+    expect(newOrder).toBeTruthy()
+    expect(newOrder.id).toBeTruthy()
+    expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
+    expect(newOrder.books.length).toBe(1)
+    expect(bookFromDb?.stock).toBe(3)
   })
 })

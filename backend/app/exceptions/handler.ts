@@ -1,6 +1,14 @@
 import app from '@adonisjs/core/services/app'
 import { HttpContext, ExceptionHandler } from '@adonisjs/core/http'
+import BookNotFoundException from './BookNotFoundException.js'
+import { errors } from '@adonisjs/auth'
+import OrderCreateForBooksException from './OrderCreateForBooksException.js'
 
+interface ErrorPayload {
+  code: number
+  message: ''
+  errors?: any
+}
 export default class HttpExceptionHandler extends ExceptionHandler {
   /**
    * In debug mode, the exception handler will display verbose errors
@@ -12,7 +20,30 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * The method is used for handling errors and returning
    * response to the client
    */
-  async handle(error: unknown, ctx: HttpContext) {
+  async handle(error: any, ctx: HttpContext) {
+    if ([BookNotFoundException, OrderCreateForBooksException].some((e) => error instanceof e)) {
+      const payload: ErrorPayload = {
+        code: error.code,
+        message: error.message,
+      }
+
+      if (error.errors) {
+        payload.errors = error.errors
+      }
+
+      return ctx.response.status(error.status).json(payload)
+    }
+
+    if (
+      error instanceof errors.E_UNAUTHORIZED_ACCESS ||
+      error instanceof errors.E_INVALID_CREDENTIALS
+    ) {
+      return ctx.response.status(401).json({
+        code: error.code,
+        message: error.message,
+      })
+    }
+
     return super.handle(error, ctx)
   }
 

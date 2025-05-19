@@ -144,4 +144,13 @@ test.group('Order Controller', (group) => {
       errors: exception.errors,
     })
   })
+
+  test('/GET - return a list of books with success', async ({ client, expect }) => {
+    const response = await client.get('/orders')
+
+    const body = response.body()
+    expect(response.status()).toBe(200)
+    expect(body.length).toBe(1)
+    expect(body[0].items.length).toBe(10)
+  })
 })

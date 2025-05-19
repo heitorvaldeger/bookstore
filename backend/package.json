@@ -10,6 +10,8 @@
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "test:coverage": "c8 node ace test --reporter=['html']",
+    "test:docker-up": "docker compose --env-file .env.test up -d db-hom",
+    "up": "docker compose up -d db api",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"

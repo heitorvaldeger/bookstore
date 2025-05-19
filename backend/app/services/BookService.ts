@@ -82,8 +82,4 @@ export class BookService {
 
     return this
   }
-
-  private getQuery(query: ModelQueryBuilderContract<typeof Book, Book>) {
-    return query
-  }
 }

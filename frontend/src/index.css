@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
-* {
-  font-family: 'DM Sans', monospace, sans-serif;
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-roboto: Roboto, sans-serif;
 }

@@ -143,6 +143,6 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
     ![alt text](coverage.png)
 
-⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente
+#### ⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente
 
-⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados
+#### ⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados

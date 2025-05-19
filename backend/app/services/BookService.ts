@@ -8,11 +8,14 @@ export class BookService {
   private qSearch: string = ''
 
   async getAll() {
-    return await Book.query().orderBy('id').select()
+    return await Book.query().whereNull('deleted_at').orderBy('id').select()
   }
 
   async getBookById(id: number) {
-    const book = await Book.find(id)
+    const book = await Book.findBy({
+      id: id,
+      deletedAt: null,
+    })
     if (!book) {
       throw new BookNotFoundException()
     }
@@ -21,12 +24,12 @@ export class BookService {
   }
 
   async getBooksByFilter(qSearch: string) {
-    const qBook = Book.query()
     this.qSearch = qSearch
-    const books = await this.filterByAuthor(qBook)
-      .filterByDescription(qBook)
-      .filterByTitle(qBook)
-      .getQuery(qBook)
+    const books = Book.query()
+      .where((q) => {
+        this.filterByAuthor(q).filterByDescription(q).filterByTitle(q)
+      })
+      .whereNull('deleted_at')
       .select()
 
     return books

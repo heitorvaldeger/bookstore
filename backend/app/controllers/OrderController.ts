@@ -17,4 +17,14 @@ export default class OrderController {
       throw error
     }
   }
+
+  async getAll({ response }: HttpContext) {
+    try {
+      const orders = await this.orderService.getAll()
+
+      return response.status(200).json(orders)
+    } catch (error) {
+      throw error
+    }
+  }
 }

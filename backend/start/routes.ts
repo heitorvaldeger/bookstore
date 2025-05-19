@@ -24,6 +24,7 @@ router
 
 router
   .group(() => {
+    router.get('/', [OrderController, 'getAll'])
     router.post('/', [OrderController, 'create'])
   })
   .prefix('orders')

@@ -12,7 +12,9 @@ interface OrderCreateError {
 
 export class OrderService {
   async getAll() {
-    const orders = await Order.query().preload('books')
+    const orders = await Order.query().preload('books', (b) => {
+      b.orderBy('id')
+    })
 
     return orders.map((order) => {
       return {

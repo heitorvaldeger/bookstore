@@ -5,6 +5,8 @@ import type { Config } from '@japa/runner/types'
 import { pluginAdonisJS } from '@japa/plugin-adonisjs'
 import testUtils from '@adonisjs/core/services/test_utils'
 import Sinon from 'sinon'
+import { sessionApiClient } from '@adonisjs/session/plugins/api_client'
+import { authApiClient } from '@adonisjs/auth/plugins/api_client'
 
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
@@ -14,7 +16,13 @@ import Sinon from 'sinon'
  * Configure Japa plugins in the plugins array.
  * Learn more - https://japa.dev/docs/runner-config#plugins-optional
  */
-export const plugins: Config['plugins'] = [expect(), apiClient(), pluginAdonisJS(app)]
+export const plugins: Config['plugins'] = [
+  expect(),
+  apiClient(),
+  pluginAdonisJS(app),
+  sessionApiClient(app),
+  authApiClient(app),
+]
 
 /**
  * Configure lifecycle function to run before and after all the

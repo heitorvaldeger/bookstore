@@ -32,4 +32,7 @@ export default class Book extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime
+
+  @column.dateTime({ serializeAs: null })
+  declare deletedAt: DateTime
 }

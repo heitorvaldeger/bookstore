@@ -15,6 +15,7 @@ export default class extends BaseSchema {
       table.enum('category', ['bible', 'teology', 'philosophy', 'science', 'others'])
       table.timestamp('created_at')
       table.timestamp('updated_at')
+      table.timestamp('deleted_at')
     })
   }
 

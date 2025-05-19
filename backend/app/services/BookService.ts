@@ -2,6 +2,7 @@ import BookNotFoundException from '#exceptions/BookNotFoundException'
 import Book from '#models/book'
 import { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
 import { BookSaveDTO } from '../dtos/BookSaveDTO.js'
+import { DateTime } from 'luxon'
 
 export class BookService {
   private qSearch: string = ''
@@ -50,7 +51,9 @@ export class BookService {
       throw new BookNotFoundException()
     }
 
-    await bookToDelete.delete()
+    bookToDelete.deletedAt = DateTime.now()
+
+    await bookToDelete.save()
   }
 
   private filterByAuthor(query: ModelQueryBuilderContract<typeof Book, Book>) {

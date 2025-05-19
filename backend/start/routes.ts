@@ -9,7 +9,14 @@
 
 const BookController = () => import('#controllers/BookController')
 const OrderController = () => import('#controllers/OrderController')
+const AuthController = () => import('#controllers/AuthController')
 import router from '@adonisjs/core/services/router'
+
+router
+  .group(() => {
+    router.post('login', [AuthController, 'login'])
+  })
+  .prefix('auth')
 
 router
   .group(() => {

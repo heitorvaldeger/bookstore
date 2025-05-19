@@ -16,6 +16,10 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 ![alt text](architecture.png)
 
+## Decisões Técnicas
+- Foco maior em testes unitários e de integração
+- Escolha de campo soft delete na exclusão de um livro, visto que, a exclusão de um livro poderia acarretar na remoção dos pedidos já vinculados
+  
 ## Passos para execução
 
 1. Clone o projeto

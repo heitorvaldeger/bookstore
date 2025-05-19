@@ -93,7 +93,7 @@ test.group('Services book service', (t) => {
     await sut.delete(book.id)
 
     const bookDeleted = await Book.find(book.id)
-    expect(bookDeleted).toBeFalsy()
+    expect(bookDeleted?.deletedAt).toBeTruthy()
   })
 
   test('it should filter a book list by author', async ({ expect }) => {

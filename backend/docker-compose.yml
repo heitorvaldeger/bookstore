@@ -1,17 +1,6 @@
 version: "3.9"
 name: bookstore
 services:
-  api:
-    container_name: bookstore-api
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    command: ["sh", "-c", "node ace migration:run --force && node ./bin/server.js"]
-    ports:
-      - 8080:8080
-    env_file:
-      - .env
   db:
     container_name: bookstore-db
     image: postgres:16
@@ -25,6 +14,11 @@ services:
       - "5432:5432"
     volumes:
       - ./bookstore-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_DATABASE}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   db-hom:
     container_name: bookstore-db-hom
     image: postgres:16
@@ -36,3 +30,17 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "5433:5432"
+  api:
+    container_name: bookstore-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: ["sh", "-c", "node ace migration:run --force && node ./bin/server.js"]
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy

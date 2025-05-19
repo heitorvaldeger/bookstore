@@ -2,13 +2,21 @@ import { BookFactory } from '#database/factories/BookFactory'
 import Book from '#models/book'
 import { test } from '@japa/runner'
 import { BookCategoryEnum } from '../../app/enums/BookCategoryEnum.js'
+import User from '#models/user'
 
+const makeUser = async () => {
+  await User.query().delete()
+  return await User.create({
+    email: 'any_email@mail.com',
+    password: 'any_password',
+  })
+}
 test.group('Book Controller', (group) => {
   let booksFactory: Book[] = []
-
   group.each.setup(async () => {
     booksFactory = await BookFactory.createMany(10)
   })
+
   test('/GET - return 200 with all books in database', async ({ client, expect }) => {
     const response = await client.get('/books')
 
@@ -114,7 +122,10 @@ test.group('Book Controller', (group) => {
       price: 999,
       stock: 100,
     }
-    const response = await client.post('/books').json(payload)
+
+    const user = await makeUser()
+
+    const response = await client.post('/books').json(payload).loginAs(user)
 
     const { id, ...body } = response.body()
 
@@ -124,7 +135,8 @@ test.group('Book Controller', (group) => {
   })
 
   test('/POST - return 422 if book fields is invalid', async ({ client, expect }) => {
-    const response = await client.post('/books').json({})
+    const user = await makeUser()
+    const response = await client.post('/books').json({}).loginAs(user)
 
     const body = response.body()
 
@@ -161,11 +173,16 @@ test.group('Book Controller', (group) => {
   })
 
   test('/PUT - return 200 if book was updated with success', async ({ client, expect }) => {
+    const user = await makeUser()
+
     const book = await BookFactory.create()
-    const response = await client.put(`/books/${book.id}`).json({
-      title: 'another_title',
-      description: 'another_description',
-    })
+    const response = await client
+      .put(`/books/${book.id}`)
+      .json({
+        title: 'another_title',
+        description: 'another_description',
+      })
+      .loginAs(user)
 
     const body = response.body()
 
@@ -175,9 +192,13 @@ test.group('Book Controller', (group) => {
   })
 
   test("/PUT - return 404 if a book doesn't exists on update", async ({ client, expect }) => {
-    const response = await client.put(`/books/9999`).json({
-      title: 'another title',
-    })
+    const user = await makeUser()
+    const response = await client
+      .put(`/books/9999`)
+      .json({
+        title: 'another title',
+      })
+      .loginAs(user)
 
     const body = response.body()
 
@@ -186,10 +207,15 @@ test.group('Book Controller', (group) => {
   })
 
   test('/PUT - return 422 if some field is invalid on update', async ({ client, expect }) => {
+    const user = await makeUser()
+
     const book = await BookFactory.create()
-    const response = await client.put(`/books/${book.id}`).json({
-      price: 'any_value',
-    })
+    const response = await client
+      .put(`/books/${book.id}`)
+      .json({
+        price: 'any_value',
+      })
+      .loginAs(user)
 
     const body = response.body()
 
@@ -206,19 +232,25 @@ test.group('Book Controller', (group) => {
   })
 
   test('/DELETE - return 200 if book was deleted with success', async ({ client, expect }) => {
+    const user = await makeUser()
+
     const book = await BookFactory.create()
-    const response = await client.delete(`/books/${book.id}`)
+    const response = await client.delete(`/books/${book.id}`).loginAs(user)
 
     expect(response.status()).toBe(204)
   })
 
   test("/DELETE - return 404 if a book doesn't exists on delete", async ({ client, expect }) => {
-    const response = await client.delete(`/books/99999`)
+    const user = await makeUser()
+
+    const response = await client.delete(`/books/99999`).loginAs(user)
     expect(response.status()).toBe(404)
   })
 
   test('/DELETE - return 422 if id passed is invalid on delete', async ({ client, expect }) => {
-    const response = await client.delete(`/books/any_value`)
+    const user = await makeUser()
+
+    const response = await client.delete(`/books/any_value`).loginAs(user)
 
     const body = response.body()
 

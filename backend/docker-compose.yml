@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: ["sh", "-c", "node ace migration:run --force && node ./bin/server.js"]
+    command: ["sh", "-c", "node ace migration:run --force && node ace db:seed && node ./bin/server.js"]
     ports:
       - 8080:8080
     env_file:

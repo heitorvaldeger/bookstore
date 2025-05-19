@@ -23,14 +23,17 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     git clone https://github.com/heitorvaldeger/bookstore
   ```
 
-2. Acesse a pasta "backend":
+2. Acesse a pasta "bookstore":
   ```bash
+    cd bookstore
+
+    # Acesse a pasta "backend"
     cd backend
   ```
 
 3. Crie uma cópia do arquivo .env.example e renomeie para .env:
   ```bash
-    mov .env.example .env
+    cp .env.example .env
   ```
 
 4. Execução com o Docker

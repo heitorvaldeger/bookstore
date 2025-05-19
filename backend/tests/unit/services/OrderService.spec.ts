@@ -6,16 +6,19 @@ import { test } from '@japa/runner'
 import { randomInt } from 'node:crypto'
 import { OrderStatusEnum } from '../../../app/enums/OrderStatusEnum.js'
 import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
+import db from '@adonisjs/lucid/services/db'
 
 test.group('Services order service', (t) => {
   let order: Order
   t.setup(async () => {
+    const trx = await db.beginGlobalTransaction()
     const quantity = randomInt(5, 20)
     order = await OrderFactory.with('books', 5, (book) => {
       book.pivotAttributes({
         quantity,
       })
     }).create()
+    return () => trx.rollback()
   })
 
   test('it should return all orders in database', async ({ expect }) => {

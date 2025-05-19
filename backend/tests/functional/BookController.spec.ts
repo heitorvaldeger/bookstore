@@ -3,34 +3,42 @@ import Book from '#models/book'
 import { test } from '@japa/runner'
 import { BookCategoryEnum } from '../../app/enums/BookCategoryEnum.js'
 import User from '#models/user'
+import db from '@adonisjs/lucid/services/db'
 
 const makeUser = async () => {
   await User.query().delete()
+
   return await User.create({
     email: 'any_email@mail.com',
     password: 'any_password',
   })
 }
+
 test.group('Book Controller', (group) => {
-  let booksFactory: Book[] = []
+  let books: Book[] = []
   group.each.setup(async () => {
-    booksFactory = await BookFactory.createMany(10)
+    const trx = await db.beginGlobalTransaction()
+    books = await BookFactory.query({
+      client: trx,
+    }).createMany(10)
+
+    return () => trx.rollback()
   })
 
   test('/GET - return 200 with all books in database', async ({ client, expect }) => {
     const response = await client.get('/books')
 
     expect(response.status()).toBe(200)
-    expect(response.body()).toEqual(booksFactory.map((book) => book.serialize()))
+    expect(response.body()).toEqual(books.map((book) => book.serialize()))
   })
 
   test('/GET - return 200 with a book if id valid is provided', async ({ client, expect }) => {
-    const response = await client.get(`/books/search/${booksFactory[0].id}`)
+    const response = await client.get(`/books/search/${books[0].id}`)
 
     const book = response.body()
 
     expect(response.status()).toBe(200)
-    expect(booksFactory[0].serialize()).toEqual(book)
+    expect(books[0].serialize()).toEqual(book)
   })
 
   test('/GET - return 422 if id invalid is provided on get book by id', async ({

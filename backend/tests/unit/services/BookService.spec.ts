@@ -7,6 +7,8 @@ import BookNotFoundException from '#exceptions/BookNotFoundException'
 import Book from '#models/book'
 import { BookSaveDTO } from '../../../app/dtos/BookSaveDTO.js'
 import { DateTime } from 'luxon'
+import db from '@adonisjs/lucid/services/db'
+import { TransactionClientContract } from '@adonisjs/lucid/types/database'
 
 const bookToSave = {
   title: 'any_title',
@@ -18,9 +20,15 @@ const bookToSave = {
   stock: 100,
 }
 
-test.group('Services book service', () => {
+test.group('Services book service', (group) => {
+  let trx: TransactionClientContract
+  group.each.setup(async () => {
+    trx = await db.beginGlobalTransaction()
+
+    return () => trx.rollback()
+  })
   test('it should return all books in database', async ({ expect }) => {
-    await BookFactory.createMany(5)
+    await BookFactory.query({ client: trx }).createMany(5)
     const sut = new BookService()
     const books = await sut.getAll()
 
@@ -65,7 +73,7 @@ test.group('Services book service', () => {
   })
 
   test('it should return a book updated on update book', async ({ expect }) => {
-    const book = await BookFactory.create()
+    const book = await BookFactory.query({ client: trx }).create()
     const sut = new BookService()
 
     const bookToUpdate: BookSaveDTO = {
@@ -86,7 +94,7 @@ test.group('Services book service', () => {
   })
 
   test('it should delete a book with success', async ({ expect }) => {
-    const book = await BookFactory.create()
+    const book = await BookFactory.query({ client: trx }).create()
     const sut = new BookService()
     await sut.delete(book.id)
 

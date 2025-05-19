@@ -3,12 +3,20 @@ import Book from '#models/book'
 import { test } from '@japa/runner'
 import { OrderStatusEnum } from '../../app/enums/OrderStatusEnum.js'
 import OrderCreateForBooksException from '#exceptions/OrderCreateForBooksException'
+import db from '@adonisjs/lucid/services/db'
+import { OrderFactory } from '#database/factories/OrderFactory'
 
 test.group('Order Controller', (group) => {
-  let booksFactory: Book[] = []
+  let books: Book[] = []
 
   group.each.setup(async () => {
-    booksFactory = await BookFactory.createMany(10)
+    const trx = await db.beginGlobalTransaction()
+    await OrderFactory.with('books', 5).create()
+    books = await BookFactory.query({
+      client: trx,
+    }).createMany(10)
+
+    return () => trx.rollback()
   })
 
   test('/POST - return 422 if any field in payload is invalid on create', async ({
@@ -66,7 +74,7 @@ test.group('Order Controller', (group) => {
   })
 
   test('/POST - return 201 with creation a book on success', async ({ client, expect }) => {
-    const booksPayload = booksFactory.map((book) => ({
+    const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
       quantity: 2,
@@ -84,7 +92,7 @@ test.group('Order Controller', (group) => {
     client,
     expect,
   }) => {
-    const booksPayload = booksFactory.map((book) => ({
+    const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
       quantity: 2,
@@ -116,7 +124,7 @@ test.group('Order Controller', (group) => {
     client,
     expect,
   }) => {
-    const booksPayload = booksFactory.map((book) => ({
+    const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
       quantity: 2,
@@ -145,12 +153,12 @@ test.group('Order Controller', (group) => {
     })
   })
 
-  test('/GET - return a list of books with success', async ({ client, expect }) => {
+  test('/GET - return a list of orders with success', async ({ client, expect }) => {
     const response = await client.get('/orders')
 
     const body = response.body()
     expect(response.status()).toBe(200)
     expect(body.length).toBe(1)
-    expect(body[0].items.length).toBe(10)
+    expect(body[0].items.length).toBe(5)
   })
 })

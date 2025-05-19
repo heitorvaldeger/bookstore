@@ -23,7 +23,7 @@ export const createBookValidator = vine.compile(
     description: vine.string().optional(),
     imageURL: vine.string().url().optional(),
     stock: vine.number().positive(),
-    price: vine.number().positive(),
+    price: vine.number().positive().withoutDecimals(),
     category: vine.enum(BookCategoryEnum),
   })
 )

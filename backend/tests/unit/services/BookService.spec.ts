@@ -6,6 +6,7 @@ import { BookCategoryEnum } from '../../../app/enums/BookCategoryEnum.js'
 import BookNotFoundException from '#exceptions/BookNotFoundException'
 import Book from '#models/book'
 import { BookSaveDTO } from '../../../app/dtos/BookSaveDTO.js'
+import { DateTime } from 'luxon'
 
 const bookToSave = {
   title: 'any_title',
@@ -17,20 +18,17 @@ const bookToSave = {
   stock: 100,
 }
 
-test.group('Services book service', (t) => {
-  let booksFactory: Book[] = []
-  t.setup(async () => {
-    booksFactory = await BookFactory.createMany(10)
-  })
-
+test.group('Services book service', () => {
   test('it should return all books in database', async ({ expect }) => {
+    await BookFactory.createMany(5)
     const sut = new BookService()
     const books = await sut.getAll()
 
-    expect(books.length).toBe(10)
+    expect(books.length).toBe(5)
   })
 
   test('it should return a book in database by id', async ({ expect }) => {
+    const booksFactory = await BookFactory.createMany(5)
     const sut = new BookService()
     const book = await sut.getBookById(booksFactory[0].id)
     expect(book?.serialize()).toEqual(booksFactory[0].serialize())
@@ -104,7 +102,11 @@ test.group('Services book service', (t) => {
       {
         author: 'Lewis Carrol',
       },
-    ]).createMany(2)
+      {
+        author: 'George Orwell',
+        deletedAt: DateTime.now(),
+      },
+    ]).createMany(3)
 
     const sut = new BookService()
     const books = await sut.getBooksByFilter('george')

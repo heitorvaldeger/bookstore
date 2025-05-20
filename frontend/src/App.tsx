@@ -1,10 +1,10 @@
-import { Home } from "./pages/Home"
+import { RouterProvider } from "react-router";
+import { router } from "./routes";
 
 export const App = () => {
-
   return (
     <>
-      <Home/>
+      <RouterProvider router={router} />
     </>
-  )
-}
+  );
+};

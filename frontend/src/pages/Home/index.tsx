@@ -17,7 +17,7 @@ import { ArrowDown } from "../../components/Icons/ArrowDown";
 export const Home = () => {
   return (
     <main className="h-screen flex">
-      <section className="space-y-4 w-2/5">
+      <section className="space-y-4 w-2/5 max-w-[241px]">
         <div className="border-b-2 border-slate-100 px-4 py-4">
           <img src={logoImage} alt="Logo - Bookstore" className="w-2/4" />
         </div>
@@ -102,6 +102,32 @@ export const Home = () => {
               </div>
             ))}
           </div>
+
+          <section className="flex flex-col gap-2">
+            <p className="font-bold text-lg">Novidades</p>
+
+            <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex flex-col space-y-2">
+                  <div className="rounded-lg relative">
+                    <div className="mt-2 mx-2 w-fit font-inter absolute text-xs text-white bg-teal-700 rounded-tl-lg rounded-b-sm rounded-tr-sm px-2 py-1">
+                      novidade
+                    </div>
+                    <img
+                      src="/images/books/book-1.png"
+                      alt=""
+                      className="object-fill"
+                    />
+                  </div>
+
+                  <p className="font-normal text-xs">
+                    Cristianismo puro e simples, CS LEWIS
+                  </p>
+                  <p className="font-bold text-xs text-gray-900">R$ 467,90</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </main>
       </section>
     </main>

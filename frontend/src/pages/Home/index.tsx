@@ -91,6 +91,17 @@ export const Home = () => {
               <span className="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full"></span>
             </div>
           </div>
+
+          <div className="flex justify-center gap-2">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={i}
+                className="px-3 py-1 bg-orange-500 rounded-full text-white text-sm"
+              >
+                Teste
+              </div>
+            ))}
+          </div>
         </main>
       </section>
     </main>

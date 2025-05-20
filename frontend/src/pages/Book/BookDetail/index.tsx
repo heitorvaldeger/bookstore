@@ -1,6 +1,7 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "../../../components/Forms/RadioItem";
 import { useState } from "react";
+import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
@@ -55,7 +56,7 @@ export const BookDetail = () => {
             </RadioGroup.Root>
           </div>
 
-          <div className="space-y-2 my-4">
+          <div className="space-y-2 my-6">
             <p className="font-inter font-bold text-lg">
               Cor:
               <span className="font-inter font-normal mx-1">{color}</span>
@@ -81,6 +82,17 @@ export const BookDetail = () => {
                 <div className="w-7 h-7 cursor-pointer bg-gray-400 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
               </RadioGroup.Item>
             </RadioGroup.Root>
+          </div>
+
+          <div className="space-y-4 my-4">
+            <div>
+              <p className="font-inter font-bold text-lg">Quantidade</p>
+              <p className="font-inter font-normal">
+                ⚠️ Para este produto quantidade mínima é:
+              </p>
+            </div>
+
+            <InputNumberIncremental />
           </div>
         </section>
       </div>

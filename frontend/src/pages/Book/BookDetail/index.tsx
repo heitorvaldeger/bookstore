@@ -21,7 +21,7 @@ export const BookDetail = () => {
   });
 
   const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    book?.price ?? 0 / 100
+    (book?.price ?? 0) / 100
   );
 
   const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(

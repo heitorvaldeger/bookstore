@@ -11,7 +11,7 @@ export const Home = () => {
     queryFn: fetchBooks,
   });
 
-  const booksSliced = books?.slice(0, 4);
+  const booksSliced = books?.slice(0, 5);
 
   return (
     <main className="space-y-6">
@@ -38,7 +38,7 @@ export const Home = () => {
       <section className="flex flex-col gap-2">
         <p className="font-bold text-lg">Novidades</p>
 
-        <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
           {booksSliced?.map((book) => (
             <BookCard
               key={book.id}
@@ -63,7 +63,7 @@ export const Home = () => {
             </button>
           </div>
 
-          <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {booksSliced?.map((book) => (
               <BookCard
                 key={book.id}

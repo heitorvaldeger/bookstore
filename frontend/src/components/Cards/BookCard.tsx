@@ -37,7 +37,7 @@ export const BookCard = ({
         <img
           src={imageURL ?? "/images/cover-not-avaiable.png"}
           alt=""
-          className="object-fill"
+          className="object-fill h-[265px]"
         />
       </div>
 

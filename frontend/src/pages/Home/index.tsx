@@ -6,6 +6,7 @@ import {
   ShoppingBag,
   Search,
   AlignLeft,
+  ArrowRight,
 } from "react-feather";
 
 import avatarImage from "../../assets/images/avatar.png";
@@ -119,7 +120,12 @@ export const Home = () => {
             <img src={promotionDisplay} className="object-fill w-full" />
 
             <section className="flex flex-col gap-2">
-              <p className="font-bold text-lg">Promoções</p>
+              <div className="flex justify-between items-center">
+                <p className="font-bold text-lg">Promoções</p>
+                <button className="flex items-center font-inter text-xs px-2 py-1 border-[1px] rounded-full">
+                  Ver mais <ArrowRight size={14} />
+                </button>
+              </div>
 
               <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
                 {Array.from({ length: 4 }).map((_, i) => (

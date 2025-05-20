@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router";
+
 interface BookCardProps {
+  idBook: number;
   title: string;
   author: string;
   price: number;
 }
-export const BookCard = ({ title, author, price }: BookCardProps) => {
+export const BookCard = ({ idBook, title, author, price }: BookCardProps) => {
+  const navigate = useNavigate();
   const valueBrazilianFormatted = (price / 100).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -11,8 +15,12 @@ export const BookCard = ({ title, author, price }: BookCardProps) => {
 
   const isNew = false;
 
+  const handleClickBookCard = () => {
+    navigate(`books/${idBook}`);
+  };
+
   return (
-    <div className="flex flex-col space-y-2">
+    <div onClick={handleClickBookCard} className="flex flex-col space-y-2">
       <div className="rounded-lg relative">
         {isNew && (
           <div className="mt-2 mx-2 w-fit font-inter absolute text-xs text-white bg-teal-700 rounded-tl-lg rounded-b-sm rounded-tr-sm px-2 py-1">

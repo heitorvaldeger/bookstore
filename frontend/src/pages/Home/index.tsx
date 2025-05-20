@@ -42,6 +42,7 @@ export const Home = () => {
           {booksSliced?.map((book) => (
             <BookCard
               key={book.id}
+              idBook={book.id}
               price={book.price}
               title={book.title}
               author={book.author}
@@ -65,6 +66,7 @@ export const Home = () => {
             {booksSliced?.map((book) => (
               <BookCard
                 key={book.id}
+                idBook={book.id}
                 price={book.price}
                 title={book.title}
                 author={book.author}

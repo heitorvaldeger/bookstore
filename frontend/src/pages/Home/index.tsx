@@ -1,9 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
 import productSlide from "../../assets/images/product-slide.png";
 import promotionDisplay from "../../assets/images/promotion-display.png";
 import { BookCard } from "../../components/Cards/BookCard";
 import { CaretRightIcon } from "@radix-ui/react-icons";
+import { fetchBooks } from "../../api/fetch-books";
 
 export const Home = () => {
+  const { data: books } = useQuery({
+    queryKey: ["books"],
+    queryFn: fetchBooks,
+  });
+
+  const booksSliced = books?.slice(0, 4);
+
   return (
     <main className="space-y-6">
       <div className="flex flex-col items-center gap-2">
@@ -30,8 +39,13 @@ export const Home = () => {
         <p className="font-bold text-lg">Novidades</p>
 
         <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <BookCard key={i} isNew={true} value={467.9} />
+          {booksSliced?.map((book) => (
+            <BookCard
+              key={book.id}
+              price={book.price}
+              title={book.title}
+              author={book.author}
+            />
           ))}
         </div>
       </section>
@@ -48,12 +62,12 @@ export const Home = () => {
           </div>
 
           <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, i) => (
+            {booksSliced?.map((book) => (
               <BookCard
-                key={i}
-                isNew={true}
-                value={467.9}
-                promotionValue={367.9}
+                key={book.id}
+                price={book.price}
+                title={book.title}
+                author={book.author}
               />
             ))}
           </div>

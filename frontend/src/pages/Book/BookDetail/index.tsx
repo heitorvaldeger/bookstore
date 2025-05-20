@@ -6,18 +6,22 @@ import { ArrowRight, ShoppingBag } from "react-feather";
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../../api/fetch-book";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { convertNumberToBrazilianRealFormat } from "../../../utils";
+import { isAxiosError } from "axios";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
   const { id } = useParams();
 
-  const { data: book } = useQuery({
+  const {
+    data: book,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["books", id],
     queryFn: () => fetchBook({ idBook: id ?? "" }),
     enabled: !!id,
+    retry: false,
   });
 
   const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
@@ -28,6 +32,24 @@ export const BookDetail = () => {
     (book?.price ?? 0 / 2) / 100
   );
 
+  if (isAxiosError(error)) {
+    if (error.status === 404) {
+      return (
+        <div className="h-screen">
+          <span>Nenhum livro encontrado</span>
+        </div>
+      );
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="h-screen">
+        <span>Carregando...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-1 text-black font-inter">
@@ -37,36 +59,22 @@ export const BookDetail = () => {
       </div>
       <div className="flex gap-8">
         <section className="flex-1">
-          {!book ? (
-            <Skeleton height={440} className="w-full" />
-          ) : (
-            <img
-              src={book.imageURL ?? "/images/cover-not-avaiable.png"}
-              className="rounded-xl"
-            />
-          )}
+          <img
+            src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
+            className="rounded-xl"
+          />
         </section>
         <section className="flex-1 space-y-2">
-          {!book ? (
-            <Skeleton width={440} />
-          ) : (
-            <p className="text-4xl font-bold">
-              {book?.title}, {book?.author}
-            </p>
-          )}
+          <p className="text-4xl font-bold">
+            {book?.title}, {book?.author}
+          </p>
           <div>
-            {!book ? (
-              <Skeleton width={340} />
-            ) : (
-              <>
-                <p className="text-teal-700 font-bold text-2xl font-inter">
-                  {valueBrazilianFormatted}
-                </p>
-                <p className="font-inter">
-                  ou 2x {valueInstallmentBrazilianFormatted} sem juros
-                </p>
-              </>
-            )}
+            <p className="text-teal-700 font-bold text-2xl font-inter">
+              {valueBrazilianFormatted}
+            </p>
+            <p className="font-inter">
+              ou 2x {valueInstallmentBrazilianFormatted} sem juros
+            </p>
           </div>
 
           <div>

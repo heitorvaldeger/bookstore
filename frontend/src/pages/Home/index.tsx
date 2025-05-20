@@ -13,6 +13,7 @@ import logoImage from "../../assets/images/logo.png";
 import productSlide from "../../assets/images/product-slide.png";
 import { DoubleArrow } from "../../components/Icons/DoubleArrow";
 import { ArrowDown } from "../../components/Icons/ArrowDown";
+import { BookCard } from "../../components/Cards/BookCard";
 
 export const Home = () => {
   return (
@@ -108,23 +109,7 @@ export const Home = () => {
 
             <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
               {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="flex flex-col space-y-2">
-                  <div className="rounded-lg relative">
-                    <div className="mt-2 mx-2 w-fit font-inter absolute text-xs text-white bg-teal-700 rounded-tl-lg rounded-b-sm rounded-tr-sm px-2 py-1">
-                      novidade
-                    </div>
-                    <img
-                      src="/images/books/book-1.png"
-                      alt=""
-                      className="object-fill"
-                    />
-                  </div>
-
-                  <p className="font-normal text-xs">
-                    Cristianismo puro e simples, CS LEWIS
-                  </p>
-                  <p className="font-bold text-xs text-gray-900">R$ 467,90</p>
-                </div>
+                <BookCard key={i} isNew={true} />
               ))}
             </div>
           </section>

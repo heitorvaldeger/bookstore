@@ -3,9 +3,34 @@ import { RadioItem } from "../../../components/Forms/RadioItem";
 import { useState } from "react";
 import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
 import { ArrowRight, ShoppingBag } from "react-feather";
+import { useParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { fetchBook } from "../../../api/fetch-book";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
+  const { id } = useParams();
+
+  const { data: book } = useQuery({
+    queryKey: ["books", id],
+    queryFn: () => fetchBook({ idBook: id ?? "" }),
+    enabled: !!id,
+  });
+
+  const valueBrazilianFormatted = (book?.price ?? 0 / 100).toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL",
+    }
+  );
+
+  const valueInstallmentBrazilianFormatted = (
+    (book?.price ?? 0 / 2) / 100
+  ).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   return (
     <div className="flex flex-col gap-4">
@@ -16,30 +41,26 @@ export const BookDetail = () => {
       </div>
       <div className="flex gap-8">
         <section className="flex-1">
-          <img src="/images/books/book-1.png" className="rounded-xl" />
+          <img
+            src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
+            className="rounded-xl"
+          />
         </section>
         <section className="flex-1 space-y-2">
           <p className="text-4xl font-bold">
-            Cristianismo puro e simples, CS LEWIS
+            {book?.title}, {book?.author}
           </p>
           <div>
             <p className="text-teal-700 font-bold text-2xl font-inter">
-              R$ 567,90
+              {valueBrazilianFormatted}
             </p>
-            <p className="font-inter">ou 2x 233,95 sem juros</p>
+            <p className="font-inter">
+              ou 2x {valueInstallmentBrazilianFormatted} sem juros
+            </p>
           </div>
 
           <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              non praesentium repudiandae cumque incidunt dolorum itaque quam
-              vitae aliquid, distinctio dolores, fugit reiciendis libero rem.
-              Atque dignissimos dolorem amet soluta! Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Error, eaque doloribus. Animi quis
-              explicabo maxime similique quibusdam earum exercitationem.
-              Deleniti aut iste eum ad maiores at necessitatibus eveniet
-              sapiente nemo.
-            </p>
+            <p>{book?.description}</p>
           </div>
 
           <div className="space-y-2 mt-10">

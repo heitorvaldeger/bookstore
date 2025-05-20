@@ -1,59 +1,15 @@
-import {
-  Home as HomeIcon,
-  Bell,
-  Settings,
-  ShoppingBag,
-  Search,
-  AlignLeft,
-} from "react-feather";
+import { ShoppingBag, Search, AlignLeft } from "react-feather";
 
-import avatarImage from "../../assets/images/avatar.png";
-import logoImage from "../../assets/images/logo.png";
 import productSlide from "../../assets/images/product-slide.png";
 import promotionDisplay from "../../assets/images/promotion-display.png";
 import { BookCard } from "../../components/Cards/BookCard";
-import { BookMenu } from "../../components/Menus/BookMenu";
-import { CaretRightIcon, CaretSortIcon } from "@radix-ui/react-icons";
+import { CaretRightIcon } from "@radix-ui/react-icons";
+import { SideBarMenu } from "../../components/Menus/SideBarMenu";
 
 export const Home = () => {
   return (
     <main className="h-screen flex">
-      <section className="space-y-4 w-2/5 max-w-[241px]">
-        <div className="border-b-2 border-slate-100 px-4 py-4">
-          <img src={logoImage} alt="Logo - Bookstore" className="w-2/4" />
-        </div>
-
-        <div className="flex flex-col gap-6 px-4 h-[440px]">
-          <div className="flex gap-2 items-center">
-            <HomeIcon size={15} />
-            <span className="font-bold text-sm">Início</span>
-          </div>
-          <div className="flex gap-2 items-center">
-            <Bell size={15} />
-            <span className="font-bold text-sm">Notificações</span>
-          </div>
-          <BookMenu />
-          <div className="flex gap-2 items-center">
-            <Settings size={15} />
-            <span className="font-bold text-sm">Configurações</span>
-          </div>
-        </div>
-
-        <div className="flex px-4 space-x-2 items-center border-t-2 border-slate-100 py-4 justify-center">
-          <div className="w-7 h-7 rounded-full flex items-center justify-center">
-            <img
-              src={avatarImage}
-              alt="JD"
-              className="w-full h-full rounded-full"
-            />
-          </div>
-
-          <div className="flex flex-1 justify-between items-center">
-            <span className="font-roboto">Menino Feliz</span>
-            <CaretSortIcon />
-          </div>
-        </div>
-      </section>
+      <SideBarMenu />
       <section className="bg-zinc-50 h-full w-full px-6 space-y-4">
         <header className="flex justify-between py-4 border-b-2 border-slate-100 items-center">
           <span className="font-bold text-3xl text-gray-700">Todos Livros</span>

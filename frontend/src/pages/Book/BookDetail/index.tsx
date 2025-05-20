@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../../api/fetch-book";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { convertNumberToBrazilianRealFormat } from "../../../utils";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
@@ -19,20 +20,13 @@ export const BookDetail = () => {
     enabled: !!id,
   });
 
-  const valueBrazilianFormatted = (book?.price ?? 0 / 100).toLocaleString(
-    "pt-BR",
-    {
-      style: "currency",
-      currency: "BRL",
-    }
+  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
+    book?.price ?? 0 / 100
   );
 
-  const valueInstallmentBrazilianFormatted = (
+  const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
     (book?.price ?? 0 / 2) / 100
-  ).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
+  );
 
   return (
     <div className="flex flex-col gap-4">

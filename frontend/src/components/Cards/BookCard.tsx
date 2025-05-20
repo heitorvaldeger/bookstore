@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { convertNumberToBrazilianRealFormat } from "../../utils";
 
 interface BookCardProps {
   idBook: number;
@@ -15,10 +16,9 @@ export const BookCard = ({
   imageURL,
 }: BookCardProps) => {
   const navigate = useNavigate();
-  const valueBrazilianFormatted = (price / 100).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
+  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
+    price / 100
+  );
 
   const isNew = false;
 

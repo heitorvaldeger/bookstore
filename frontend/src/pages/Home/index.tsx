@@ -5,16 +5,15 @@ import {
   ShoppingBag,
   Search,
   AlignLeft,
-  ArrowRight,
 } from "react-feather";
 
 import avatarImage from "../../assets/images/avatar.png";
 import logoImage from "../../assets/images/logo.png";
 import productSlide from "../../assets/images/product-slide.png";
 import promotionDisplay from "../../assets/images/promotion-display.png";
-import { DoubleArrow } from "../../components/Icons/DoubleArrow";
 import { BookCard } from "../../components/Cards/BookCard";
 import { BookMenu } from "../../components/Menus/BookMenu";
+import { CaretRightIcon, CaretSortIcon } from "@radix-ui/react-icons";
 
 export const Home = () => {
   return (
@@ -49,9 +48,9 @@ export const Home = () => {
             />
           </div>
 
-          <div className="flex flex-1 justify-between">
+          <div className="flex flex-1 justify-between items-center">
             <span className="font-roboto">Menino Feliz</span>
-            <DoubleArrow />
+            <CaretSortIcon />
           </div>
         </div>
       </section>
@@ -116,7 +115,7 @@ export const Home = () => {
               <div className="flex justify-between items-center">
                 <p className="font-bold text-lg">Promoções</p>
                 <button className="flex items-center font-inter text-xs px-2 py-1 border-[1px] rounded-full">
-                  Ver mais <ArrowRight size={14} />
+                  Ver mais <CaretRightIcon />
                 </button>
               </div>
 

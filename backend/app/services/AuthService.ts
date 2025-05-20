@@ -10,7 +10,6 @@ export class AuthService {
   async login({ email, password }: AuthLoginDTO) {
     const user = await User.verifyCredentials(email, password)
 
-    console.log(this.auth)
     await this.auth.use('web').login(user)
   }
 }

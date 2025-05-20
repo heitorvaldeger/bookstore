@@ -3,9 +3,8 @@ import { errors } from '@adonisjs/auth'
 import { test } from '@japa/runner'
 
 test.group('Auth Controller', (group) => {
-  let user: User
   group.setup(async () => {
-    user = await User.create({
+    await User.create({
       email: 'any_mail@mail.com',
       password: 'password',
     })

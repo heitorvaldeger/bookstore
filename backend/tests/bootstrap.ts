@@ -51,3 +51,7 @@ export const configureSuite: Config['configureSuite'] = (suite) => {
     return suite.setup(() => testUtils.httpServer().start())
   }
 }
+
+export const reporters: Config['reporters'] = {
+  activated: ['spec'],
+}

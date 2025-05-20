@@ -1,7 +1,6 @@
 import {
   Home as HomeIcon,
   Bell,
-  Book,
   Settings,
   ShoppingBag,
   Search,
@@ -14,8 +13,8 @@ import logoImage from "../../assets/images/logo.png";
 import productSlide from "../../assets/images/product-slide.png";
 import promotionDisplay from "../../assets/images/promotion-display.png";
 import { DoubleArrow } from "../../components/Icons/DoubleArrow";
-import { ArrowDown } from "../../components/Icons/ArrowDown";
 import { BookCard } from "../../components/Cards/BookCard";
+import { BookMenu } from "../../components/Menus/BookMenu";
 
 export const Home = () => {
   return (
@@ -34,13 +33,7 @@ export const Home = () => {
             <Bell size={15} />
             <span className="font-bold text-sm">Notificações</span>
           </div>
-          <div className="flex gap-2 items-center">
-            <Book size={15} />
-            <div className="flex flex-1 justify-between items-center">
-              <span className="font-bold text-sm">Todos Livros</span>
-              <ArrowDown />
-            </div>
-          </div>
+          <BookMenu />
           <div className="flex gap-2 items-center">
             <Settings size={15} />
             <span className="font-bold text-sm">Configurações</span>

@@ -11,6 +11,7 @@ import {
 import avatarImage from "../../assets/images/avatar.png";
 import logoImage from "../../assets/images/logo.png";
 import productSlide from "../../assets/images/product-slide.png";
+import promotionDisplay from "../../assets/images/promotion-display.png";
 import { DoubleArrow } from "../../components/Icons/DoubleArrow";
 import { ArrowDown } from "../../components/Icons/ArrowDown";
 import { BookCard } from "../../components/Cards/BookCard";
@@ -109,9 +110,28 @@ export const Home = () => {
 
             <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
               {Array.from({ length: 4 }).map((_, i) => (
-                <BookCard key={i} isNew={true} />
+                <BookCard key={i} isNew={true} value={467.9} />
               ))}
             </div>
+          </section>
+
+          <section className="space-y-4">
+            <img src={promotionDisplay} className="object-fill w-full" />
+
+            <section className="flex flex-col gap-2">
+              <p className="font-bold text-lg">Promoções</p>
+
+              <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <BookCard
+                    key={i}
+                    isNew={true}
+                    value={467.9}
+                    promotionValue={367.9}
+                  />
+                ))}
+              </div>
+            </section>
           </section>
         </main>
       </section>

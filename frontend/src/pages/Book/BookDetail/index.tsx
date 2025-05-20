@@ -1,7 +1,10 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "../../../components/Forms/RadioItem";
+import { useState } from "react";
 
 export const BookDetail = () => {
+  const [color, setColor] = useState("Azul");
+
   return (
     <div className="flex flex-col">
       <div className="flex gap-1 text-black font-inter">
@@ -48,6 +51,34 @@ export const BookDetail = () => {
               </RadioGroup.Item>
               <RadioGroup.Item value="k" asChild>
                 <RadioItem>Kindle</RadioItem>
+              </RadioGroup.Item>
+            </RadioGroup.Root>
+          </div>
+
+          <div className="space-y-2 my-4">
+            <p className="font-inter font-bold text-lg">
+              Cor:
+              <span className="font-inter font-normal mx-1">{color}</span>
+            </p>
+            <RadioGroup.Root
+              defaultValue={color}
+              onValueChange={setColor}
+              className="flex gap-4"
+            >
+              <RadioGroup.Item value="Laranja" asChild>
+                <div className="w-7 h-7 cursor-pointer bg-orange-300 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
+              </RadioGroup.Item>
+              <RadioGroup.Item value="Azul" asChild>
+                <div className="w-7 h-7 cursor-pointer bg-blue-400 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
+              </RadioGroup.Item>
+              <RadioGroup.Item value="Amarelo Claro" asChild>
+                <div className="w-7 h-7 cursor-pointer bg-orange-200 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
+              </RadioGroup.Item>
+              <RadioGroup.Item value="Branco" asChild>
+                <div className="w-7 h-7 cursor-pointer border-[1px] border-zinc-200 bg-white rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
+              </RadioGroup.Item>
+              <RadioGroup.Item value="Cinza" asChild>
+                <div className="w-7 h-7 cursor-pointer bg-gray-400 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
               </RadioGroup.Item>
             </RadioGroup.Root>
           </div>

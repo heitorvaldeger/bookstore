@@ -18,7 +18,9 @@ export const SideBarMenu = () => {
       <div className="flex flex-col gap-6 px-4 h-[440px]">
         <div className="flex gap-2 items-center">
           <HomeIcon size={15} />
-          <span className="font-bold text-sm">Início</span>
+          <Link to="/">
+            <span className="font-bold text-sm">Início</span>
+          </Link>
         </div>
         <div className="flex gap-2 items-center">
           <Bell size={15} />

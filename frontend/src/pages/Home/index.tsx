@@ -46,6 +46,7 @@ export const Home = () => {
               price={book.price}
               title={book.title}
               author={book.author}
+              imageURL={book.imageURL}
             />
           ))}
         </div>
@@ -70,6 +71,7 @@ export const Home = () => {
                 price={book.price}
                 title={book.title}
                 author={book.author}
+                imageURL={book.imageURL}
               />
             ))}
           </div>

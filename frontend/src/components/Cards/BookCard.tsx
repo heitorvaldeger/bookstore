@@ -5,8 +5,15 @@ interface BookCardProps {
   title: string;
   author: string;
   price: number;
+  imageURL?: string;
 }
-export const BookCard = ({ idBook, title, author, price }: BookCardProps) => {
+export const BookCard = ({
+  idBook,
+  title,
+  author,
+  price,
+  imageURL,
+}: BookCardProps) => {
   const navigate = useNavigate();
   const valueBrazilianFormatted = (price / 100).toLocaleString("pt-BR", {
     style: "currency",
@@ -27,7 +34,11 @@ export const BookCard = ({ idBook, title, author, price }: BookCardProps) => {
             novidade
           </div>
         )}
-        <img src="/images/books/book-1.png" alt="" className="object-fill" />
+        <img
+          src={imageURL ?? "/images/cover-not-avaiable.png"}
+          alt=""
+          className="object-fill"
+        />
       </div>
 
       <p className="font-normal text-xs">

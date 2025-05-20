@@ -2,20 +2,21 @@ import { RadioGroup } from "radix-ui";
 import { RadioItem } from "../../../components/Forms/RadioItem";
 import { useState } from "react";
 import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
+import { ShoppingBag } from "react-feather";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       <div className="flex gap-1 text-black font-inter">
         <span>Início</span>
         <span>{">"}</span>
         <span>Livros</span>
       </div>
       <div className="flex gap-8">
-        <section>
-          <img src="/images/books/book-1.png" className="w-[30rem]" />
+        <section className="flex-1">
+          <img src="/images/books/book-1.png" className="rounded-xl" />
         </section>
         <section className="flex-1 space-y-2">
           <p className="text-4xl font-bold">
@@ -93,6 +94,21 @@ export const BookDetail = () => {
             </div>
 
             <InputNumberIncremental />
+          </div>
+
+          <div className="my-10 flex flex-col gap-4">
+            <button className="flex items-center w-[290px] h-[45.71px] justify-center gap-3.5 rounded-lg bg-gray-950 text-white">
+              <ShoppingBag />
+              <span className="font-bold font-inter text-sm">
+                Adicionar à sacola
+              </span>
+            </button>
+            <button className="flex rounded-lg items-center w-[290px] h-[45.71px] gap-3.5 justify-center text-green-600 border-green-600 border-[1.5px]">
+              <img src="/images/whatsapp-icon.png" />
+              <span className="font-bold font-inter text-sm">
+                Tem alguma dúvida?
+              </span>
+            </button>
           </div>
         </section>
       </div>

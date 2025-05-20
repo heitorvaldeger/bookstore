@@ -6,6 +6,8 @@ import { ArrowRight, ShoppingBag } from "react-feather";
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../../api/fetch-book";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
@@ -41,22 +43,36 @@ export const BookDetail = () => {
       </div>
       <div className="flex gap-8">
         <section className="flex-1">
-          <img
-            src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
-            className="rounded-xl"
-          />
+          {!book ? (
+            <Skeleton height={440} className="w-full" />
+          ) : (
+            <img
+              src={book.imageURL ?? "/images/cover-not-avaiable.png"}
+              className="rounded-xl"
+            />
+          )}
         </section>
         <section className="flex-1 space-y-2">
-          <p className="text-4xl font-bold">
-            {book?.title}, {book?.author}
-          </p>
+          {!book ? (
+            <Skeleton width={440} />
+          ) : (
+            <p className="text-4xl font-bold">
+              {book?.title}, {book?.author}
+            </p>
+          )}
           <div>
-            <p className="text-teal-700 font-bold text-2xl font-inter">
-              {valueBrazilianFormatted}
-            </p>
-            <p className="font-inter">
-              ou 2x {valueInstallmentBrazilianFormatted} sem juros
-            </p>
+            {!book ? (
+              <Skeleton width={340} />
+            ) : (
+              <>
+                <p className="text-teal-700 font-bold text-2xl font-inter">
+                  {valueBrazilianFormatted}
+                </p>
+                <p className="font-inter">
+                  ou 2x {valueInstallmentBrazilianFormatted} sem juros
+                </p>
+              </>
+            )}
           </div>
 
           <div>

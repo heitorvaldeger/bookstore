@@ -85,7 +85,7 @@ export const Home = () => {
           </div>
 
           <div className="flex flex-col items-center gap-2">
-            <img src={productSlide} />
+            <img src={productSlide} className="object-fill w-full" />
             <div className="flex gap-5">
               <span className="inline-block w-2.5 h-2.5 bg-teal-700 rounded-full"></span>
               <span className="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full"></span>

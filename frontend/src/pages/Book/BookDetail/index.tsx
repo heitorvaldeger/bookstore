@@ -29,7 +29,7 @@ export const BookDetail = () => {
   );
 
   const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.price ?? 0 / 2) / 100
+    (book?.price ?? 0) / 2 / 100
   );
 
   if (isAxiosError(error)) {

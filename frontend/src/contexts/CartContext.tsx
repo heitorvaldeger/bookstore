@@ -87,15 +87,20 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   };
 
   const incrementQtyBookToTotalInCart = (idBook: number, qty: number) => {
-    setCart((prev) => ({
-      ...prev,
-      books: [...prev.books].map((item) => {
-        if (item.id === idBook) {
-          item.quantidade = item.quantidade + qty;
-        }
-        return item;
-      }),
-    }));
+    setCart((prev) => {
+      return {
+        ...prev,
+        books: prev.books.map((item) => {
+          if (item.id === idBook) {
+            return {
+              ...item,
+              quantidade: item.quantidade + qty,
+            };
+          }
+          return item;
+        }),
+      };
+    });
   };
 
   const hasBook = (book: Book) => {

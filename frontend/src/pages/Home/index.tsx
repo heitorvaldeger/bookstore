@@ -1,18 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
 import productSlide from "../../assets/images/product-slide.png";
 import promotionDisplay from "../../assets/images/promotion-display.png";
 import { BookCard } from "../../components/Cards/BookCard";
 import { CaretRightIcon } from "@radix-ui/react-icons";
-import { fetchBooks } from "../../api/fetch-books";
 import { CategoryList } from "./components/CategoryList";
+import { useHome } from "./useHome";
 
 export const Home = () => {
-  const { data: books } = useQuery({
-    queryKey: ["books"],
-    queryFn: fetchBooks,
-  });
-
-  const booksSliced = books?.slice(0, 5);
+  const { booksSliced } = useHome();
 
   return (
     <main className="space-y-6">

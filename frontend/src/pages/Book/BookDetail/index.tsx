@@ -1,47 +1,23 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "../../../components/Forms/RadioItem";
-import { useState } from "react";
 import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
 import { ArrowRight, ShoppingBag } from "react-feather";
-import { useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchBook } from "../../../api/fetch-book";
-import { convertPriceBook } from "../../../utils";
 import { isAxiosError } from "axios";
-import { useCart } from "../../../contexts/CartContext";
+import { useBookDetail } from "./useBookDetail";
 
 export const BookDetail = () => {
-  const { id } = useParams();
   const {
-    data: book,
     error,
     isLoading,
-  } = useQuery({
-    queryKey: ["books", id],
-    queryFn: () => fetchBook({ idBook: id ?? "" }),
-    enabled: !!id,
-    retry: false,
-  });
-  const { addBookToCart, hasBook, incrementQtyBookToTotalInCart } = useCart();
-
-  const [color, setColor] = useState("Azul");
-  const [qty, setQty] = useState(1);
-
-  const valueBrazilianFormatted = convertPriceBook(book?.preco ?? 0);
-
-  const valueInstallmentBrazilianFormatted = convertPriceBook(
-    (book?.preco ?? 0) / 2
-  );
-
-  const handleAddBookToCartClick = () => {
-    if (qty > 0 && book) {
-      if (hasBook(book)) {
-        incrementQtyBookToTotalInCart(book.id, qty);
-      } else {
-        addBookToCart(book, qty);
-      }
-    }
-  };
+    book,
+    qty,
+    valueBrazilianFormatted,
+    valueInstallmentBrazilianFormatted,
+    color,
+    handleUpdateColorRadio,
+    handleQtyChange,
+    handleAddBookToCartClick,
+  } = useBookDetail();
 
   if (isAxiosError(error)) {
     if (error.status === 404) {
@@ -114,7 +90,7 @@ export const BookDetail = () => {
             </p>
             <RadioGroup.Root
               defaultValue={color}
-              onValueChange={setColor}
+              onValueChange={handleUpdateColorRadio}
               className="flex gap-4"
             >
               <RadioGroup.Item value="Laranja" asChild>
@@ -145,9 +121,7 @@ export const BookDetail = () => {
 
             <InputNumberIncremental
               value={qty}
-              onValueChange={(value: number) => {
-                setQty(value);
-              }}
+              onValueChange={handleQtyChange}
             />
           </div>
 

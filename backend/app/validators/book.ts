@@ -18,13 +18,13 @@ export const getBooksByFilter = vine.compile(
 
 export const createBookValidator = vine.compile(
   vine.object({
-    title: vine.string().minLength(3),
-    author: vine.string().minLength(3),
-    description: vine.string().optional(),
-    imageURL: vine.string().url().optional(),
-    stock: vine.number().positive(),
-    price: vine.number().positive().withoutDecimals(),
-    category: vine.enum(BookCategoryEnum),
+    titulo: vine.string().minLength(3),
+    autor: vine.string().minLength(3),
+    descricao: vine.string().optional(),
+    imagem: vine.string().url().optional(),
+    estoque: vine.number().positive(),
+    preco: vine.number().positive().withoutDecimals(),
+    categoria: vine.enum(BookCategoryEnum),
   })
 )
 
@@ -34,13 +34,13 @@ export const updateBookValidator = vine.compile(
       .string()
       .regex(/^\d+$/)
       .transform((value) => Number(value)),
-    title: vine.string().minLength(3).optional(),
-    author: vine.string().minLength(3).optional(),
-    description: vine.string().optional().optional(),
-    imageURL: vine.string().url().optional().optional(),
-    stock: vine.number().positive().optional(),
-    price: vine.number().positive().optional(),
-    category: vine.enum(BookCategoryEnum).optional(),
+    titulo: vine.string().minLength(3).optional(),
+    autor: vine.string().minLength(3).optional(),
+    descricao: vine.string().optional().optional(),
+    imagem: vine.string().url().optional().optional(),
+    estoque: vine.number().positive().optional(),
+    preco: vine.number().positive().optional(),
+    categoria: vine.enum(BookCategoryEnum).optional(),
   })
 )
 

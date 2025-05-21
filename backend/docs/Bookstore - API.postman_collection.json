@@ -217,6 +217,141 @@
 					]
 				},
 				{
+					"name": "Get a book by query param",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/books/search?q=cosmos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "cosmos"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/books/search?q=cosmos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "cosmos"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "set-cookie",
+									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+								},
+								{
+									"key": "x-request-id",
+									"value": "o8tqlzsgxpsld1iyjagmgf18"
+								},
+								{
+									"key": "content-length",
+									"value": "920"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 May 2025 03:14:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"price\": 4999,\n        \"imageURL\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"price\": 4999,\n        \"imageURL\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    }\n]"
+						},
+						{
+							"name": "422 - Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/books/search",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books",
+										"search"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "set-cookie",
+									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+								},
+								{
+									"key": "x-request-id",
+									"value": "kifkatug2n425rsl4pkj9ne2"
+								},
+								{
+									"key": "content-length",
+									"value": "84"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 May 2025 03:14:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The q field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"q\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Create a new book",
 					"request": {
 						"method": "POST",
@@ -957,7 +1092,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"books\": [\n        {\n            \"id\": 9999,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 20\n        }\n    ]\n}",
+							"raw": "{\n    \"customer\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 1,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 2\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -982,7 +1117,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"books\": [\n        {\n            \"id\": 2,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 3\n        }\n    ]\n}",
+									"raw": "{\n    \"customer\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 2,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 3\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1038,70 +1173,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": \"pending\",\n    \"id\": 2\n}"
-						},
-						{
-							"name": "422 - Unprocessable Entity",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"books\": [\n        {\n            \"id\": 2,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": -3\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/orders",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"orders"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3ATvDtvHVXO0fr5i9VtQGN5HXXhXdHjxji7Or8B00_WGZvb8l4A3pkCYlsbA_iUvE3suxlver2BwMotD0z1_erww.MHk4V3Q0VnprM3kweHBmZA.bCsV3bOUCZvKkAWVVyg6qRhKqEfW-XhmPofXFP5bPU8; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "w9d0zgcjbc8yxfnqgqpgl2d4"
-								},
-								{
-									"key": "content-length",
-									"value": "107"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:42:56 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The quantity field must be positive\",\n            \"rule\": \"positive\",\n            \"field\": \"books.0.quantity\"\n        }\n    ]\n}"
 						},
 						{
 							"name": "400 - Bad Request - E_ORDER_COULDNT_BE_PROCESSED",
@@ -1166,6 +1237,66 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"code\": \"E_ORDER_COULDNT_BE_PROCESSED\",\n    \"message\": \"Order couldn't be processed\",\n    \"errors\": [\n        {\n            \"bookId\": 2,\n            \"bookTitle\": \"The Selfish Gene\",\n            \"error\": \"Book The Selfish Gene out of stock\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "422 - Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"books\": [\n        {\n            \"id\": 1,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 2\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "set-cookie",
+									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+								},
+								{
+									"key": "x-request-id",
+									"value": "uycgunqkizcegrw8y4j1iwpo"
+								},
+								{
+									"key": "content-length",
+									"value": "98"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 May 2025 03:12:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The customer field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"customer\"\n        }\n    ]\n}"
 						}
 					]
 				}

@@ -22,7 +22,7 @@ export const BookDetail = () => {
     enabled: !!id,
     retry: false,
   });
-  const { addBookToCart } = useCart();
+  const { addBookToCart, hasBook, updateBookTotalInCart } = useCart();
 
   const [color, setColor] = useState("Azul");
   const [qty, setQty] = useState(1);
@@ -35,7 +35,11 @@ export const BookDetail = () => {
 
   const handleAddBookToCartClick = () => {
     if (qty > 0 && book) {
-      addBookToCart(book, qty);
+      if (hasBook(book)) {
+        updateBookTotalInCart(book.id, qty);
+      } else {
+        addBookToCart(book, qty);
+      }
     }
   };
 

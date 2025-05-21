@@ -21,6 +21,7 @@ interface CartContextProps {
   updateBookTotalInCart: (idBook: number, qty: number) => void;
   getQtyBookCart: () => number;
   getTotalCart: () => string;
+  hasBook: (book: Book) => boolean;
 }
 const CartContext = createContext({} as CartContextProps);
 
@@ -77,11 +78,15 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       ...prev,
       books: [...prev.books].map((item) => {
         if (item.id === idBook) {
-          item.quantidade = qty;
+          item.quantidade = item.quantidade + qty;
         }
         return item;
       }),
     }));
+  };
+
+  const hasBook = (book: Book) => {
+    return !!cart.books.find((item) => item.id === book.id);
   };
 
   const getQtyBookCart = () => {
@@ -105,6 +110,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         updateBookTotalInCart,
         getQtyBookCart,
         getTotalCart,
+        hasBook,
       }}
     >
       {children}

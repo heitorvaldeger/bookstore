@@ -37,10 +37,10 @@ export const Home = () => {
             <BookCard
               key={book.id}
               idBook={book.id}
-              price={book.price}
-              title={book.title}
-              author={book.author}
-              imageURL={book.imageURL}
+              preco={book.preco}
+              titulo={book.titulo}
+              autor={book.autor}
+              imagem={book.imagem}
             />
           ))}
         </div>
@@ -62,10 +62,10 @@ export const Home = () => {
               <BookCard
                 key={book.id}
                 idBook={book.id}
-                price={book.price}
-                title={book.title}
-                author={book.author}
-                imageURL={book.imageURL}
+                preco={book.preco}
+                titulo={book.titulo}
+                autor={book.autor}
+                imagem={book.imagem}
               />
             ))}
           </div>

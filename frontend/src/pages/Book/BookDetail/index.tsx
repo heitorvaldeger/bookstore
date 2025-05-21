@@ -25,11 +25,11 @@ export const BookDetail = () => {
   });
 
   const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.price ?? 0) / 100
+    (book?.preco ?? 0) / 100
   );
 
   const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.price ?? 0) / 2 / 100
+    (book?.preco ?? 0) / 2 / 100
   );
 
   if (isAxiosError(error)) {
@@ -60,13 +60,13 @@ export const BookDetail = () => {
       <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
         <section className="flex-1">
           <img
-            src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
+            src={book?.imagem ?? "/images/cover-not-avaiable.png"}
             className="rounded-xl max-w-[473px] mx-auto lg:mx-0"
           />
         </section>
         <section className="flex-1 space-y-2">
           <p className="text-4xl font-bold">
-            {book?.title}, {book?.author}
+            {book?.titulo}, {book?.autor}
           </p>
           <div>
             <p className="text-teal-700 font-bold text-2xl font-inter">
@@ -78,7 +78,7 @@ export const BookDetail = () => {
           </div>
 
           <div>
-            <p>{book?.description}</p>
+            <p>{book?.descricao}</p>
           </div>
 
           <div className="space-y-2 mt-10">

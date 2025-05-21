@@ -5,8 +5,11 @@ import logoImage from "@/assets/images/logo.png";
 import { BookMenu } from "./BookMenu";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router";
+import { useAdmin } from "@/contexts/AdminContext";
+import { AdminMenu } from "./AdminMenu";
 
 export const SideBarMenu = () => {
+  const { isLogged } = useAdmin();
   return (
     <section className="space-y-4 bg-white">
       <div className="border-b-2 border-slate-100 px-4 py-4">
@@ -36,13 +39,17 @@ export const SideBarMenu = () => {
           <span className="font-bold text-sm">Configurações</span>
         </div>
 
-        <Link
-          to="/login"
-          className="flex gap-2 bg-teal-700 items-center text-white py-2 justify-center rounded-lg cursor-pointer"
-        >
-          <User size={15} />
-          Acessar sistema
-        </Link>
+        {!isLogged ? (
+          <Link
+            to="/login"
+            className="flex gap-2 bg-teal-700 items-center text-white py-2 justify-center rounded-lg cursor-pointer"
+          >
+            <User size={15} />
+            Acessar sistema
+          </Link>
+        ) : (
+          <AdminMenu />
+        )}
       </div>
 
       <div className="flex px-4 space-x-2 items-center border-t-2 border-slate-100 py-4 justify-center">

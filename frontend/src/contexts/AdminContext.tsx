@@ -1,4 +1,9 @@
-import { createContext, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type PropsWithChildren,
+} from "react";
 
 export interface AdminContextProps {
   isLogged: boolean;
@@ -24,4 +29,8 @@ export const AdminProvider = ({ children }: PropsWithChildren) => {
       {children}
     </AdminContext>
   );
+};
+
+export const useAdmin = () => {
+  return useContext(AdminContext);
 };

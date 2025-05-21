@@ -173,4 +173,5 @@ A documentação foi elaborada utilizando o Postman e se encontra disponível em
 
 1. Importe o arquivo .json utilizando o Postman
 2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Como no GIF abaixo
+   
    ![alt text](import-postman.gif)

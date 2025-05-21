@@ -128,7 +128,7 @@ test.group('Book Controller', (group) => {
       imageURL: 'https://any-url.com',
       category: BookCategoryEnum.BIBLE,
       preco: 999,
-      stock: 100,
+      estoque: 100,
     }
 
     const user = await makeUser()
@@ -162,9 +162,9 @@ test.group('Book Controller', (group) => {
           field: 'autor',
         },
         {
-          message: 'The stock field must be defined',
+          message: 'The estoque field must be defined',
           rule: 'required',
-          field: 'stock',
+          field: 'estoque',
         },
         {
           message: 'The preco field must be defined',

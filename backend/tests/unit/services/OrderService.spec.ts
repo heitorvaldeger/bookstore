@@ -72,7 +72,7 @@ test.group('Services order service', (t) => {
     })
   })
 
-  test("it should return errors if any book doesn't stock avaiable", async ({ expect }) => {
+  test("it should return errors if any book doesn't estoque avaiable", async ({ expect }) => {
     const sut = new OrderService()
 
     const books = await BookFactory.createMany(2)
@@ -94,7 +94,7 @@ test.group('Services order service', (t) => {
         {
           bookId: bookBase.id,
           bookTitle: bookBase.titulo,
-          error: `Book ${bookBase.titulo} out of stock`,
+          error: `Book ${bookBase.titulo} out of estoque`,
         },
       ],
     })
@@ -121,7 +121,7 @@ test.group('Services order service', (t) => {
   test('it should discount quantidade correctly on create order', async ({ expect }) => {
     const sut = new OrderService()
 
-    const book = await BookFactory.merge({ stock: 5 }).create()
+    const book = await BookFactory.merge({ estoque: 5 }).create()
     const newOrder = await sut.create({
       books: [
         {
@@ -139,6 +139,6 @@ test.group('Services order service', (t) => {
     expect(newOrder.id).toBeTruthy()
     expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
     expect(newOrder.books.length).toBe(1)
-    expect(bookFromDb?.stock).toBe(3)
+    expect(bookFromDb?.estoque).toBe(3)
   })
 })

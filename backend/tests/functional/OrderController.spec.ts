@@ -132,7 +132,7 @@ test.group('Order Controller', (group) => {
     })
   })
 
-  test('/POST - return some error with 400 if book stock is not avaiable', async ({
+  test('/POST - return some error with 400 if book estoque is not avaiable', async ({
     client,
     expect,
   }) => {
@@ -155,7 +155,7 @@ test.group('Order Controller', (group) => {
       {
         bookId: baseBook.id,
         bookTitle: baseBook.titulo,
-        error: `Book ${baseBook.titulo} out of stock`,
+        error: `Book ${baseBook.titulo} out of estoque`,
       },
     ])
     expect(response.status()).toBe(400)

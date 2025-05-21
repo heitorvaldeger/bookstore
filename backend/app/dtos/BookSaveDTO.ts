@@ -4,7 +4,7 @@ export interface BookSaveDTO {
   titulo: string
   autor: string
   descricao?: string
-  stock: number
+  estoque: number
   preco: number
   imageURL?: string
   category: BookCategoryEnum

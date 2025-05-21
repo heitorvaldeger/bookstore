@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.text('descricao').nullable()
       table.integer('preco')
       table.text('image_url').nullable()
-      table.integer('stock')
+      table.integer('estoque')
       table.enum('category', ['bible', 'teology', 'philosophy', 'science', 'others'])
       table.timestamp('created_at')
       table.timestamp('updated_at')

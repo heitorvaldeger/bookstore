@@ -22,7 +22,7 @@ export default class Book extends BaseModel {
   declare imageURL: string
 
   @column()
-  declare stock: number
+  declare estoque: number
 
   @column()
   declare category: BookCategoryEnum

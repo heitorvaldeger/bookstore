@@ -22,7 +22,7 @@ export const createBookValidator = vine.compile(
     autor: vine.string().minLength(3),
     descricao: vine.string().optional(),
     imageURL: vine.string().url().optional(),
-    stock: vine.number().positive(),
+    estoque: vine.number().positive(),
     preco: vine.number().positive().withoutDecimals(),
     category: vine.enum(BookCategoryEnum),
   })
@@ -38,7 +38,7 @@ export const updateBookValidator = vine.compile(
     autor: vine.string().minLength(3).optional(),
     descricao: vine.string().optional().optional(),
     imageURL: vine.string().url().optional().optional(),
-    stock: vine.number().positive().optional(),
+    estoque: vine.number().positive().optional(),
     preco: vine.number().positive().optional(),
     category: vine.enum(BookCategoryEnum).optional(),
   })

@@ -17,7 +17,7 @@ const bookToSave = {
   imageURL: 'any_image',
   category: BookCategoryEnum.BIBLE,
   preco: 999,
-  stock: 100,
+  estoque: 100,
 }
 
 test.group('Services book service', (group) => {

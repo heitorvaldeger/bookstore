@@ -11,7 +11,7 @@ export const BookFactory = factory
       descricao: faker.lorem.sentence(5),
       imageURL: faker.internet.url(),
       preco: 999,
-      stock: 100,
+      estoque: 100,
     }
   })
   .build()

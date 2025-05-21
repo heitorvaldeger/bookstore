@@ -40,11 +40,11 @@ export class OrderService {
           bookTitle: book.titulo,
           error: `Book ${book.titulo} not found`,
         })
-      } else if (book.quantidade > bookItem.stock) {
+      } else if (book.quantidade > bookItem.estoque) {
         errors.push({
           bookId: bookItem.id,
           bookTitle: bookItem.titulo,
-          error: `Book ${bookItem.titulo} out of stock`,
+          error: `Book ${bookItem.titulo} out of estoque`,
         })
       }
     }
@@ -64,7 +64,7 @@ export class OrderService {
         },
       })
       const bookItem = await Book.query().where('id', book.id).first()
-      bookItem!.stock = bookItem!.stock - book.quantidade
+      bookItem!.estoque = bookItem!.estoque - book.quantidade
       await bookItem?.save()
     }
 

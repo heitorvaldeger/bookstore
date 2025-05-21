@@ -10,7 +10,7 @@ export default class extends BaseSeeder {
         autor: 'Stephen Hawking',
         descricao:
           'A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?',
-        stock: 12,
+        estoque: 12,
         preco: 4590,
         imageURL: 'https://m.media-amazon.com/images/I/91ebghaV-eL.jpg',
         category: BookCategoryEnum.SCIENCE,
@@ -18,7 +18,7 @@ export default class extends BaseSeeder {
       {
         titulo: 'The Selfish Gene',
         autor: 'Richard Dawkins',
-        stock: 8,
+        estoque: 8,
         preco: 3999,
         category: BookCategoryEnum.SCIENCE,
         descricao:
@@ -29,7 +29,7 @@ export default class extends BaseSeeder {
         titulo: 'The Bible',
         autor: 'Various Authors',
         descricao: 'Sacred scripture in Christianity, containing the Old and New Testaments.',
-        stock: 100,
+        estoque: 100,
         preco: 2999,
         imageURL: 'https://m.media-amazon.com/images/I/71U0MvNYxpL._AC_UF1000,1000_QL80_.jpg',
         category: BookCategoryEnum.BIBLE,
@@ -37,7 +37,7 @@ export default class extends BaseSeeder {
       {
         titulo: 'Cosmos',
         autor: 'Carl Sagan',
-        stock: 5,
+        estoque: 5,
         preco: 4999,
         imageURL: 'https://m.media-amazon.com/images/I/710C5x4MzwL.jpg',
         descricao:
@@ -49,7 +49,7 @@ export default class extends BaseSeeder {
         autor: 'Charles Darwin',
         descricao:
           "Charles Darwin's classic, which sparked a public uproar, changed the trajectory of science, and has continued to alter how we see the world.",
-        stock: 10,
+        estoque: 10,
         preco: 4250,
         category: BookCategoryEnum.SCIENCE,
         imageURL: 'https://m.media-amazon.com/images/I/71z2XfoLFfL.jpg',
@@ -59,7 +59,7 @@ export default class extends BaseSeeder {
         autor: 'Jim Towey',
         descricao:
           'From a trusted advisor and devoted friend of Mother Teresa comes a “powerful” (The Washington Free Beacon) firsthand account of the miraculous woman behind the saint and a book that is “rich in reflection on contemporary sanctity” (George Weigel).',
-        stock: 50,
+        estoque: 50,
         preco: 999,
         category: BookCategoryEnum.BIBLE,
         imageURL: 'https://m.media-amazon.com/images/I/71RJKnRyzJL._SY522_.jpg',
@@ -67,7 +67,7 @@ export default class extends BaseSeeder {
       {
         titulo: 'Sapiens: A Brief History of Humankind',
         autor: 'Yuval Noah Harari',
-        stock: 20,
+        estoque: 20,
         preco: 5990,
         descricao:
           'From renowned historian Yuval Noah Harari comes a groundbreaking narrative of humanity’s creation and evolution—a #1 international bestseller—that explores the ways in which biology and history have defined us and enhanced our understanding of what it means to be “human.”',
@@ -77,7 +77,7 @@ export default class extends BaseSeeder {
       {
         titulo: "God's Stories as told by God's Children",
         autor: 'The Bible for Normal People',
-        stock: 30,
+        estoque: 30,
         preco: 1499,
         category: BookCategoryEnum.BIBLE,
         imageURL: 'https://m.media-amazon.com/images/I/81IlG7Il73L._SY522_.jpg',
@@ -89,7 +89,7 @@ export default class extends BaseSeeder {
         autor: 'Daniel Kahneman',
         descricao:
           'In his mega bestseller, Thinking, Fast and Slow, Daniel Kahneman, world-famous psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.',
-        stock: 9,
+        estoque: 9,
         preco: 5200,
         category: BookCategoryEnum.SCIENCE,
         imageURL: 'https://m.media-amazon.com/images/I/71wvKXWfcML._SY522_.jpg',
@@ -99,7 +99,7 @@ export default class extends BaseSeeder {
         autor: 'Markus Zusak',
         descricao:
           'The extraordinary, beloved novel about the ability of books to feed the soul even in the darkest of times.',
-        stock: 7,
+        estoque: 7,
         preco: 3500,
         category: BookCategoryEnum.OTHERS,
         imageURL: 'https://m.media-amazon.com/images/I/81cQAtrq2iL._SY522_.jpg',

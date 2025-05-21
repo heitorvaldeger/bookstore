@@ -8,10 +8,14 @@ import { Link } from "react-router";
 
 export const SideBarMenu = () => {
   return (
-    <section className="space-y-4 w-2/5 max-w-[241px]">
+    <section className="space-y-4 bg-white">
       <div className="border-b-2 border-slate-100 px-4 py-4">
         <Link to="/">
-          <img src={logoImage} alt="Logo - Bookstore" className="w-2/4" />
+          <img
+            src={logoImage}
+            alt="Logo - Bookstore"
+            className="w-2/6 lg:w-2/4"
+          />
         </Link>
       </div>
 

@@ -90,7 +90,7 @@ export const Login = () => {
           <span className="text-teal-700 underline">Click Aqui!</span>
         </p>
       </section>
-      <section className="relative h-screen lg:hidden xl:block">
+      <section className="relative h-screen sm:hidden xl:block">
         <div className="absolute flex flex-col justify-center 2xl:min-w-3/4 px-6 mt-28 md:w-3/4">
           <p className="font-bold 2xl:text-4xl md:text-2xl text-white leading-[100%]">
             Bem-vindo{"(a)"} de volta ao the Library

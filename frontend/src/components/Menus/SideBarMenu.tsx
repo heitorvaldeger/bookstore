@@ -1,4 +1,4 @@
-import { Home as HomeIcon, Bell, Settings } from "react-feather";
+import { Home as HomeIcon, Bell, Settings, User } from "react-feather";
 
 import avatarImage from "../../assets/images/avatar.png";
 import logoImage from "../../assets/images/logo.png";
@@ -35,6 +35,14 @@ export const SideBarMenu = () => {
           <Settings size={15} />
           <span className="font-bold text-sm">Configurações</span>
         </div>
+
+        <Link
+          to="/login"
+          className="flex gap-2 bg-teal-700 items-center text-white py-2 justify-center rounded-lg cursor-pointer"
+        >
+          <User size={15} />
+          Acessar sistema
+        </Link>
       </div>
 
       <div className="flex px-4 space-x-2 items-center border-t-2 border-slate-100 py-4 justify-center">

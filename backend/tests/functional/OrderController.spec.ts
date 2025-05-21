@@ -28,7 +28,7 @@ test.group('Order Controller', (group) => {
         {
           id: 'any_value',
           title: '',
-          quantity: -1,
+          quantidade: -1,
         },
       ],
     })
@@ -59,9 +59,9 @@ test.group('Order Controller', (group) => {
           field: 'books.0.title',
         },
         {
-          message: 'The quantity field must be positive',
+          message: 'The quantidade field must be positive',
           rule: 'positive',
-          field: 'books.0.quantity',
+          field: 'books.0.quantidade',
         },
       ],
     })
@@ -87,7 +87,7 @@ test.group('Order Controller', (group) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
-      quantity: 2,
+      quantidade: 2,
     }))
 
     const response = await client.post('/orders').json({
@@ -106,7 +106,7 @@ test.group('Order Controller', (group) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
-      quantity: 2,
+      quantidade: 2,
     }))
 
     const response = await client.post('/orders').json({
@@ -116,7 +116,7 @@ test.group('Order Controller', (group) => {
         {
           id: 999,
           title: 'any_title',
-          quantity: 3,
+          quantidade: 3,
         },
       ],
     })
@@ -139,10 +139,10 @@ test.group('Order Controller', (group) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
       title: book.title,
-      quantity: 2,
+      quantidade: 2,
     }))
 
-    booksPayload[0].quantity = 2000
+    booksPayload[0].quantidade = 2000
 
     const baseBook = booksPayload[0]
 

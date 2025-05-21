@@ -13,10 +13,10 @@ test.group('Services order service', (t) => {
   let order: Order
   t.setup(async () => {
     const trx = await db.beginGlobalTransaction()
-    const quantity = randomInt(5, 20)
+    const quantidade = randomInt(5, 20)
     order = await OrderFactory.with('books', 5, (book) => {
       book.pivotAttributes({
-        quantity,
+        quantidade,
       })
     }).create()
     return () => trx.rollback()
@@ -34,7 +34,7 @@ test.group('Services order service', (t) => {
     const books = order.books.map((book) => ({
       id: book.id,
       title: book.title,
-      quantity: book.$extras.pivot_quantity,
+      quantidade: book.$extras.pivot_quantity,
     }))
 
     expect(orders[0].items).toEqual(books)
@@ -46,7 +46,7 @@ test.group('Services order service', (t) => {
     const books = await BookFactory.createMany(2)
     const booksToOrder = books.map((book) => ({
       id: book.id,
-      quantity: 5,
+      quantidade: 5,
       title: book.title,
     }))
     const newOrderPromise = sut.create({
@@ -54,7 +54,7 @@ test.group('Services order service', (t) => {
         ...booksToOrder,
         {
           id: 999,
-          quantity: 10,
+          quantidade: 10,
           title: 'any_title',
         },
       ],
@@ -78,10 +78,10 @@ test.group('Services order service', (t) => {
     const books = await BookFactory.createMany(2)
     const booksToOrder = books.map((book) => ({
       id: book.id,
-      quantity: 5,
+      quantidade: 5,
       title: book.title,
     }))
-    booksToOrder[0].quantity = 300
+    booksToOrder[0].quantidade = 300
     const bookBase = booksToOrder[0]
 
     const newOrderPromise = sut.create({
@@ -106,7 +106,7 @@ test.group('Services order service', (t) => {
     const books = await BookFactory.createMany(10)
     const booksToOrder = books.map((book) => ({
       id: book.id,
-      quantity: 5,
+      quantidade: 5,
       title: book.title,
     }))
     const newOrder = await sut.create({ books: booksToOrder })
@@ -118,7 +118,7 @@ test.group('Services order service', (t) => {
     expect(newOrder.books.length).toBe(10)
   })
 
-  test('it should discount quantity correctly on create order', async ({ expect }) => {
+  test('it should discount quantidade correctly on create order', async ({ expect }) => {
     const sut = new OrderService()
 
     const book = await BookFactory.merge({ stock: 5 }).create()
@@ -126,7 +126,7 @@ test.group('Services order service', (t) => {
       books: [
         {
           id: book.id,
-          quantity: 2,
+          quantidade: 2,
           title: book.title,
         },
       ],

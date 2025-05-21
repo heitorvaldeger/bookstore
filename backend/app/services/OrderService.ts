@@ -40,7 +40,7 @@ export class OrderService {
           bookTitle: book.title,
           error: `Book ${book.title} not found`,
         })
-      } else if (book.quantity > bookItem.stock) {
+      } else if (book.quantidade > bookItem.stock) {
         errors.push({
           bookId: bookItem.id,
           bookTitle: bookItem.title,
@@ -60,11 +60,11 @@ export class OrderService {
     for (const book of order.books) {
       await newOrder.related('books').attach({
         [book.id]: {
-          quantity: book.quantity,
+          quantidade: book.quantidade,
         },
       })
       const bookItem = await Book.query().where('id', book.id).first()
-      bookItem!.stock = bookItem!.stock - book.quantity
+      bookItem!.stock = bookItem!.stock - book.quantidade
       await bookItem?.save()
     }
 
@@ -73,8 +73,8 @@ export class OrderService {
 
   private getOrderTotalField(order: Order) {
     const total = order.books.reduce((acc, books) => {
-      const quantity = books.$extras.pivot_quantity
-      return acc + quantity * books.preco
+      const quantidade = books.$extras.pivot_quantity
+      return acc + quantidade * books.preco
     }, 0)
 
     return total
@@ -84,7 +84,7 @@ export class OrderService {
     return {
       id: book.id,
       title: book.title,
-      quantity: book.$extras.pivot_quantity,
+      quantidade: book.$extras.pivot_quantity,
     }
   }
 }

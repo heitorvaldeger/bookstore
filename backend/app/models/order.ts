@@ -21,7 +21,7 @@ export default class Order extends BaseModel {
   declare updatedAt: DateTime
 
   @manyToMany(() => Book, {
-    pivotColumns: ['quantity'],
+    pivotColumns: ['quantidade'],
   })
   declare books: ManyToMany<typeof Book>
 }

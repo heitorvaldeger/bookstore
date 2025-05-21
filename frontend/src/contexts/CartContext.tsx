@@ -19,6 +19,7 @@ interface CartContextProps {
   handleCreateOrder: () => Promise<void>;
   addBookToCart: (book: Book, qty: number) => void;
   updateBookTotalInCart: (idBook: number, qty: number) => void;
+  incrementQtyBookToTotalInCart: (idBook: number, qty: number) => void;
   getQtyBookCart: () => number;
   getTotalCart: () => string;
   hasBook: (book: Book) => boolean;
@@ -78,6 +79,18 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       ...prev,
       books: [...prev.books].map((item) => {
         if (item.id === idBook) {
+          item.quantidade = qty;
+        }
+        return item;
+      }),
+    }));
+  };
+
+  const incrementQtyBookToTotalInCart = (idBook: number, qty: number) => {
+    setCart((prev) => ({
+      ...prev,
+      books: [...prev.books].map((item) => {
+        if (item.id === idBook) {
           item.quantidade = item.quantidade + qty;
         }
         return item;
@@ -108,6 +121,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         handleCreateOrder,
         addBookToCart,
         updateBookTotalInCart,
+        incrementQtyBookToTotalInCart,
         getQtyBookCart,
         getTotalCart,
         hasBook,

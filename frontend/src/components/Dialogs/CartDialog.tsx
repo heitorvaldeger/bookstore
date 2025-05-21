@@ -2,12 +2,20 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 import { ShoppingBag } from "react-feather";
 import { InputNumberIncremental } from "../Forms/InputNumberIncremental";
+import { useCart } from "../../contexts/CartContext";
 
 export const CartDialog = () => {
+  const { getQtyBookCart } = useCart();
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <ShoppingBag size={17} />
+        <div className="flex flex-col items-center relative">
+          <div className="w-4 absolute bg-teal-700 ml-5 -mt-2 text-white text-xs rounded-full flex justify-center items-center">
+            {getQtyBookCart()}
+          </div>
+          <ShoppingBag size={20} />
+        </div>
       </Dialog.Trigger>
 
       <Dialog.Portal>

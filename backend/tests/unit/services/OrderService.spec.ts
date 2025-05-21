@@ -33,7 +33,7 @@ test.group('Services order service', (t) => {
     await order.load('books')
     const books = order.books.map((book) => ({
       id: book.id,
-      title: book.title,
+      titulo: book.titulo,
       quantidade: book.$extras.pivot_quantity,
     }))
 
@@ -47,7 +47,7 @@ test.group('Services order service', (t) => {
     const booksToOrder = books.map((book) => ({
       id: book.id,
       quantidade: 5,
-      title: book.title,
+      titulo: book.titulo,
     }))
     const newOrderPromise = sut.create({
       books: [
@@ -55,7 +55,7 @@ test.group('Services order service', (t) => {
         {
           id: 999,
           quantidade: 10,
-          title: 'any_title',
+          titulo: 'any_title',
         },
       ],
     })
@@ -79,7 +79,7 @@ test.group('Services order service', (t) => {
     const booksToOrder = books.map((book) => ({
       id: book.id,
       quantidade: 5,
-      title: book.title,
+      titulo: book.titulo,
     }))
     booksToOrder[0].quantidade = 300
     const bookBase = booksToOrder[0]
@@ -93,8 +93,8 @@ test.group('Services order service', (t) => {
       errors: [
         {
           bookId: bookBase.id,
-          bookTitle: bookBase.title,
-          error: `Book ${bookBase.title} out of stock`,
+          bookTitle: bookBase.titulo,
+          error: `Book ${bookBase.titulo} out of stock`,
         },
       ],
     })
@@ -107,7 +107,7 @@ test.group('Services order service', (t) => {
     const booksToOrder = books.map((book) => ({
       id: book.id,
       quantidade: 5,
-      title: book.title,
+      titulo: book.titulo,
     }))
     const newOrder = await sut.create({ books: booksToOrder })
     await newOrder.load('books')
@@ -127,7 +127,7 @@ test.group('Services order service', (t) => {
         {
           id: book.id,
           quantidade: 2,
-          title: book.title,
+          titulo: book.titulo,
         },
       ],
     })

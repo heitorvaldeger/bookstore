@@ -68,19 +68,19 @@ test.group('Book Controller', (group) => {
     await BookFactory.merge([
       {
         author: 'George Orwell',
-        title: '1984',
+        titulo: '1984',
         description:
           'Um romance distópico sobre um regime totalitário que controla todos os aspectos da vida dos cidadãos, incluindo seus pensamentos.',
       },
       {
         author: 'Jane Austen',
-        title: 'Orgulho e Preconceito',
+        titulo: 'Orgulho e Preconceito',
         description:
           'Uma história sobre amor, classe social e orgulho, centrada na vida de Elizabeth Bennet e Mr. Darcy na Inglaterra do século XIX.',
       },
       {
         author: 'Haruki Murakami',
-        title: 'Kafka à Beira-Mar',
+        titulo: 'Kafka à Beira-Mar',
         description:
           'Uma história surreal e simbólica sobre um adolescente que foge de casa e um homem idoso com habilidades misteriosas.',
       },
@@ -122,7 +122,7 @@ test.group('Book Controller', (group) => {
 
   test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
     const payload = {
-      title: 'any_title',
+      titulo: 'any_title',
       description: 'any_description',
       author: 'any_author',
       imageURL: 'https://any-url.com',
@@ -152,9 +152,9 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The title field must be defined',
+          message: 'The titulo field must be defined',
           rule: 'required',
-          field: 'title',
+          field: 'titulo',
         },
         {
           message: 'The author field must be defined',
@@ -187,7 +187,7 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/${book.id}`)
       .json({
-        title: 'another_title',
+        titulo: 'another_title',
         description: 'another_description',
       })
       .loginAs(user)
@@ -195,7 +195,7 @@ test.group('Book Controller', (group) => {
     const body = response.body()
 
     expect(response.status()).toBe(200)
-    expect(body.title).toBe('another_title')
+    expect(body.titulo).toBe('another_title')
     expect(body.description).toBe('another_description')
   })
 
@@ -204,7 +204,7 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/9999`)
       .json({
-        title: 'another title',
+        titulo: 'another titulo',
       })
       .loginAs(user)
 

@@ -11,7 +11,7 @@ import db from '@adonisjs/lucid/services/db'
 import { TransactionClientContract } from '@adonisjs/lucid/types/database'
 
 const bookToSave = {
-  title: 'any_title',
+  titulo: 'any_title',
   description: 'any_description',
   author: 'any_author',
   imageURL: 'any_image',
@@ -128,25 +128,25 @@ test.group('Services book service', (group) => {
     expect(anotherBooks[0].author).toBe('Lewis Carrol')
   })
 
-  test('it should filter a book list by title', async ({ expect }) => {
+  test('it should filter a book list by titulo', async ({ expect }) => {
     await BookFactory.merge([
       {
-        title: 'Alice no País das Maravilhas',
+        titulo: 'Alice no País das Maravilhas',
       },
       {
-        title: '1984',
+        titulo: '1984',
       },
     ]).createMany(2)
     const sut = new BookService()
     const books = await sut.getBooksByFilter('alice')
 
     expect(books.length).toBe(1)
-    expect(books[0].title).toBe('Alice no País das Maravilhas')
+    expect(books[0].titulo).toBe('Alice no País das Maravilhas')
 
     const anotherBooks = await sut.getBooksByFilter('1984')
 
     expect(anotherBooks.length).toBe(1)
-    expect(anotherBooks[0].title).toBe('1984')
+    expect(anotherBooks[0].titulo).toBe('1984')
   })
 
   test('it should filter a book list by description', async ({ expect }) => {

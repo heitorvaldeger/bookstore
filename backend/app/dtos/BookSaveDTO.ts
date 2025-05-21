@@ -1,7 +1,7 @@
 import { BookCategoryEnum } from '../enums/BookCategoryEnum.js'
 
 export interface BookSaveDTO {
-  title: string
+  titulo: string
   author: string
   description?: string
   stock: number

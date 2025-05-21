@@ -7,7 +7,7 @@ export default class Book extends BaseModel {
   declare id: number
 
   @column()
-  declare title: string
+  declare titulo: string
 
   @column()
   declare author: string

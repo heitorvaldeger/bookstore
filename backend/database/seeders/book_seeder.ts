@@ -6,7 +6,7 @@ export default class extends BaseSeeder {
   async run() {
     await Book.createMany([
       {
-        title: 'A Brief History of Time',
+        titulo: 'A Brief History of Time',
         author: 'Stephen Hawking',
         description:
           'A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?',
@@ -16,7 +16,7 @@ export default class extends BaseSeeder {
         category: BookCategoryEnum.SCIENCE,
       },
       {
-        title: 'The Selfish Gene',
+        titulo: 'The Selfish Gene',
         author: 'Richard Dawkins',
         stock: 8,
         preco: 3999,
@@ -26,7 +26,7 @@ export default class extends BaseSeeder {
         imageURL: 'https://m.media-amazon.com/images/I/61dtRkUbfRL._AC_UF1000,1000_QL80_.jpg',
       },
       {
-        title: 'The Bible',
+        titulo: 'The Bible',
         author: 'Various Authors',
         description: 'Sacred scripture in Christianity, containing the Old and New Testaments.',
         stock: 100,
@@ -35,7 +35,7 @@ export default class extends BaseSeeder {
         category: BookCategoryEnum.BIBLE,
       },
       {
-        title: 'Cosmos',
+        titulo: 'Cosmos',
         author: 'Carl Sagan',
         stock: 5,
         preco: 4999,
@@ -45,7 +45,7 @@ export default class extends BaseSeeder {
         category: BookCategoryEnum.SCIENCE,
       },
       {
-        title: 'The Origin of Species',
+        titulo: 'The Origin of Species',
         author: 'Charles Darwin',
         description:
           "Charles Darwin's classic, which sparked a public uproar, changed the trajectory of science, and has continued to alter how we see the world.",
@@ -55,7 +55,7 @@ export default class extends BaseSeeder {
         imageURL: 'https://m.media-amazon.com/images/I/71z2XfoLFfL.jpg',
       },
       {
-        title: 'To Love and Be Loved: A Personal Portrait of Mother Teresa',
+        titulo: 'To Love and Be Loved: A Personal Portrait of Mother Teresa',
         author: 'Jim Towey',
         description:
           'From a trusted advisor and devoted friend of Mother Teresa comes a “powerful” (The Washington Free Beacon) firsthand account of the miraculous woman behind the saint and a book that is “rich in reflection on contemporary sanctity” (George Weigel).',
@@ -65,7 +65,7 @@ export default class extends BaseSeeder {
         imageURL: 'https://m.media-amazon.com/images/I/71RJKnRyzJL._SY522_.jpg',
       },
       {
-        title: 'Sapiens: A Brief History of Humankind',
+        titulo: 'Sapiens: A Brief History of Humankind',
         author: 'Yuval Noah Harari',
         stock: 20,
         preco: 5990,
@@ -75,7 +75,7 @@ export default class extends BaseSeeder {
         category: BookCategoryEnum.SCIENCE,
       },
       {
-        title: "God's Stories as told by God's Children",
+        titulo: "God's Stories as told by God's Children",
         author: 'The Bible for Normal People',
         stock: 30,
         preco: 1499,
@@ -85,7 +85,7 @@ export default class extends BaseSeeder {
           'Featuring the voices of 55 biblical scholars, theologians, and storytellers from around the world, God’s Stories as told by God’s Children is a beautifully illustrated storybook Bible that integrates biblical scholarship into engaging storytelling.',
       },
       {
-        title: 'Thinking, Fast and Slow',
+        titulo: 'Thinking, Fast and Slow',
         author: 'Daniel Kahneman',
         description:
           'In his mega bestseller, Thinking, Fast and Slow, Daniel Kahneman, world-famous psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.',
@@ -95,7 +95,7 @@ export default class extends BaseSeeder {
         imageURL: 'https://m.media-amazon.com/images/I/71wvKXWfcML._SY522_.jpg',
       },
       {
-        title: 'The Book Thief',
+        titulo: 'The Book Thief',
         author: 'Markus Zusak',
         description:
           'The extraordinary, beloved novel about the ability of books to feed the soul even in the darkest of times.',

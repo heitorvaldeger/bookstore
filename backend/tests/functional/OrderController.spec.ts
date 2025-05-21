@@ -27,7 +27,7 @@ test.group('Order Controller', (group) => {
       books: [
         {
           id: 'any_value',
-          title: '',
+          titulo: '',
           quantidade: -1,
         },
       ],
@@ -54,9 +54,9 @@ test.group('Order Controller', (group) => {
           field: 'books.0.id',
         },
         {
-          message: 'The title field must be defined',
+          message: 'The titulo field must be defined',
           rule: 'required',
-          field: 'books.0.title',
+          field: 'books.0.titulo',
         },
         {
           message: 'The quantidade field must be positive',
@@ -86,7 +86,7 @@ test.group('Order Controller', (group) => {
   test('/POST - return 201 with creation a book on success', async ({ client, expect }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
+      titulo: book.titulo,
       quantidade: 2,
     }))
 
@@ -105,7 +105,7 @@ test.group('Order Controller', (group) => {
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
+      titulo: book.titulo,
       quantidade: 2,
     }))
 
@@ -115,7 +115,7 @@ test.group('Order Controller', (group) => {
         ...booksPayload,
         {
           id: 999,
-          title: 'any_title',
+          titulo: 'any_title',
           quantidade: 3,
         },
       ],
@@ -138,7 +138,7 @@ test.group('Order Controller', (group) => {
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
+      titulo: book.titulo,
       quantidade: 2,
     }))
 
@@ -154,8 +154,8 @@ test.group('Order Controller', (group) => {
     const exception = new OrderCreateForBooksException([
       {
         bookId: baseBook.id,
-        bookTitle: baseBook.title,
-        error: `Book ${baseBook.title} out of stock`,
+        bookTitle: baseBook.titulo,
+        error: `Book ${baseBook.titulo} out of stock`,
       },
     ])
     expect(response.status()).toBe(400)

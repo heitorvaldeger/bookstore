@@ -6,7 +6,7 @@ export const BookFactory = factory
   .define(Book, async ({ faker }) => {
     return {
       author: faker.person.fullName(),
-      title: faker.lorem.sentence(3),
+      titulo: faker.lorem.sentence(3),
       category: BookCategoryEnum.SCIENCE,
       description: faker.lorem.sentence(5),
       imageURL: faker.internet.url(),

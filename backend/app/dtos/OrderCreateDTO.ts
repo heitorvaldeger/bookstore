@@ -1,7 +1,7 @@
 export interface OrderCreateDTO {
   books: {
     id: number
-    title: string
+    titulo: string
     quantidade: number
   }[]
 }

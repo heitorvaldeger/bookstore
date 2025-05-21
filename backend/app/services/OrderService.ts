@@ -37,14 +37,14 @@ export class OrderService {
       if (!bookItem) {
         errors.push({
           bookId: book.id,
-          bookTitle: book.title,
-          error: `Book ${book.title} not found`,
+          bookTitle: book.titulo,
+          error: `Book ${book.titulo} not found`,
         })
       } else if (book.quantidade > bookItem.stock) {
         errors.push({
           bookId: bookItem.id,
-          bookTitle: bookItem.title,
-          error: `Book ${bookItem.title} out of stock`,
+          bookTitle: bookItem.titulo,
+          error: `Book ${bookItem.titulo} out of stock`,
         })
       }
     }
@@ -83,7 +83,7 @@ export class OrderService {
   private getBook(book: Book) {
     return {
       id: book.id,
-      title: book.title,
+      titulo: book.titulo,
       quantidade: book.$extras.pivot_quantity,
     }
   }

@@ -45,7 +45,7 @@ test.group('Services book service', (group) => {
   test("it should return an exception if book doesn't exists", async ({ expect }) => {
     const sut = new BookService()
     const getBookByIdPromise = sut.getBookById(-1)
-    expect(getBookByIdPromise).rejects.toThrow(new BookNotFoundException())
+    await expect(getBookByIdPromise).rejects.toThrow(new BookNotFoundException())
   })
 
   test('it should create a new book', async ({ expect }) => {
@@ -69,7 +69,7 @@ test.group('Services book service', (group) => {
     const sut = new BookService()
 
     const updatePromise = sut.update(1, bookToSave)
-    expect(updatePromise).rejects.toThrow(new BookNotFoundException())
+    await expect(updatePromise).rejects.toThrow(new BookNotFoundException())
   })
 
   test('it should return a book updated on update book', async ({ expect }) => {
@@ -90,7 +90,7 @@ test.group('Services book service', (group) => {
     const sut = new BookService()
 
     const deletePromise = sut.delete(1)
-    expect(deletePromise).rejects.toThrow(new BookNotFoundException())
+    await expect(deletePromise).rejects.toThrow(new BookNotFoundException())
   })
 
   test('it should delete a book with success', async ({ expect }) => {

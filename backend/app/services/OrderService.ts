@@ -6,7 +6,6 @@ import { OrderStatusEnum } from '../enums/OrderStatusEnum.js'
 
 interface OrderCreateError {
   bookId: number
-  bookTitle: string
   error: string
 }
 
@@ -20,7 +19,7 @@ export class OrderService {
       return {
         id: order.id,
         status: order.status,
-        items: order.books.map(this.getBook),
+        itens: order.books.map(this.getBook),
         total: this.getOrderTotalField(order),
       }
     })
@@ -37,14 +36,12 @@ export class OrderService {
       if (!bookItem) {
         errors.push({
           bookId: book.id,
-          bookTitle: book.titulo,
-          error: `Book ${book.titulo} not found`,
+          error: `Livro #${book.id} não encontrado`,
         })
       } else if (book.quantidade > bookItem.estoque) {
         errors.push({
           bookId: bookItem.id,
-          bookTitle: bookItem.titulo,
-          error: `Book ${bookItem.titulo} out of estoque`,
+          error: `Livro ${bookItem.titulo} fora de estoque`,
         })
       }
     }
@@ -73,7 +70,7 @@ export class OrderService {
 
   private getOrderTotalField(order: Order) {
     const total = order.books.reduce((acc, books) => {
-      const quantidade = books.$extras.pivot_quantity
+      const quantidade = books.$extras.pivot_quantidade
       return acc + quantidade * books.preco
     }, 0)
 
@@ -84,7 +81,8 @@ export class OrderService {
     return {
       id: book.id,
       titulo: book.titulo,
-      quantidade: book.$extras.pivot_quantity,
+      autor: book.autor,
+      quantidade: book.$extras.pivot_quantidade,
     }
   }
 }

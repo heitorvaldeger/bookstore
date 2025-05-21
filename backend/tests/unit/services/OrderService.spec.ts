@@ -60,15 +60,14 @@ test.group('Services order service', (t) => {
       ],
     })
 
-    expect(newOrderPromise).rejects.toThrow(new OrderCreateForBooksException([]))
-    expect(newOrderPromise).rejects.toMatchObject({
-      errors: [
+    await expect(newOrderPromise).rejects.toThrow(
+      new OrderCreateForBooksException([
         {
           bookId: 999,
           error: 'Livro #999 não encontrado',
         },
-      ],
-    })
+      ])
+    )
   })
 
   test("it should return errors if any book doesn't estoque avaiable", async ({ expect }) => {
@@ -87,15 +86,14 @@ test.group('Services order service', (t) => {
       books: booksToOrder,
     })
 
-    expect(newOrderPromise).rejects.toThrow(new OrderCreateForBooksException([]))
-    expect(newOrderPromise).rejects.toMatchObject({
-      errors: [
+    await expect(newOrderPromise).rejects.toThrow(
+      new OrderCreateForBooksException([
         {
           bookId: bookBase.id,
-          error: `Livro ${bookBase.titulo} fora de estoque`,
+          error: `Livro ${bookBase.titulo} fora de stoque`,
         },
-      ],
-    })
+      ])
+    )
   })
 
   test('it should create a new order with correct values', async ({ expect }) => {

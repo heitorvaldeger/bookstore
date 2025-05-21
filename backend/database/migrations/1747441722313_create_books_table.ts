@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.text('autor')
       table.text('descricao').nullable()
       table.integer('preco')
-      table.text('image_url').nullable()
+      table.text('imagem').nullable()
       table.integer('estoque')
       table.enum('categoria', ['bible', 'teology', 'philosophy', 'science', 'others'])
       table.timestamp('created_at')

@@ -18,8 +18,8 @@ export default class Book extends BaseModel {
   @column()
   declare preco: number
 
-  @column({ serializeAs: 'imageURL' })
-  declare imageURL: string
+  @column({ serializeAs: 'imagem' })
+  declare imagem: string
 
   @column()
   declare estoque: number

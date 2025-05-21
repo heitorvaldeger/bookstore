@@ -14,7 +14,7 @@ const bookToSave = {
   titulo: 'any_title',
   descricao: 'any_description',
   autor: 'any_author',
-  imageURL: 'any_image',
+  imagem: 'any_image',
   categoria: BookCategoryEnum.BIBLE,
   preco: 999,
   estoque: 100,

@@ -9,7 +9,7 @@ export const BookFactory = factory
       titulo: faker.lorem.sentence(3),
       categoria: BookCategoryEnum.SCIENCE,
       descricao: faker.lorem.sentence(5),
-      imageURL: faker.internet.url(),
+      imagem: faker.internet.url(),
       preco: 999,
       estoque: 100,
     }

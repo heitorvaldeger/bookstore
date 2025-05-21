@@ -125,7 +125,7 @@ test.group('Book Controller', (group) => {
       titulo: 'any_title',
       descricao: 'any_description',
       autor: 'any_author',
-      imageURL: 'https://any-url.com',
+      imagem: 'https://any-url.com',
       categoria: BookCategoryEnum.BIBLE,
       preco: 999,
       estoque: 100,

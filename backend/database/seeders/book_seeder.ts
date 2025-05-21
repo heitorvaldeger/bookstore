@@ -12,7 +12,7 @@ export default class extends BaseSeeder {
           'A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?',
         estoque: 12,
         preco: 4590,
-        imageURL: 'https://m.media-amazon.com/images/I/91ebghaV-eL.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/91ebghaV-eL.jpg',
         categoria: BookCategoryEnum.SCIENCE,
       },
       {
@@ -23,7 +23,7 @@ export default class extends BaseSeeder {
         categoria: BookCategoryEnum.SCIENCE,
         descricao:
           "As influential today as when it was first published, The Selfish Gene has become a classic exposition of evolutionary thought. Professor Dawkins articulates a gene's eye view of evolution - a view giving centre stage to these persistent units of information, and in which organisms can be seen as vehicles for their replication.",
-        imageURL: 'https://m.media-amazon.com/images/I/61dtRkUbfRL._AC_UF1000,1000_QL80_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/61dtRkUbfRL._AC_UF1000,1000_QL80_.jpg',
       },
       {
         titulo: 'The Bible',
@@ -31,7 +31,7 @@ export default class extends BaseSeeder {
         descricao: 'Sacred scripture in Christianity, containing the Old and New Testaments.',
         estoque: 100,
         preco: 2999,
-        imageURL: 'https://m.media-amazon.com/images/I/71U0MvNYxpL._AC_UF1000,1000_QL80_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/71U0MvNYxpL._AC_UF1000,1000_QL80_.jpg',
         categoria: BookCategoryEnum.BIBLE,
       },
       {
@@ -39,7 +39,7 @@ export default class extends BaseSeeder {
         autor: 'Carl Sagan',
         estoque: 5,
         preco: 4999,
-        imageURL: 'https://m.media-amazon.com/images/I/710C5x4MzwL.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/710C5x4MzwL.jpg',
         descricao:
           'Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson',
         categoria: BookCategoryEnum.SCIENCE,
@@ -52,7 +52,7 @@ export default class extends BaseSeeder {
         estoque: 10,
         preco: 4250,
         categoria: BookCategoryEnum.SCIENCE,
-        imageURL: 'https://m.media-amazon.com/images/I/71z2XfoLFfL.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/71z2XfoLFfL.jpg',
       },
       {
         titulo: 'To Love and Be Loved: A Personal Portrait of Mother Teresa',
@@ -62,7 +62,7 @@ export default class extends BaseSeeder {
         estoque: 50,
         preco: 999,
         categoria: BookCategoryEnum.BIBLE,
-        imageURL: 'https://m.media-amazon.com/images/I/71RJKnRyzJL._SY522_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/71RJKnRyzJL._SY522_.jpg',
       },
       {
         titulo: 'Sapiens: A Brief History of Humankind',
@@ -71,7 +71,7 @@ export default class extends BaseSeeder {
         preco: 5990,
         descricao:
           'From renowned historian Yuval Noah Harari comes a groundbreaking narrative of humanity’s creation and evolution—a #1 international bestseller—that explores the ways in which biology and history have defined us and enhanced our understanding of what it means to be “human.”',
-        imageURL: 'https://m.media-amazon.com/images/I/716E6dQ4BXL._SY522_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/716E6dQ4BXL._SY522_.jpg',
         categoria: BookCategoryEnum.SCIENCE,
       },
       {
@@ -80,7 +80,7 @@ export default class extends BaseSeeder {
         estoque: 30,
         preco: 1499,
         categoria: BookCategoryEnum.BIBLE,
-        imageURL: 'https://m.media-amazon.com/images/I/81IlG7Il73L._SY522_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/81IlG7Il73L._SY522_.jpg',
         descricao:
           'Featuring the voices of 55 biblical scholars, theologians, and storytellers from around the world, God’s Stories as told by God’s Children is a beautifully illustrated storybook Bible that integrates biblical scholarship into engaging storytelling.',
       },
@@ -92,7 +92,7 @@ export default class extends BaseSeeder {
         estoque: 9,
         preco: 5200,
         categoria: BookCategoryEnum.SCIENCE,
-        imageURL: 'https://m.media-amazon.com/images/I/71wvKXWfcML._SY522_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/71wvKXWfcML._SY522_.jpg',
       },
       {
         titulo: 'The Book Thief',
@@ -102,7 +102,7 @@ export default class extends BaseSeeder {
         estoque: 7,
         preco: 3500,
         categoria: BookCategoryEnum.OTHERS,
-        imageURL: 'https://m.media-amazon.com/images/I/81cQAtrq2iL._SY522_.jpg',
+        imagem: 'https://m.media-amazon.com/images/I/81cQAtrq2iL._SY522_.jpg',
       },
     ])
   }

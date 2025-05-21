@@ -127,7 +127,7 @@ test.group('Book Controller', (group) => {
       author: 'any_author',
       imageURL: 'https://any-url.com',
       category: BookCategoryEnum.BIBLE,
-      price: 999,
+      preco: 999,
       stock: 100,
     }
 
@@ -167,9 +167,9 @@ test.group('Book Controller', (group) => {
           field: 'stock',
         },
         {
-          message: 'The price field must be defined',
+          message: 'The preco field must be defined',
           rule: 'required',
-          field: 'price',
+          field: 'preco',
         },
         {
           message: 'The category field must be defined',
@@ -221,7 +221,7 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/${book.id}`)
       .json({
-        price: 'any_value',
+        preco: 'any_value',
       })
       .loginAs(user)
 
@@ -231,9 +231,9 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The price field must be a number',
+          message: 'The preco field must be a number',
           rule: 'number',
-          field: 'price',
+          field: 'preco',
         },
       ],
     })

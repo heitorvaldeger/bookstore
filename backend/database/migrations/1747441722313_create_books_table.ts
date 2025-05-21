@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.text('title')
       table.text('author')
       table.text('description').nullable()
-      table.integer('price')
+      table.integer('preco')
       table.text('image_url').nullable()
       table.integer('stock')
       table.enum('category', ['bible', 'teology', 'philosophy', 'science', 'others'])

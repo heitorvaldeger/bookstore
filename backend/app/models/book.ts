@@ -16,7 +16,7 @@ export default class Book extends BaseModel {
   declare description: string
 
   @column()
-  declare price: number
+  declare preco: number
 
   @column({ serializeAs: 'imageURL' })
   declare imageURL: string

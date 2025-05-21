@@ -74,7 +74,7 @@ export class OrderService {
   private getOrderTotalField(order: Order) {
     const total = order.books.reduce((acc, books) => {
       const quantity = books.$extras.pivot_quantity
-      return acc + quantity * books.price
+      return acc + quantity * books.preco
     }, 0)
 
     return total

@@ -10,7 +10,7 @@ export const BookFactory = factory
       category: BookCategoryEnum.SCIENCE,
       description: faker.lorem.sentence(5),
       imageURL: faker.internet.url(),
-      price: 999,
+      preco: 999,
       stock: 100,
     }
   })

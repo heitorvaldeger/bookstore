@@ -5,7 +5,7 @@ import { InputNumberIncremental } from "../Forms/InputNumberIncremental";
 import { useCart } from "../../contexts/CartContext";
 
 export const CartDialog = () => {
-  const { getQtyBookCart } = useCart();
+  const { getQtyBookCart, cart } = useCart();
 
   return (
     <Dialog.Root>
@@ -44,21 +44,22 @@ export const CartDialog = () => {
             </header>
 
             <div className="py-6 overflow-auto max-h-96 space-y-4">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div className="flex gap-6" key={i}>
+              {cart.books.map((book) => (
+                <div className="flex gap-6" key={book.id}>
                   <div className="max-w-44">
                     <img
-                      src="/images/books/book-1.png"
+                      src={book.imagem ?? "/images/books/book-1.png"}
                       alt=""
                       className="rounded-lg"
                     />
                   </div>
                   <div className="w-fit space-y-2">
                     <p className="font-bold leading-[100%]">
-                      Cristianismo puro e simples, CS LEWIS
+                      {book.titulo}, {book.autor}
                     </p>
                     <p className="text-teal-700 font-bold ">R$467,90</p>
                     <InputNumberIncremental
+                      value={book.quantidade}
                       onValueChange={() => {}}
                       containerClassName="w-4/8"
                     />

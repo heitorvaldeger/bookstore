@@ -1,7 +1,7 @@
 import { Menu } from "react-feather";
 import { SideBarMenu } from "../Menus/SideBarMenu";
 import { Drawer } from "vaul";
-import { CartDialog } from "../Dialogs/CartDialog";
+import { CartDialog } from "../Cart/CartDialog";
 
 export const Header = () => {
   return (

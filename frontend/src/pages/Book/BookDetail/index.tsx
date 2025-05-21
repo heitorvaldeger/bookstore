@@ -6,7 +6,7 @@ import { ArrowRight, ShoppingBag } from "react-feather";
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../../api/fetch-book";
-import { convertNumberToBrazilianRealFormat } from "../../../utils";
+import { convertPriceBook } from "../../../utils";
 import { isAxiosError } from "axios";
 import { useCart } from "../../../contexts/CartContext";
 
@@ -27,12 +27,10 @@ export const BookDetail = () => {
   const [color, setColor] = useState("Azul");
   const [qty, setQty] = useState(1);
 
-  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.preco ?? 0) / 100
-  );
+  const valueBrazilianFormatted = convertPriceBook(book?.preco ?? 0);
 
-  const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.preco ?? 0) / 2 / 100
+  const valueInstallmentBrazilianFormatted = convertPriceBook(
+    (book?.preco ?? 0) / 2
   );
 
   const handleAddBookToCartClick = () => {

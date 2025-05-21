@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { convertNumberToBrazilianRealFormat } from "../../utils";
+import { convertPriceBook } from "../../utils";
 
 interface BookCardProps {
   idBook: number;
@@ -15,9 +15,7 @@ export const BookCard = ({
   preco,
   imagem,
 }: BookCardProps) => {
-  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    preco / 100
-  );
+  const valueBrazilianFormatted = convertPriceBook(preco);
 
   const isNew = false;
 

@@ -1,11 +1,11 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 import { ShoppingBag } from "react-feather";
-import { InputNumberIncremental } from "../Forms/InputNumberIncremental";
 import { useCart } from "../../contexts/CartContext";
+import { CartItem } from "./CartItem";
 
 export const CartDialog = () => {
-  const { getQtyBookCart, cart } = useCart();
+  const { getTotalCart, getQtyBookCart, cart } = useCart();
 
   return (
     <Dialog.Root>
@@ -45,26 +45,7 @@ export const CartDialog = () => {
 
             <div className="py-6 overflow-auto max-h-96 space-y-4">
               {cart.books.map((book) => (
-                <div className="flex gap-6" key={book.id}>
-                  <div className="max-w-44">
-                    <img
-                      src={book.imagem ?? "/images/books/book-1.png"}
-                      alt=""
-                      className="rounded-lg"
-                    />
-                  </div>
-                  <div className="w-fit space-y-2">
-                    <p className="font-bold leading-[100%]">
-                      {book.titulo}, {book.autor}
-                    </p>
-                    <p className="text-teal-700 font-bold ">R$467,90</p>
-                    <InputNumberIncremental
-                      value={book.quantidade}
-                      onValueChange={() => {}}
-                      containerClassName="w-4/8"
-                    />
-                  </div>
-                </div>
+                <CartItem bookOrder={book} />
               ))}
             </div>
 
@@ -72,10 +53,10 @@ export const CartDialog = () => {
               <div className="space-y-2 border-[1px] border-slate-200 px-4 py-2 rounded-lg w-full">
                 <div className="flex items-center justify-between">
                   <p className="font-inter text-xs leading-5">
-                    Subtotal (2 produtos)
+                    Subtotal ({getQtyBookCart()})
                   </p>
                   <p className="font-inter text-xs font-bold leading-5">
-                    R$ 95,90
+                    {getTotalCart()}
                   </p>
                 </div>
 
@@ -89,7 +70,7 @@ export const CartDialog = () => {
                 <div className="flex items-center justify-between">
                   <p className="font-inter text-xs leading-5">Total</p>
                   <p className="font-inter text-xs font-bold leading-5 text-teal-700">
-                    R$ 95,90
+                    {getTotalCart()}
                   </p>
                 </div>
               </div>

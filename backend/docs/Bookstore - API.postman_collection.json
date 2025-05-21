@@ -1,1335 +1,1204 @@
 {
-	"info": {
-		"_postman_id": "60367e40-5dcd-4f92-92f9-a66a1ecd9df9",
-		"name": "Bookstore - API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40127800"
-	},
-	"item": [
-		{
-			"name": "books",
-			"item": [
-				{
-					"name": "List all books",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/books",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AGjttbQyYBufeGaj8EFeXOHxWoleYUCWLLK5Ct5-TBNCANRu6d9GT9SpVhtd1F7sAwf0I8etrx-YAZDzVwcOytg.c3hFVE1xdEpxeWdEdUdBWQ.snxmRbwJcPaNDvU5KtPVurjst33L9lT6LdTMg4OXK2U; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "ldo8i787o48occfob3djnjr8"
-								},
-								{
-									"key": "content-length",
-									"value": "14067"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:25:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"The Selfish Gene\",\n        \"author\": \"Richard Dawkins\",\n        \"description\": null,\n        \"price\": 3999,\n        \"imageURL\": null,\n        \"stock\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"The Bible\",\n        \"author\": \"Various Authors\",\n        \"description\": \"Sacred scripture in Christianity, containing the Old and New Testaments.\",\n        \"price\": 2999,\n        \"imageURL\": \"https://example.com/images/bible.jpg\",\n        \"stock\": 100,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": null,\n        \"price\": 4999,\n        \"imageURL\": \"https://example.com/images/cosmos.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"The Origin of Species\",\n        \"author\": \"Charles Darwin\",\n        \"description\": null,\n        \"price\": 4250,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Genesis\",\n        \"author\": \"Moses\",\n        \"description\": \"The first book of the Bible.\",\n        \"price\": 999,\n        \"imageURL\": null,\n        \"stock\": 50,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Sapiens: A Brief History of Humankind\",\n        \"author\": \"Yuval Noah Harari\",\n        \"description\": null,\n        \"price\": 5990,\n        \"imageURL\": \"https://example.com/images/sapiens.jpg\",\n        \"stock\": 20,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"The Book of Psalms\",\n        \"author\": \"David\",\n        \"description\": null,\n        \"price\": 1499,\n        \"imageURL\": null,\n        \"stock\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Thinking, Fast and Slow\",\n        \"author\": \"Daniel Kahneman\",\n        \"description\": null,\n        \"price\": 5200,\n        \"imageURL\": null,\n        \"stock\": 9,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"The Book Thief\",\n        \"author\": \"Markus Zusak\",\n        \"description\": null,\n        \"price\": 3500,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Ecclesiastes\",\n        \"author\": \"Solomon\",\n        \"description\": null,\n        \"price\": 1100,\n        \"imageURL\": null,\n        \"stock\": 25,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 12,\n        \"title\": \"Astrophysics for People in a Hurry\",\n        \"author\": \"Neil deGrasse Tyson\",\n        \"description\": null,\n        \"price\": 3799,\n        \"imageURL\": null,\n        \"stock\": 15,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Romans\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1050,\n        \"imageURL\": null,\n        \"stock\": 40,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 14,\n        \"title\": \"The Martian\",\n        \"author\": \"Andy Weir\",\n        \"description\": null,\n        \"price\": 4400,\n        \"imageURL\": \"https://example.com/images/martian.jpg\",\n        \"stock\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 15,\n        \"title\": \"Exodus\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1299,\n        \"imageURL\": null,\n        \"stock\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 16,\n        \"title\": \"A Short History of Nearly Everything\",\n        \"author\": \"Bill Bryson\",\n        \"description\": null,\n        \"price\": 4875,\n        \"imageURL\": null,\n        \"stock\": 11,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Brave New World\",\n        \"author\": \"Aldous Huxley\",\n        \"description\": null,\n        \"price\": 3950,\n        \"imageURL\": null,\n        \"stock\": 16,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 18,\n        \"title\": \"Leviticus\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1325,\n        \"imageURL\": null,\n        \"stock\": 33,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 19,\n        \"title\": \"The Elegant Universe\",\n        \"author\": \"Brian Greene\",\n        \"description\": null,\n        \"price\": 5000,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 20,\n        \"title\": \"Numbers\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1175,\n        \"imageURL\": null,\n        \"stock\": 22,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 21,\n        \"title\": \"Fahrenheit 451\",\n        \"author\": \"Ray Bradbury\",\n        \"description\": null,\n        \"price\": 3099,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 22,\n        \"title\": \"The Grand Design\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 4725,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 23,\n        \"title\": \"Deuteronomy\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1249,\n        \"imageURL\": null,\n        \"stock\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 24,\n        \"title\": \"1984\",\n        \"author\": \"George Orwell\",\n        \"description\": null,\n        \"price\": 3190,\n        \"imageURL\": null,\n        \"stock\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 25,\n        \"title\": \"Black Holes and Baby Universes\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 3895,\n        \"imageURL\": null,\n        \"stock\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 26,\n        \"title\": \"The Book of Revelation\",\n        \"author\": \"John\",\n        \"description\": null,\n        \"price\": 1499,\n        \"imageURL\": null,\n        \"stock\": 19,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 27,\n        \"title\": \"To Kill a Mockingbird\",\n        \"author\": \"Harper Lee\",\n        \"description\": null,\n        \"price\": 2899,\n        \"imageURL\": null,\n        \"stock\": 18,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 28,\n        \"title\": \"The Universe in a Nutshell\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 5325,\n        \"imageURL\": null,\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 29,\n        \"title\": \"The Gospel of John\",\n        \"author\": \"John\",\n        \"description\": null,\n        \"price\": 995,\n        \"imageURL\": null,\n        \"stock\": 27,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 30,\n        \"title\": \"The Catcher in the Rye\",\n        \"author\": \"J.D. Salinger\",\n        \"description\": null,\n        \"price\": 2799,\n        \"imageURL\": null,\n        \"stock\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 31,\n        \"title\": \"The Structure of Scientific Revolutions\",\n        \"author\": \"Thomas S. Kuhn\",\n        \"description\": null,\n        \"price\": 4600,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 32,\n        \"title\": \"Galatians\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1020,\n        \"imageURL\": null,\n        \"stock\": 31,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 33,\n        \"title\": \"Slaughterhouse-Five\",\n        \"author\": \"Kurt Vonnegut\",\n        \"description\": null,\n        \"price\": 3400,\n        \"imageURL\": null,\n        \"stock\": 9,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 34,\n        \"title\": \"Silent Spring\",\n        \"author\": \"Rachel Carson\",\n        \"description\": null,\n        \"price\": 4000,\n        \"imageURL\": null,\n        \"stock\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 35,\n        \"title\": \"Acts of the Apostles\",\n        \"author\": \"Luke\",\n        \"description\": null,\n        \"price\": 1290,\n        \"imageURL\": null,\n        \"stock\": 23,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 36,\n        \"title\": \"Moby-Dick\",\n        \"author\": \"Herman Melville\",\n        \"description\": null,\n        \"price\": 3675,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 37,\n        \"title\": \"The Demon-Haunted World\",\n        \"author\": \"Carl Sagan\",\n        \"description\": null,\n        \"price\": 4560,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 38,\n        \"title\": \"Hebrews\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1125,\n        \"imageURL\": null,\n        \"stock\": 28,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 39,\n        \"title\": \"Pride and Prejudice\",\n        \"author\": \"Jane Austen\",\n        \"description\": null,\n        \"price\": 3330,\n        \"imageURL\": null,\n        \"stock\": 15,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 40,\n        \"title\": \"Gödel, Escher, Bach\",\n        \"author\": \"Douglas Hofstadter\",\n        \"description\": null,\n        \"price\": 5690,\n        \"imageURL\": null,\n        \"stock\": 3,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 41,\n        \"title\": \"Proverbs\",\n        \"author\": \"Solomon\",\n        \"description\": null,\n        \"price\": 1099,\n        \"imageURL\": null,\n        \"stock\": 36,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 42,\n        \"title\": \"Crime and Punishment\",\n        \"author\": \"Fyodor Dostoevsky\",\n        \"description\": null,\n        \"price\": 4199,\n        \"imageURL\": null,\n        \"stock\": 12,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 43,\n        \"title\": \"The Immortal Life of Henrietta Lacks\",\n        \"author\": \"Rebecca Skloot\",\n        \"description\": null,\n        \"price\": 3980,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 44,\n        \"title\": \"Isaiah\",\n        \"author\": \"Isaiah\",\n        \"description\": null,\n        \"price\": 1330,\n        \"imageURL\": null,\n        \"stock\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 45,\n        \"title\": \"Don Quixote\",\n        \"author\": \"Miguel de Cervantes\",\n        \"description\": null,\n        \"price\": 4410,\n        \"imageURL\": null,\n        \"stock\": 5,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 46,\n        \"title\": \"On the Origin of Time\",\n        \"author\": \"Thomas Hertog\",\n        \"description\": null,\n        \"price\": 5120,\n        \"imageURL\": null,\n        \"stock\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 47,\n        \"title\": \"Matthew\",\n        \"author\": \"Matthew\",\n        \"description\": null,\n        \"price\": 1190,\n        \"imageURL\": null,\n        \"stock\": 24,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 48,\n        \"title\": \"Frankenstein\",\n        \"author\": \"Mary Shelley\",\n        \"description\": null,\n        \"price\": 3245,\n        \"imageURL\": null,\n        \"stock\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 49,\n        \"title\": \"A Brief History of Time\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": \"A landmark volume in science writing by one of the great minds of our time.\",\n        \"price\": 4590,\n        \"imageURL\": \"https://example.com/images/brief-history.jpg\",\n        \"stock\": 12,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 50,\n        \"title\": \"The Selfish Gene\",\n        \"author\": \"Richard Dawkins\",\n        \"description\": null,\n        \"price\": 3999,\n        \"imageURL\": null,\n        \"stock\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 51,\n        \"title\": \"The Bible\",\n        \"author\": \"Various Authors\",\n        \"description\": \"Sacred scripture in Christianity, containing the Old and New Testaments.\",\n        \"price\": 2999,\n        \"imageURL\": \"https://example.com/images/bible.jpg\",\n        \"stock\": 100,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 52,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": null,\n        \"price\": 4999,\n        \"imageURL\": \"https://example.com/images/cosmos.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 53,\n        \"title\": \"The Origin of Species\",\n        \"author\": \"Charles Darwin\",\n        \"description\": null,\n        \"price\": 4250,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 54,\n        \"title\": \"Genesis\",\n        \"author\": \"Moses\",\n        \"description\": \"The first book of the Bible.\",\n        \"price\": 999,\n        \"imageURL\": null,\n        \"stock\": 50,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 55,\n        \"title\": \"Sapiens: A Brief History of Humankind\",\n        \"author\": \"Yuval Noah Harari\",\n        \"description\": null,\n        \"price\": 5990,\n        \"imageURL\": \"https://example.com/images/sapiens.jpg\",\n        \"stock\": 20,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 56,\n        \"title\": \"The Book of Psalms\",\n        \"author\": \"David\",\n        \"description\": null,\n        \"price\": 1499,\n        \"imageURL\": null,\n        \"stock\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 57,\n        \"title\": \"Thinking, Fast and Slow\",\n        \"author\": \"Daniel Kahneman\",\n        \"description\": null,\n        \"price\": 5200,\n        \"imageURL\": null,\n        \"stock\": 9,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 58,\n        \"title\": \"The Book Thief\",\n        \"author\": \"Markus Zusak\",\n        \"description\": null,\n        \"price\": 3500,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 59,\n        \"title\": \"Ecclesiastes\",\n        \"author\": \"Solomon\",\n        \"description\": null,\n        \"price\": 1100,\n        \"imageURL\": null,\n        \"stock\": 25,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 60,\n        \"title\": \"Astrophysics for People in a Hurry\",\n        \"author\": \"Neil deGrasse Tyson\",\n        \"description\": null,\n        \"price\": 3799,\n        \"imageURL\": null,\n        \"stock\": 15,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 61,\n        \"title\": \"Romans\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1050,\n        \"imageURL\": null,\n        \"stock\": 40,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 62,\n        \"title\": \"The Martian\",\n        \"author\": \"Andy Weir\",\n        \"description\": null,\n        \"price\": 4400,\n        \"imageURL\": \"https://example.com/images/martian.jpg\",\n        \"stock\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 63,\n        \"title\": \"Exodus\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1299,\n        \"imageURL\": null,\n        \"stock\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 64,\n        \"title\": \"A Short History of Nearly Everything\",\n        \"author\": \"Bill Bryson\",\n        \"description\": null,\n        \"price\": 4875,\n        \"imageURL\": null,\n        \"stock\": 11,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 65,\n        \"title\": \"Brave New World\",\n        \"author\": \"Aldous Huxley\",\n        \"description\": null,\n        \"price\": 3950,\n        \"imageURL\": null,\n        \"stock\": 16,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 66,\n        \"title\": \"Leviticus\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1325,\n        \"imageURL\": null,\n        \"stock\": 33,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 67,\n        \"title\": \"The Elegant Universe\",\n        \"author\": \"Brian Greene\",\n        \"description\": null,\n        \"price\": 5000,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 68,\n        \"title\": \"Numbers\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1175,\n        \"imageURL\": null,\n        \"stock\": 22,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 69,\n        \"title\": \"Fahrenheit 451\",\n        \"author\": \"Ray Bradbury\",\n        \"description\": null,\n        \"price\": 3099,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 70,\n        \"title\": \"The Grand Design\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 4725,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 71,\n        \"title\": \"Deuteronomy\",\n        \"author\": \"Moses\",\n        \"description\": null,\n        \"price\": 1249,\n        \"imageURL\": null,\n        \"stock\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 72,\n        \"title\": \"1984\",\n        \"author\": \"George Orwell\",\n        \"description\": null,\n        \"price\": 3190,\n        \"imageURL\": null,\n        \"stock\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 73,\n        \"title\": \"Black Holes and Baby Universes\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 3895,\n        \"imageURL\": null,\n        \"stock\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 74,\n        \"title\": \"The Book of Revelation\",\n        \"author\": \"John\",\n        \"description\": null,\n        \"price\": 1499,\n        \"imageURL\": null,\n        \"stock\": 19,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 75,\n        \"title\": \"To Kill a Mockingbird\",\n        \"author\": \"Harper Lee\",\n        \"description\": null,\n        \"price\": 2899,\n        \"imageURL\": null,\n        \"stock\": 18,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 76,\n        \"title\": \"The Universe in a Nutshell\",\n        \"author\": \"Stephen Hawking\",\n        \"description\": null,\n        \"price\": 5325,\n        \"imageURL\": null,\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 77,\n        \"title\": \"The Gospel of John\",\n        \"author\": \"John\",\n        \"description\": null,\n        \"price\": 995,\n        \"imageURL\": null,\n        \"stock\": 27,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 78,\n        \"title\": \"The Catcher in the Rye\",\n        \"author\": \"J.D. Salinger\",\n        \"description\": null,\n        \"price\": 2799,\n        \"imageURL\": null,\n        \"stock\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 79,\n        \"title\": \"The Structure of Scientific Revolutions\",\n        \"author\": \"Thomas S. Kuhn\",\n        \"description\": null,\n        \"price\": 4600,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 80,\n        \"title\": \"Galatians\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1020,\n        \"imageURL\": null,\n        \"stock\": 31,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 81,\n        \"title\": \"Slaughterhouse-Five\",\n        \"author\": \"Kurt Vonnegut\",\n        \"description\": null,\n        \"price\": 3400,\n        \"imageURL\": null,\n        \"stock\": 9,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 82,\n        \"title\": \"Silent Spring\",\n        \"author\": \"Rachel Carson\",\n        \"description\": null,\n        \"price\": 4000,\n        \"imageURL\": null,\n        \"stock\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 83,\n        \"title\": \"Acts of the Apostles\",\n        \"author\": \"Luke\",\n        \"description\": null,\n        \"price\": 1290,\n        \"imageURL\": null,\n        \"stock\": 23,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 84,\n        \"title\": \"Moby-Dick\",\n        \"author\": \"Herman Melville\",\n        \"description\": null,\n        \"price\": 3675,\n        \"imageURL\": null,\n        \"stock\": 6,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 85,\n        \"title\": \"The Demon-Haunted World\",\n        \"author\": \"Carl Sagan\",\n        \"description\": null,\n        \"price\": 4560,\n        \"imageURL\": null,\n        \"stock\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 86,\n        \"title\": \"Hebrews\",\n        \"author\": \"Paul\",\n        \"description\": null,\n        \"price\": 1125,\n        \"imageURL\": null,\n        \"stock\": 28,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 87,\n        \"title\": \"Pride and Prejudice\",\n        \"author\": \"Jane Austen\",\n        \"description\": null,\n        \"price\": 3330,\n        \"imageURL\": null,\n        \"stock\": 15,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 88,\n        \"title\": \"Gödel, Escher, Bach\",\n        \"author\": \"Douglas Hofstadter\",\n        \"description\": null,\n        \"price\": 5690,\n        \"imageURL\": null,\n        \"stock\": 3,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 89,\n        \"title\": \"Proverbs\",\n        \"author\": \"Solomon\",\n        \"description\": null,\n        \"price\": 1099,\n        \"imageURL\": null,\n        \"stock\": 36,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 90,\n        \"title\": \"Crime and Punishment\",\n        \"author\": \"Fyodor Dostoevsky\",\n        \"description\": null,\n        \"price\": 4199,\n        \"imageURL\": null,\n        \"stock\": 12,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 91,\n        \"title\": \"The Immortal Life of Henrietta Lacks\",\n        \"author\": \"Rebecca Skloot\",\n        \"description\": null,\n        \"price\": 3980,\n        \"imageURL\": null,\n        \"stock\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 92,\n        \"title\": \"Isaiah\",\n        \"author\": \"Isaiah\",\n        \"description\": null,\n        \"price\": 1330,\n        \"imageURL\": null,\n        \"stock\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 93,\n        \"title\": \"Don Quixote\",\n        \"author\": \"Miguel de Cervantes\",\n        \"description\": null,\n        \"price\": 4410,\n        \"imageURL\": null,\n        \"stock\": 5,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 94,\n        \"title\": \"On the Origin of Time\",\n        \"author\": \"Thomas Hertog\",\n        \"description\": null,\n        \"price\": 5120,\n        \"imageURL\": null,\n        \"stock\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 95,\n        \"title\": \"Matthew\",\n        \"author\": \"Matthew\",\n        \"description\": null,\n        \"price\": 1190,\n        \"imageURL\": null,\n        \"stock\": 24,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 96,\n        \"title\": \"Frankenstein\",\n        \"author\": \"Mary Shelley\",\n        \"description\": null,\n        \"price\": 3245,\n        \"imageURL\": null,\n        \"stock\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 97,\n        \"title\": \"Sapiens: A Brief History of Humankind\",\n        \"author\": \"Yuval Noah Harari\",\n        \"description\": \"An exploration of the history and impact of Homo sapiens.\",\n        \"price\": 5990,\n        \"imageURL\": \"https://example.com/sapiens.jpg\",\n        \"stock\": 25,\n        \"category\": \"others\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get a book by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/books/search/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books",
-								"search",
-								"2"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "404 - Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/search/1",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"search",
-										"1"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AQpb0VGTAmMBtBmjW2ZjMBqRKUHtBVFXVdC5RhLU6R7QgZkE-eDlwXSwQGE5fdj8MLY5AL_S2AJ5VbsnaECzXCw.ZEswM2FlMkNydmZ5cXhkWQ.KM4Vuf-O_qAq1OdmXmItpgfC69ZAo05ymTVaUqbbejg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "yxqfrdllof31yt4gbi79ztpa"
-								},
-								{
-									"key": "content-length",
-									"value": "54"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:39:22 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
-						},
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/search/2",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"search",
-										"2"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3A4AJqoRYgwJIig3ppEEf0hvalgOPJBextjGTa1cAKgsq9Uq3gH9ERxkKg3iLu5fzYFPmsSGsDIiRDD2t4E20q9w.SjJSU0pIQlQwV0E0cjBhZw.weT7zxXP6zIoD05KxfuZ5N-LJehwGRMfbwVsEj-K7Z0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "e481tsy85mmgi8jsl587kyoq"
-								},
-								{
-									"key": "content-length",
-									"value": "141"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:39:44 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 2,\n    \"title\": \"The Selfish Gene\",\n    \"author\": \"Richard Dawkins\",\n    \"description\": null,\n    \"price\": 3999,\n    \"imageURL\": null,\n    \"stock\": 5,\n    \"category\": \"science\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a book by query param",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/books/search?q=cosmos",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books",
-								"search"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "cosmos"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/search?q=cosmos",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"search"
-									],
-									"query": [
-										{
-											"key": "q",
-											"value": "cosmos"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "o8tqlzsgxpsld1iyjagmgf18"
-								},
-								{
-									"key": "content-length",
-									"value": "920"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 21 May 2025 03:14:02 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 4,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"price\": 4999,\n        \"imageURL\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Cosmos\",\n        \"author\": \"Carl Sagan\",\n        \"description\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"price\": 4999,\n        \"imageURL\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"stock\": 5,\n        \"category\": \"science\"\n    }\n]"
-						},
-						{
-							"name": "422 - Unprocessable Entity",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/search",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"search"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "kifkatug2n425rsl4pkj9ne2"
-								},
-								{
-									"key": "content-length",
-									"value": "84"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 21 May 2025 03:14:41 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The q field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"q\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Create a new book",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\",\n    \"author\": \"Yuval Noah Harari\",\n    \"description\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"stock\": 25,\n    \"price\": 59.90,\n    \"imageURL\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/books",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\",\n    \"author\": \"Yuval Noah Harari\",\n    \"description\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"stock\": 25,\n    \"price\": 5990,\n    \"imageURL\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/books",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AdkCFl-ci3CVuG0uyKweFFNCqAFUMxC8AoCMQkBlEqCBj-MJw1xpsjRSoTMFKi_GmYVx4HfkzBFerLD76w8aW9Q.dkJ0eVhIbnNXNEgxUW05VA.iJCeDwNczJZOvA98aQwtK4b8kcv4yvayVVnfq2AHCX4; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "qto4uemb3njvng617idk90ld"
-								},
-								{
-									"key": "content-length",
-									"value": "249"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:40:08 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\",\n    \"author\": \"Yuval Noah Harari\",\n    \"description\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"imageURL\": \"https://example.com/sapiens.jpg\",\n    \"stock\": 25,\n    \"price\": 5990,\n    \"category\": \"others\",\n    \"id\": 98\n}"
-						},
-						{
-							"name": "422 - Unprocessable Entity",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\",\n    \"author\": \"Yuval Noah Harari\",\n    \"description\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"stock\": 25,\n    \"price\": 59.90,\n    \"imageURL\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/books",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AkdVeMVzTrC56NDP3S7UR4tUTS_Kss42_fvqnsHfIkgdcXWB_XmBOtLqm8Zgq1xl0nOSLUJOVXTW7zHEci3Gr4Q.NXRZRE1IQmdsbktyaDUzTQ.zpvK0r3-_fTBM-yQFrnP_o7ygsIUkldPJXYRbRUFwm4; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "qdzthaas60qib5ra7yyttocy"
-								},
-								{
-									"key": "content-length",
-									"value": "102"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:40:26 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The price field must be an integer\",\n            \"rule\": \"withoutDecimals\",\n            \"field\": \"price\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update a book",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/books/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books",
-								"1"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/books/1",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"1"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AHPfVryQdO2ifXvxKcqyoLDtBYYbzIx6cvET-_RE0fHkKWUP5f6-ElZS2XdudxQNiYYFYFm7mveQspq9HWaZxpQ.TDFwQzRvY2E5dTZ2andqTg.kRsArhbQ0xQ7lbuw10tGL5K64kwmN_KEqYjF2PHRrJU; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "fmbrkki3p3bt257wv7ylncrk"
-								},
-								{
-									"key": "content-length",
-									"value": "278"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:41:06 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"title\": \"Sapiens: A Brief History of Humankind\",\n    \"author\": \"Stephen Hawking\",\n    \"description\": \"A landmark volume in science writing by one of the great minds of our time.\",\n    \"price\": 4590,\n    \"imageURL\": \"https://example.com/images/brief-history.jpg\",\n    \"stock\": 12,\n    \"category\": \"science\"\n}"
-						},
-						{
-							"name": "404 - Not Found",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"title\": \"Sapiens: A Brief History of Humankind\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/books/9999",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"9999"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3A4x93eWDvuCZIJdG7pJw1uGD9JLS1rStyZyWboqfhHClLr7owu08zzuSdOGc3oYPgDYekmnhTgxGPVZoyrhdGeQ.amoyLWV1b3Z6ZmV1TkZUag.hSnZOhOUEJL3Tq1b3yjoEKvyTUfUUcTz4Xt5YMoNLrs; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "ud8h2akj04m1s3ftmzampx33"
-								},
-								{
-									"key": "content-length",
-									"value": "54"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:41:27 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a book",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/books/9999",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"books",
-								"9999"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "204 - Not Content",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/1",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"1"
-									]
-								}
-							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "plain",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AITuYniV3FPZAhISKueGw0cc0aj4k0Dqm0tHzlKICg2PBu5EqdCwdVYdsooCqjqaD3h87GZN7QJGtdOGnHuFuZg.dVl6V2pZRENyWGpGaktJSQ.cgZJBc0ADX9P2_hNOsUPObKods7vNQLRJeotN7qyFdQ; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:41:54 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": null
-						},
-						{
-							"name": "404 - Not Found",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/books/9999",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"books",
-										"9999"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AwfmM9J8tJMA7yJMuFTt6idCoq6g0IPOGeVJEynjEeK0oV9HdpmM44T89jb_ekVXQVB42vD1xG3ug615SvtWUhA.bmVtd3dPREMyc05yUERoZA.PrbUVUKz65hrhuSWOdn4znkNsvPFuUKOuj2m2Gzao4g; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "rfyayqhfrkb9pjkf7dx82x3r"
-								},
-								{
-									"key": "content-length",
-									"value": "54"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:42:08 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"mail.com\",\n    \"password\": \"12345\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "204 - Not Content",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"1234\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/auth/login",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "plain",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "remember_web=; Max-Age=-1; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=; Max-Age=-1; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "c2t9ugupr4tte60gk7vzrubx=e%3AMkri1VUaKm-GJfeZMzfb8qZiYqY3OxUGrAryrzNPGuB_faKaZekzS7Rv6OVUpj4c_0KH1Ra94GeqvtAeM9jgTQ.UERnUE1IeUFtOUwtZzBqTQ.wb8ycw-3Edll20pgSFmOdRu4b7yEBqdXTcxdQztcSzE; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:43:58 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": null
-						},
-						{
-							"name": "401 - Unauthorized",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"12345\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/auth/login",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "c2t9ugupr4tte60gk7vzrubx=e%3AFMbNBXLicBWiEEwegJ-vMPV8RNS6ZVeH-xs5ChQnAvcyuY-zev0WDGL-sJ9bEAuh7utzyp3ThG7LK8kw2FxuMw.WGFORnZDakIzNWxkT0VqZQ.Yjqa-YYjCCbSDioIYd_BglEajyBJjbEjCIjTHH1Zsg0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "nbordiddl69a0pyvqim5113d"
-								},
-								{
-									"key": "content-length",
-									"value": "69"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:44:11 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"code\": \"E_INVALID_CREDENTIALS\",\n    \"message\": \"Invalid user credentials\"\n}"
-						},
-						{
-							"name": "422 - Unprocessable Entity",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"mail.com\",\n    \"password\": \"12345\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/auth/login",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "c2t9ugupr4tte60gk7vzrubx=e%3AX8dHzSNNDiP2B4hJuJkHZF0ySTFG2tyAlfO3lcpS70Jfc7JnaSOaIS9f4yEi0qlzrrz86Tgg5_oRyntlzqxcCw.Nnk4OWRhYmpNZ094d284YQ.mBZDKP6zSYjr6QHdLGZ0fCGv5V_YjdNCJljE_ldG9b0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "txma97smw2da7fvwqxv5ilif"
-								},
-								{
-									"key": "content-length",
-									"value": "103"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:44:33 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The email field must be a valid email address\",\n            \"rule\": \"email\",\n            \"field\": \"email\"\n        }\n    ]\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "orders",
-			"item": [
-				{
-					"name": "List all orders",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/orders",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"orders"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/orders",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"orders"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3AKYLeXq-kfqTOnd_uY1azdfFcFb0oFJgoIZKe7Sue5Vn_EB5aijeJHvLP4m04DsEY4P4rexWosfxgtcFUb5RBIQ.VE1MSTk2WE5SMVB5eEMybw.zr-XuNrE8pTQqn4yzB8f8_mI-ozTXYwqIEIDgAxU8CE; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "qwnj7h5dsc4bzij8hgpvu3lr"
-								},
-								{
-									"key": "content-length",
-									"value": "102"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:42:25 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 1,\n        \"status\": \"pending\",\n        \"items\": [\n            {\n                \"id\": 2,\n                \"title\": \"The Selfish Gene\",\n                \"quantity\": 3\n            }\n        ],\n        \"total\": 11997\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Create a new order",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"customer\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 1,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 2\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/orders",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"orders"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "200 - Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"customer\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 2,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 3\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/orders",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"orders"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3A4X1aCwvB6D9alGwX6j_vT-fzYCmnauXWnZvzbZC15O5VPxc_wnk0SEBSyvQXK9yEVLRKz8icBO5bslQEPHthkA.dTdQNllmZlpvMXVSWkduMA.Iood7GHSbucyQdOQIi2lziKGpRpYz7lXQ5Jd3C8xFdk; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "gc6w0rwzxwabsuakubf6mkgg"
-								},
-								{
-									"key": "content-length",
-									"value": "27"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:42:43 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"pending\",\n    \"id\": 2\n}"
-						},
-						{
-							"name": "400 - Bad Request - E_ORDER_COULDNT_BE_PROCESSED",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"books\": [\n        {\n            \"id\": 2,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 20\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/orders",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"orders"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "set-cookie",
-									"value": "toiihlba5imyqwjy19lypp5e=e%3Aad_HMdBBopy_wNNwufbHoa0G1rcJRX8rAbxWhqmBq9Ejrqv8uONcY0fSvciYLpJvUNfaNUXBGz2qRBzuYSEtZQ.NUk0UWZidVo2ZDUwbTdSSg.zqjd7HkXf3saRVOmMajoLrdIci4BNyDSJj0Yqsni5mU; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "hkvevdska9suscsyogk683vr"
-								},
-								{
-									"key": "content-length",
-									"value": "179"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 May 2025 15:43:18 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"code\": \"E_ORDER_COULDNT_BE_PROCESSED\",\n    \"message\": \"Order couldn't be processed\",\n    \"errors\": [\n        {\n            \"bookId\": 2,\n            \"bookTitle\": \"The Selfish Gene\",\n            \"error\": \"Book The Selfish Gene out of stock\"\n        }\n    ]\n}"
-						},
-						{
-							"name": "422 - Unprocessable Entity",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"books\": [\n        {\n            \"id\": 1,\n            \"title\": \"The Selfish Gene\",\n            \"quantity\": 2\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/orders",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"orders"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "set-cookie",
-									"value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
-								},
-								{
-									"key": "x-request-id",
-									"value": "uycgunqkizcegrw8y4j1iwpo"
-								},
-								{
-									"key": "content-length",
-									"value": "98"
-								},
-								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 21 May 2025 03:12:26 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"The customer field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"customer\"\n        }\n    ]\n}"
-						}
-					]
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "url",
-			"value": "",
-			"type": "string"
-		}
-	]
+  "info": {
+    "_postman_id": "60367e40-5dcd-4f92-92f9-a66a1ecd9df9",
+    "name": "Bookstore - API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40127800"
+  },
+  "item": [
+    {
+      "name": "books",
+      "item": [
+        {
+          "name": "List all books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/books",
+              "host": ["{{url}}"],
+              "path": ["books"]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books",
+                  "host": ["{{url}}"],
+                  "path": ["books"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AGjttbQyYBufeGaj8EFeXOHxWoleYUCWLLK5Ct5-TBNCANRu6d9GT9SpVhtd1F7sAwf0I8etrx-YAZDzVwcOytg.c3hFVE1xdEpxeWdEdUdBWQ.snxmRbwJcPaNDvU5KtPVurjst33L9lT6LdTMg4OXK2U; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "ldo8i787o48occfob3djnjr8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "14067"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:25:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 2,\n        \"titulo\": \"The Selfish Gene\",\n        \"autor\": \"Richard Dawkins\",\n        \"descricao\": null,\n        \"preco\": 3999,\n        \"imagem\": null,\n        \"estoque\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 3,\n        \"titulo\": \"The Bible\",\n        \"autor\": \"Various Authors\",\n        \"descricao\": \"Sacred scripture in Christianity, containing the Old and New Testaments.\",\n        \"preco\": 2999,\n        \"imagem\": \"https://example.com/images/bible.jpg\",\n        \"estoque\": 100,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 4,\n        \"titulo\": \"Cosmos\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": null,\n        \"preco\": 4999,\n        \"imagem\": \"https://example.com/images/cosmos.jpg\",\n        \"estoque\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 5,\n        \"titulo\": \"The Origin of Species\",\n        \"autor\": \"Charles Darwin\",\n        \"descricao\": null,\n        \"preco\": 4250,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 6,\n        \"titulo\": \"Genesis\",\n        \"autor\": \"Moses\",\n        \"descricao\": \"The first book of the Bible.\",\n        \"preco\": 999,\n        \"imagem\": null,\n        \"estoque\": 50,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 7,\n        \"titulo\": \"Sapiens: A Brief History of Humankind\",\n        \"autor\": \"Yuval Noah Harari\",\n        \"descricao\": null,\n        \"preco\": 5990,\n        \"imagem\": \"https://example.com/images/sapiens.jpg\",\n        \"estoque\": 20,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 8,\n        \"titulo\": \"The Book of Psalms\",\n        \"autor\": \"David\",\n        \"descricao\": null,\n        \"preco\": 1499,\n        \"imagem\": null,\n        \"estoque\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 9,\n        \"titulo\": \"Thinking, Fast and Slow\",\n        \"autor\": \"Daniel Kahneman\",\n        \"descricao\": null,\n        \"preco\": 5200,\n        \"imagem\": null,\n        \"estoque\": 9,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 10,\n        \"titulo\": \"The Book Thief\",\n        \"autor\": \"Markus Zusak\",\n        \"descricao\": null,\n        \"preco\": 3500,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 11,\n        \"titulo\": \"Ecclesiastes\",\n        \"autor\": \"Solomon\",\n        \"descricao\": null,\n        \"preco\": 1100,\n        \"imagem\": null,\n        \"estoque\": 25,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 12,\n        \"titulo\": \"Astrophysics for People in a Hurry\",\n        \"autor\": \"Neil deGrasse Tyson\",\n        \"descricao\": null,\n        \"preco\": 3799,\n        \"imagem\": null,\n        \"estoque\": 15,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 13,\n        \"titulo\": \"Romans\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1050,\n        \"imagem\": null,\n        \"estoque\": 40,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 14,\n        \"titulo\": \"The Martian\",\n        \"autor\": \"Andy Weir\",\n        \"descricao\": null,\n        \"preco\": 4400,\n        \"imagem\": \"https://example.com/images/martian.jpg\",\n        \"estoque\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 15,\n        \"titulo\": \"Exodus\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1299,\n        \"imagem\": null,\n        \"estoque\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 16,\n        \"titulo\": \"A Short History of Nearly Everything\",\n        \"autor\": \"Bill Bryson\",\n        \"descricao\": null,\n        \"preco\": 4875,\n        \"imagem\": null,\n        \"estoque\": 11,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 17,\n        \"titulo\": \"Brave New World\",\n        \"autor\": \"Aldous Huxley\",\n        \"descricao\": null,\n        \"preco\": 3950,\n        \"imagem\": null,\n        \"estoque\": 16,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 18,\n        \"titulo\": \"Leviticus\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1325,\n        \"imagem\": null,\n        \"estoque\": 33,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 19,\n        \"titulo\": \"The Elegant Universe\",\n        \"autor\": \"Brian Greene\",\n        \"descricao\": null,\n        \"preco\": 5000,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 20,\n        \"titulo\": \"Numbers\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1175,\n        \"imagem\": null,\n        \"estoque\": 22,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 21,\n        \"titulo\": \"Fahrenheit 451\",\n        \"autor\": \"Ray Bradbury\",\n        \"descricao\": null,\n        \"preco\": 3099,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 22,\n        \"titulo\": \"The Grand Design\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 4725,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 23,\n        \"titulo\": \"Deuteronomy\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1249,\n        \"imagem\": null,\n        \"estoque\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 24,\n        \"titulo\": \"1984\",\n        \"autor\": \"George Orwell\",\n        \"descricao\": null,\n        \"preco\": 3190,\n        \"imagem\": null,\n        \"estoque\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 25,\n        \"titulo\": \"Black Holes and Baby Universes\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 3895,\n        \"imagem\": null,\n        \"estoque\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 26,\n        \"titulo\": \"The Book of Revelation\",\n        \"autor\": \"John\",\n        \"descricao\": null,\n        \"preco\": 1499,\n        \"imagem\": null,\n        \"estoque\": 19,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 27,\n        \"titulo\": \"To Kill a Mockingbird\",\n        \"autor\": \"Harper Lee\",\n        \"descricao\": null,\n        \"preco\": 2899,\n        \"imagem\": null,\n        \"estoque\": 18,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 28,\n        \"titulo\": \"The Universe in a Nutshell\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 5325,\n        \"imagem\": null,\n        \"estoque\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 29,\n        \"titulo\": \"The Gospel of John\",\n        \"autor\": \"John\",\n        \"descricao\": null,\n        \"preco\": 995,\n        \"imagem\": null,\n        \"estoque\": 27,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 30,\n        \"titulo\": \"The Catcher in the Rye\",\n        \"autor\": \"J.D. Salinger\",\n        \"descricao\": null,\n        \"preco\": 2799,\n        \"imagem\": null,\n        \"estoque\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 31,\n        \"titulo\": \"The Structure of Scientific Revolutions\",\n        \"autor\": \"Thomas S. Kuhn\",\n        \"descricao\": null,\n        \"preco\": 4600,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 32,\n        \"titulo\": \"Galatians\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1020,\n        \"imagem\": null,\n        \"estoque\": 31,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 33,\n        \"titulo\": \"Slaughterhouse-Five\",\n        \"autor\": \"Kurt Vonnegut\",\n        \"descricao\": null,\n        \"preco\": 3400,\n        \"imagem\": null,\n        \"estoque\": 9,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 34,\n        \"titulo\": \"Silent Spring\",\n        \"autor\": \"Rachel Carson\",\n        \"descricao\": null,\n        \"preco\": 4000,\n        \"imagem\": null,\n        \"estoque\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 35,\n        \"titulo\": \"Acts of the Apostles\",\n        \"autor\": \"Luke\",\n        \"descricao\": null,\n        \"preco\": 1290,\n        \"imagem\": null,\n        \"estoque\": 23,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 36,\n        \"titulo\": \"Moby-Dick\",\n        \"autor\": \"Herman Melville\",\n        \"descricao\": null,\n        \"preco\": 3675,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 37,\n        \"titulo\": \"The Demon-Haunted World\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": null,\n        \"preco\": 4560,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 38,\n        \"titulo\": \"Hebrews\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1125,\n        \"imagem\": null,\n        \"estoque\": 28,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 39,\n        \"titulo\": \"Pride and Prejudice\",\n        \"autor\": \"Jane Austen\",\n        \"descricao\": null,\n        \"preco\": 3330,\n        \"imagem\": null,\n        \"estoque\": 15,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 40,\n        \"titulo\": \"Gödel, Escher, Bach\",\n        \"autor\": \"Douglas Hofstadter\",\n        \"descricao\": null,\n        \"preco\": 5690,\n        \"imagem\": null,\n        \"estoque\": 3,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 41,\n        \"titulo\": \"Proverbs\",\n        \"autor\": \"Solomon\",\n        \"descricao\": null,\n        \"preco\": 1099,\n        \"imagem\": null,\n        \"estoque\": 36,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 42,\n        \"titulo\": \"Crime and Punishment\",\n        \"autor\": \"Fyodor Dostoevsky\",\n        \"descricao\": null,\n        \"preco\": 4199,\n        \"imagem\": null,\n        \"estoque\": 12,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 43,\n        \"titulo\": \"The Immortal Life of Henrietta Lacks\",\n        \"autor\": \"Rebecca Skloot\",\n        \"descricao\": null,\n        \"preco\": 3980,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 44,\n        \"titulo\": \"Isaiah\",\n        \"autor\": \"Isaiah\",\n        \"descricao\": null,\n        \"preco\": 1330,\n        \"imagem\": null,\n        \"estoque\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 45,\n        \"titulo\": \"Don Quixote\",\n        \"autor\": \"Miguel de Cervantes\",\n        \"descricao\": null,\n        \"preco\": 4410,\n        \"imagem\": null,\n        \"estoque\": 5,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 46,\n        \"titulo\": \"On the Origin of Time\",\n        \"autor\": \"Thomas Hertog\",\n        \"descricao\": null,\n        \"preco\": 5120,\n        \"imagem\": null,\n        \"estoque\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 47,\n        \"titulo\": \"Matthew\",\n        \"autor\": \"Matthew\",\n        \"descricao\": null,\n        \"preco\": 1190,\n        \"imagem\": null,\n        \"estoque\": 24,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 48,\n        \"titulo\": \"Frankenstein\",\n        \"autor\": \"Mary Shelley\",\n        \"descricao\": null,\n        \"preco\": 3245,\n        \"imagem\": null,\n        \"estoque\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 49,\n        \"titulo\": \"A Brief History of Time\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": \"A landmark volume in science writing by one of the great minds of our time.\",\n        \"preco\": 4590,\n        \"imagem\": \"https://example.com/images/brief-history.jpg\",\n        \"estoque\": 12,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 50,\n        \"titulo\": \"The Selfish Gene\",\n        \"autor\": \"Richard Dawkins\",\n        \"descricao\": null,\n        \"preco\": 3999,\n        \"imagem\": null,\n        \"estoque\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 51,\n        \"titulo\": \"The Bible\",\n        \"autor\": \"Various Authors\",\n        \"descricao\": \"Sacred scripture in Christianity, containing the Old and New Testaments.\",\n        \"preco\": 2999,\n        \"imagem\": \"https://example.com/images/bible.jpg\",\n        \"estoque\": 100,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 52,\n        \"titulo\": \"Cosmos\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": null,\n        \"preco\": 4999,\n        \"imagem\": \"https://example.com/images/cosmos.jpg\",\n        \"estoque\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 53,\n        \"titulo\": \"The Origin of Species\",\n        \"autor\": \"Charles Darwin\",\n        \"descricao\": null,\n        \"preco\": 4250,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 54,\n        \"titulo\": \"Genesis\",\n        \"autor\": \"Moses\",\n        \"descricao\": \"The first book of the Bible.\",\n        \"preco\": 999,\n        \"imagem\": null,\n        \"estoque\": 50,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 55,\n        \"titulo\": \"Sapiens: A Brief History of Humankind\",\n        \"autor\": \"Yuval Noah Harari\",\n        \"descricao\": null,\n        \"preco\": 5990,\n        \"imagem\": \"https://example.com/images/sapiens.jpg\",\n        \"estoque\": 20,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 56,\n        \"titulo\": \"The Book of Psalms\",\n        \"autor\": \"David\",\n        \"descricao\": null,\n        \"preco\": 1499,\n        \"imagem\": null,\n        \"estoque\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 57,\n        \"titulo\": \"Thinking, Fast and Slow\",\n        \"autor\": \"Daniel Kahneman\",\n        \"descricao\": null,\n        \"preco\": 5200,\n        \"imagem\": null,\n        \"estoque\": 9,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 58,\n        \"titulo\": \"The Book Thief\",\n        \"autor\": \"Markus Zusak\",\n        \"descricao\": null,\n        \"preco\": 3500,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 59,\n        \"titulo\": \"Ecclesiastes\",\n        \"autor\": \"Solomon\",\n        \"descricao\": null,\n        \"preco\": 1100,\n        \"imagem\": null,\n        \"estoque\": 25,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 60,\n        \"titulo\": \"Astrophysics for People in a Hurry\",\n        \"autor\": \"Neil deGrasse Tyson\",\n        \"descricao\": null,\n        \"preco\": 3799,\n        \"imagem\": null,\n        \"estoque\": 15,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 61,\n        \"titulo\": \"Romans\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1050,\n        \"imagem\": null,\n        \"estoque\": 40,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 62,\n        \"titulo\": \"The Martian\",\n        \"autor\": \"Andy Weir\",\n        \"descricao\": null,\n        \"preco\": 4400,\n        \"imagem\": \"https://example.com/images/martian.jpg\",\n        \"estoque\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 63,\n        \"titulo\": \"Exodus\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1299,\n        \"imagem\": null,\n        \"estoque\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 64,\n        \"titulo\": \"A Short History of Nearly Everything\",\n        \"autor\": \"Bill Bryson\",\n        \"descricao\": null,\n        \"preco\": 4875,\n        \"imagem\": null,\n        \"estoque\": 11,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 65,\n        \"titulo\": \"Brave New World\",\n        \"autor\": \"Aldous Huxley\",\n        \"descricao\": null,\n        \"preco\": 3950,\n        \"imagem\": null,\n        \"estoque\": 16,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 66,\n        \"titulo\": \"Leviticus\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1325,\n        \"imagem\": null,\n        \"estoque\": 33,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 67,\n        \"titulo\": \"The Elegant Universe\",\n        \"autor\": \"Brian Greene\",\n        \"descricao\": null,\n        \"preco\": 5000,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 68,\n        \"titulo\": \"Numbers\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1175,\n        \"imagem\": null,\n        \"estoque\": 22,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 69,\n        \"titulo\": \"Fahrenheit 451\",\n        \"autor\": \"Ray Bradbury\",\n        \"descricao\": null,\n        \"preco\": 3099,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 70,\n        \"titulo\": \"The Grand Design\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 4725,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 71,\n        \"titulo\": \"Deuteronomy\",\n        \"autor\": \"Moses\",\n        \"descricao\": null,\n        \"preco\": 1249,\n        \"imagem\": null,\n        \"estoque\": 20,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 72,\n        \"titulo\": \"1984\",\n        \"autor\": \"George Orwell\",\n        \"descricao\": null,\n        \"preco\": 3190,\n        \"imagem\": null,\n        \"estoque\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 73,\n        \"titulo\": \"Black Holes and Baby Universes\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 3895,\n        \"imagem\": null,\n        \"estoque\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 74,\n        \"titulo\": \"The Book of Revelation\",\n        \"autor\": \"John\",\n        \"descricao\": null,\n        \"preco\": 1499,\n        \"imagem\": null,\n        \"estoque\": 19,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 75,\n        \"titulo\": \"To Kill a Mockingbird\",\n        \"autor\": \"Harper Lee\",\n        \"descricao\": null,\n        \"preco\": 2899,\n        \"imagem\": null,\n        \"estoque\": 18,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 76,\n        \"titulo\": \"The Universe in a Nutshell\",\n        \"autor\": \"Stephen Hawking\",\n        \"descricao\": null,\n        \"preco\": 5325,\n        \"imagem\": null,\n        \"estoque\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 77,\n        \"titulo\": \"The Gospel of John\",\n        \"autor\": \"John\",\n        \"descricao\": null,\n        \"preco\": 995,\n        \"imagem\": null,\n        \"estoque\": 27,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 78,\n        \"titulo\": \"The Catcher in the Rye\",\n        \"autor\": \"J.D. Salinger\",\n        \"descricao\": null,\n        \"preco\": 2799,\n        \"imagem\": null,\n        \"estoque\": 14,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 79,\n        \"titulo\": \"The Structure of Scientific Revolutions\",\n        \"autor\": \"Thomas S. Kuhn\",\n        \"descricao\": null,\n        \"preco\": 4600,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 80,\n        \"titulo\": \"Galatians\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1020,\n        \"imagem\": null,\n        \"estoque\": 31,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 81,\n        \"titulo\": \"Slaughterhouse-Five\",\n        \"autor\": \"Kurt Vonnegut\",\n        \"descricao\": null,\n        \"preco\": 3400,\n        \"imagem\": null,\n        \"estoque\": 9,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 82,\n        \"titulo\": \"Silent Spring\",\n        \"autor\": \"Rachel Carson\",\n        \"descricao\": null,\n        \"preco\": 4000,\n        \"imagem\": null,\n        \"estoque\": 8,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 83,\n        \"titulo\": \"Acts of the Apostles\",\n        \"autor\": \"Luke\",\n        \"descricao\": null,\n        \"preco\": 1290,\n        \"imagem\": null,\n        \"estoque\": 23,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 84,\n        \"titulo\": \"Moby-Dick\",\n        \"autor\": \"Herman Melville\",\n        \"descricao\": null,\n        \"preco\": 3675,\n        \"imagem\": null,\n        \"estoque\": 6,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 85,\n        \"titulo\": \"The Demon-Haunted World\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": null,\n        \"preco\": 4560,\n        \"imagem\": null,\n        \"estoque\": 7,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 86,\n        \"titulo\": \"Hebrews\",\n        \"autor\": \"Paul\",\n        \"descricao\": null,\n        \"preco\": 1125,\n        \"imagem\": null,\n        \"estoque\": 28,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 87,\n        \"titulo\": \"Pride and Prejudice\",\n        \"autor\": \"Jane Austen\",\n        \"descricao\": null,\n        \"preco\": 3330,\n        \"imagem\": null,\n        \"estoque\": 15,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 88,\n        \"titulo\": \"Gödel, Escher, Bach\",\n        \"autor\": \"Douglas Hofstadter\",\n        \"descricao\": null,\n        \"preco\": 5690,\n        \"imagem\": null,\n        \"estoque\": 3,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 89,\n        \"titulo\": \"Proverbs\",\n        \"autor\": \"Solomon\",\n        \"descricao\": null,\n        \"preco\": 1099,\n        \"imagem\": null,\n        \"estoque\": 36,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 90,\n        \"titulo\": \"Crime and Punishment\",\n        \"autor\": \"Fyodor Dostoevsky\",\n        \"descricao\": null,\n        \"preco\": 4199,\n        \"imagem\": null,\n        \"estoque\": 12,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 91,\n        \"titulo\": \"The Immortal Life of Henrietta Lacks\",\n        \"autor\": \"Rebecca Skloot\",\n        \"descricao\": null,\n        \"preco\": 3980,\n        \"imagem\": null,\n        \"estoque\": 10,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 92,\n        \"titulo\": \"Isaiah\",\n        \"autor\": \"Isaiah\",\n        \"descricao\": null,\n        \"preco\": 1330,\n        \"imagem\": null,\n        \"estoque\": 30,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 93,\n        \"titulo\": \"Don Quixote\",\n        \"autor\": \"Miguel de Cervantes\",\n        \"descricao\": null,\n        \"preco\": 4410,\n        \"imagem\": null,\n        \"estoque\": 5,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 94,\n        \"titulo\": \"On the Origin of Time\",\n        \"autor\": \"Thomas Hertog\",\n        \"descricao\": null,\n        \"preco\": 5120,\n        \"imagem\": null,\n        \"estoque\": 4,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 95,\n        \"titulo\": \"Matthew\",\n        \"autor\": \"Matthew\",\n        \"descricao\": null,\n        \"preco\": 1190,\n        \"imagem\": null,\n        \"estoque\": 24,\n        \"category\": \"bible\"\n    },\n    {\n        \"id\": 96,\n        \"titulo\": \"Frankenstein\",\n        \"autor\": \"Mary Shelley\",\n        \"descricao\": null,\n        \"preco\": 3245,\n        \"imagem\": null,\n        \"estoque\": 13,\n        \"category\": \"others\"\n    },\n    {\n        \"id\": 97,\n        \"titulo\": \"Sapiens: A Brief History of Humankind\",\n        \"autor\": \"Yuval Noah Harari\",\n        \"descricao\": \"An exploration of the history and impact of Homo sapiens.\",\n        \"preco\": 5990,\n        \"imagem\": \"https://example.com/sapiens.jpg\",\n        \"estoque\": 25,\n        \"category\": \"others\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get a book by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/books/search/2",
+              "host": ["{{url}}"],
+              "path": ["books", "search", "2"]
+            }
+          },
+          "response": [
+            {
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/search/1",
+                  "host": ["{{url}}"],
+                  "path": ["books", "search", "1"]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AQpb0VGTAmMBtBmjW2ZjMBqRKUHtBVFXVdC5RhLU6R7QgZkE-eDlwXSwQGE5fdj8MLY5AL_S2AJ5VbsnaECzXCw.ZEswM2FlMkNydmZ5cXhkWQ.KM4Vuf-O_qAq1OdmXmItpgfC69ZAo05ymTVaUqbbejg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "yxqfrdllof31yt4gbi79ztpa"
+                },
+                {
+                  "key": "content-length",
+                  "value": "54"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:39:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
+            },
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/search/2",
+                  "host": ["{{url}}"],
+                  "path": ["books", "search", "2"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3A4AJqoRYgwJIig3ppEEf0hvalgOPJBextjGTa1cAKgsq9Uq3gH9ERxkKg3iLu5fzYFPmsSGsDIiRDD2t4E20q9w.SjJSU0pIQlQwV0E0cjBhZw.weT7zxXP6zIoD05KxfuZ5N-LJehwGRMfbwVsEj-K7Z0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "e481tsy85mmgi8jsl587kyoq"
+                },
+                {
+                  "key": "content-length",
+                  "value": "141"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:39:44 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"titulo\": \"The Selfish Gene\",\n    \"autor\": \"Richard Dawkins\",\n    \"descricao\": null,\n    \"preco\": 3999,\n    \"imagem\": null,\n    \"estoque\": 5,\n    \"category\": \"science\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get a book by query param",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/books/search?q=cosmos",
+              "host": ["{{url}}"],
+              "path": ["books", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "cosmos"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/search?q=cosmos",
+                  "host": ["{{url}}"],
+                  "path": ["books", "search"],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "cosmos"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "o8tqlzsgxpsld1iyjagmgf18"
+                },
+                {
+                  "key": "content-length",
+                  "value": "920"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 21 May 2025 03:14:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 4,\n        \"titulo\": \"Cosmos\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"preco\": 4999,\n        \"imagem\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"estoque\": 5,\n        \"category\": \"science\"\n    },\n    {\n        \"id\": 14,\n        \"titulo\": \"Cosmos\",\n        \"autor\": \"Carl Sagan\",\n        \"descricao\": \"Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson\",\n        \"preco\": 4999,\n        \"imagem\": \"https://m.media-amazon.com/images/I/710C5x4MzwL.jpg\",\n        \"estoque\": 5,\n        \"category\": \"science\"\n    }\n]"
+            },
+            {
+              "name": "422 - Unprocessable Entity",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/search",
+                  "host": ["{{url}}"],
+                  "path": ["books", "search"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "kifkatug2n425rsl4pkj9ne2"
+                },
+                {
+                  "key": "content-length",
+                  "value": "84"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 21 May 2025 03:14:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"errors\": [\n        {\n            \"message\": \"The q field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"q\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create a new book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\",\n    \"autor\": \"Yuval Noah Harari\",\n    \"descricao\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"estoque\": 25,\n    \"preco\": 59.90,\n    \"imagem\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/books",
+              "host": ["{{url}}"],
+              "path": ["books"]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\",\n    \"autor\": \"Yuval Noah Harari\",\n    \"descricao\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"estoque\": 25,\n    \"preco\": 5990,\n    \"imagem\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/books",
+                  "host": ["{{url}}"],
+                  "path": ["books"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AdkCFl-ci3CVuG0uyKweFFNCqAFUMxC8AoCMQkBlEqCBj-MJw1xpsjRSoTMFKi_GmYVx4HfkzBFerLD76w8aW9Q.dkJ0eVhIbnNXNEgxUW05VA.iJCeDwNczJZOvA98aQwtK4b8kcv4yvayVVnfq2AHCX4; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "qto4uemb3njvng617idk90ld"
+                },
+                {
+                  "key": "content-length",
+                  "value": "249"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:40:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\",\n    \"autor\": \"Yuval Noah Harari\",\n    \"descricao\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"imagem\": \"https://example.com/sapiens.jpg\",\n    \"estoque\": 25,\n    \"preco\": 5990,\n    \"category\": \"others\",\n    \"id\": 98\n}"
+            },
+            {
+              "name": "422 - Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\",\n    \"autor\": \"Yuval Noah Harari\",\n    \"descricao\": \"An exploration of the history and impact of Homo sapiens.\",\n    \"estoque\": 25,\n    \"preco\": 59.90,\n    \"imagem\": \"https://example.com/sapiens.jpg\",\n    \"category\": \"others\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/books",
+                  "host": ["{{url}}"],
+                  "path": ["books"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AkdVeMVzTrC56NDP3S7UR4tUTS_Kss42_fvqnsHfIkgdcXWB_XmBOtLqm8Zgq1xl0nOSLUJOVXTW7zHEci3Gr4Q.NXRZRE1IQmdsbktyaDUzTQ.zpvK0r3-_fTBM-yQFrnP_o7ygsIUkldPJXYRbRUFwm4; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "qdzthaas60qib5ra7yyttocy"
+                },
+                {
+                  "key": "content-length",
+                  "value": "102"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:40:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"errors\": [\n        {\n            \"message\": \"The preco field must be an integer\",\n            \"rule\": \"withoutDecimals\",\n            \"field\": \"preco\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update a book",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/books/1",
+              "host": ["{{url}}"],
+              "path": ["books", "1"]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/books/1",
+                  "host": ["{{url}}"],
+                  "path": ["books", "1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AHPfVryQdO2ifXvxKcqyoLDtBYYbzIx6cvET-_RE0fHkKWUP5f6-ElZS2XdudxQNiYYFYFm7mveQspq9HWaZxpQ.TDFwQzRvY2E5dTZ2andqTg.kRsArhbQ0xQ7lbuw10tGL5K64kwmN_KEqYjF2PHRrJU; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "fmbrkki3p3bt257wv7ylncrk"
+                },
+                {
+                  "key": "content-length",
+                  "value": "278"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:41:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"titulo\": \"Sapiens: A Brief History of Humankind\",\n    \"autor\": \"Stephen Hawking\",\n    \"descricao\": \"A landmark volume in science writing by one of the great minds of our time.\",\n    \"preco\": 4590,\n    \"imagem\": \"https://example.com/images/brief-history.jpg\",\n    \"estoque\": 12,\n    \"category\": \"science\"\n}"
+            },
+            {
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"titulo\": \"Sapiens: A Brief History of Humankind\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/books/9999",
+                  "host": ["{{url}}"],
+                  "path": ["books", "9999"]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3A4x93eWDvuCZIJdG7pJw1uGD9JLS1rStyZyWboqfhHClLr7owu08zzuSdOGc3oYPgDYekmnhTgxGPVZoyrhdGeQ.amoyLWV1b3Z6ZmV1TkZUag.hSnZOhOUEJL3Tq1b3yjoEKvyTUfUUcTz4Xt5YMoNLrs; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "ud8h2akj04m1s3ftmzampx33"
+                },
+                {
+                  "key": "content-length",
+                  "value": "54"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:41:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete a book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/books/9999",
+              "host": ["{{url}}"],
+              "path": ["books", "9999"]
+            }
+          },
+          "response": [
+            {
+              "name": "204 - Not Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/1",
+                  "host": ["{{url}}"],
+                  "path": ["books", "1"]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AITuYniV3FPZAhISKueGw0cc0aj4k0Dqm0tHzlKICg2PBu5EqdCwdVYdsooCqjqaD3h87GZN7QJGtdOGnHuFuZg.dVl6V2pZRENyWGpGaktJSQ.cgZJBc0ADX9P2_hNOsUPObKods7vNQLRJeotN7qyFdQ; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:41:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/books/9999",
+                  "host": ["{{url}}"],
+                  "path": ["books", "9999"]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AwfmM9J8tJMA7yJMuFTt6idCoq6g0IPOGeVJEynjEeK0oV9HdpmM44T89jb_ekVXQVB42vD1xG3ug615SvtWUhA.bmVtd3dPREMyc05yUERoZA.PrbUVUKz65hrhuSWOdn4znkNsvPFuUKOuj2m2Gzao4g; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "rfyayqhfrkb9pjkf7dx82x3r"
+                },
+                {
+                  "key": "content-length",
+                  "value": "54"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:42:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"E_BOOK_NOT_FOUND\",\n    \"message\": \"Book not found\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"mail.com\",\n    \"password\": \"12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/login",
+              "host": ["{{url}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": [
+            {
+              "name": "204 - Not Content",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/auth/login",
+                  "host": ["{{url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "remember_web=; Max-Age=-1; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=; Max-Age=-1; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "c2t9ugupr4tte60gk7vzrubx=e%3AMkri1VUaKm-GJfeZMzfb8qZiYqY3OxUGrAryrzNPGuB_faKaZekzS7Rv6OVUpj4c_0KH1Ra94GeqvtAeM9jgTQ.UERnUE1IeUFtOUwtZzBqTQ.wb8ycw-3Edll20pgSFmOdRu4b7yEBqdXTcxdQztcSzE; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:43:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"mail@mail.com\",\n    \"password\": \"12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/auth/login",
+                  "host": ["{{url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "c2t9ugupr4tte60gk7vzrubx=e%3AFMbNBXLicBWiEEwegJ-vMPV8RNS6ZVeH-xs5ChQnAvcyuY-zev0WDGL-sJ9bEAuh7utzyp3ThG7LK8kw2FxuMw.WGFORnZDakIzNWxkT0VqZQ.Yjqa-YYjCCbSDioIYd_BglEajyBJjbEjCIjTHH1Zsg0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "nbordiddl69a0pyvqim5113d"
+                },
+                {
+                  "key": "content-length",
+                  "value": "69"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:44:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"E_INVALID_CREDENTIALS\",\n    \"message\": \"Invalid user credentials\"\n}"
+            },
+            {
+              "name": "422 - Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"mail.com\",\n    \"password\": \"12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/auth/login",
+                  "host": ["{{url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoiYzJ0OXVndXByNHR0ZTYwZ2s3dnpydWJ4IiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.ujd38wTpYosJzTiWsnpaDlhLaK8U-1Ebr-eKQb4hCDg; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "c2t9ugupr4tte60gk7vzrubx=e%3AX8dHzSNNDiP2B4hJuJkHZF0ySTFG2tyAlfO3lcpS70Jfc7JnaSOaIS9f4yEi0qlzrrz86Tgg5_oRyntlzqxcCw.Nnk4OWRhYmpNZ094d284YQ.mBZDKP6zSYjr6QHdLGZ0fCGv5V_YjdNCJljE_ldG9b0; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "txma97smw2da7fvwqxv5ilif"
+                },
+                {
+                  "key": "content-length",
+                  "value": "103"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:44:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"errors\": [\n        {\n            \"message\": \"The email field must be a valid email address\",\n            \"rule\": \"email\",\n            \"field\": \"email\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "List all orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/orders",
+              "host": ["{{url}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/orders",
+                  "host": ["{{url}}"],
+                  "path": ["orders"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3AKYLeXq-kfqTOnd_uY1azdfFcFb0oFJgoIZKe7Sue5Vn_EB5aijeJHvLP4m04DsEY4P4rexWosfxgtcFUb5RBIQ.VE1MSTk2WE5SMVB5eEMybw.zr-XuNrE8pTQqn4yzB8f8_mI-ozTXYwqIEIDgAxU8CE; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "qwnj7h5dsc4bzij8hgpvu3lr"
+                },
+                {
+                  "key": "content-length",
+                  "value": "102"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:42:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"status\": \"pendente\",\n        \"items\": [\n            {\n                \"id\": 2,\n                \"titulo\": \"The Selfish Gene\",\n                \"quantidade\": 3\n            }\n        ],\n        \"total\": 11997\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Create a new order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cliente\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 1,\n            \"titulo\": \"The Selfish Gene\",\n            \"quantidade\": 2\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/orders",
+              "host": ["{{url}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"cliente\": \"{{$randomFullName}}\",\n    \"books\": [\n        {\n            \"id\": 2,\n            \"titulo\": \"The Selfish Gene\",\n            \"quantidade\": 3\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/orders",
+                  "host": ["{{url}}"],
+                  "path": ["orders"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3A4X1aCwvB6D9alGwX6j_vT-fzYCmnauXWnZvzbZC15O5VPxc_wnk0SEBSyvQXK9yEVLRKz8icBO5bslQEPHthkA.dTdQNllmZlpvMXVSWkduMA.Iood7GHSbucyQdOQIi2lziKGpRpYz7lXQ5Jd3C8xFdk; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "gc6w0rwzxwabsuakubf6mkgg"
+                },
+                {
+                  "key": "content-length",
+                  "value": "27"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:42:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"pendente\",\n    \"id\": 2\n}"
+            },
+            {
+              "name": "400 - Bad Request - E_ORDER_COULDNT_BE_PROCESSED",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"books\": [\n        {\n            \"id\": 2,\n            \"titulo\": \"The Selfish Gene\",\n            \"quantidade\": 20\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/orders",
+                  "host": ["{{url}}"],
+                  "path": ["orders"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidG9paWhsYmE1aW15cXdqeTE5bHlwcDVlIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0.B91LtmR50OTFfu3CSFql1ANV4f2G8O543Ry4pP1AIRw; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "toiihlba5imyqwjy19lypp5e=e%3Aad_HMdBBopy_wNNwufbHoa0G1rcJRX8rAbxWhqmBq9Ejrqv8uONcY0fSvciYLpJvUNfaNUXBGz2qRBzuYSEtZQ.NUk0UWZidVo2ZDUwbTdSSg.zqjd7HkXf3saRVOmMajoLrdIci4BNyDSJj0Yqsni5mU; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "hkvevdska9suscsyogk683vr"
+                },
+                {
+                  "key": "content-length",
+                  "value": "179"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 May 2025 15:43:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"E_ORDER_COULDNT_BE_PROCESSED\",\n    \"message\": \"Order couldn't be processed\",\n    \"errors\": [\n        {\n            \"bookId\": 2,\n            \"bookTitle\": \"The Selfish Gene\",\n            \"error\": \"Book The Selfish Gene out of estoque\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "422 - Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"books\": [\n        {\n            \"id\": 1,\n            \"titulo\": \"The Selfish Gene\",\n            \"quantidade\": 2\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/orders",
+                  "host": ["{{url}}"],
+                  "path": ["orders"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "set-cookie",
+                  "value": "adonis-session=s%3AeyJtZXNzYWdlIjoidGVnOXplM3hjczc3OGN2bWxpb3B2YjAxIiwicHVycG9zZSI6ImFkb25pcy1zZXNzaW9uIn0._foPqMHmIYGkHziFFHb2FKb4l2U29wd4y3Kn-rIPUzY; Max-Age=7200; Path=/; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "uycgunqkizcegrw8y4j1iwpo"
+                },
+                {
+                  "key": "content-length",
+                  "value": "98"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 21 May 2025 03:12:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"errors\": [\n        {\n            \"message\": \"The cliente field must be defined\",\n            \"rule\": \"required\",\n            \"field\": \"cliente\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "string"
+    }
+  ]
 }

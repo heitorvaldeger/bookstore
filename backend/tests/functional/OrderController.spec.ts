@@ -77,6 +77,24 @@ test.group('Order Controller', (group) => {
     })
   })
 
+  test('/POST - return 422 if books list is empty on order', async ({ client, expect }) => {
+    const response = await client.post('/orders').json({
+      cliente: 'any_cliente',
+      books: [],
+    })
+
+    expect(response.status()).toBe(422)
+    expect(response.body()).toEqual({
+      errors: [
+        {
+          message: 'The books field must not be empty',
+          rule: 'notEmpty',
+          field: 'books',
+        },
+      ],
+    })
+  })
+
   test('/POST - return 201 with creation a book on success', async ({ client, expect }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,

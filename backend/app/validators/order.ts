@@ -6,7 +6,6 @@ export const createOrderValidator = vine.compile(
     books: vine.array(
       vine.object({
         id: vine.number().positive(),
-        titulo: vine.string().minLength(3),
         quantidade: vine.number().positive(),
       })
     ),

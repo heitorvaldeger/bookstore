@@ -3,15 +3,17 @@ import { Minus, Plus } from "react-feather";
 interface InputNumberIncremental {
   value?: number;
   containerClassName?: string;
+  minValue?: number;
   onValueChange: (value: number) => void;
 }
 export const InputNumberIncremental = ({
   onValueChange,
   containerClassName,
+  minValue = 1,
   value = 1,
 }: InputNumberIncremental) => {
   const handleMinusButtonClick = () => {
-    if (value > 0) {
+    if (value > 0 && value > minValue) {
       onValueChange(value - 1);
     }
   };

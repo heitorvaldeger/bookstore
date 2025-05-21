@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessagesValidation } from "@/constans/messages-validation";
 import { signIn } from "@/api/sign-in";
+import { useAdmin } from "@/contexts/AdminContext";
 
 const signInFormSchema = z.object({
   email: z
@@ -31,6 +32,8 @@ export const useLogin = () => {
     mode: "onSubmit",
   });
 
+  const { setLoggedState } = useAdmin();
+
   const { mutateAsync: authenticate, isPending } = useMutation({
     mutationFn: signIn,
   });
@@ -38,6 +41,7 @@ export const useLogin = () => {
   const handleSignIn = async (data: SignInForm) => {
     try {
       await authenticate(data);
+      setLoggedState();
       navigate("/");
     } catch (error) {
       alert("Invalid Credentials");

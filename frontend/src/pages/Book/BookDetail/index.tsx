@@ -1,6 +1,6 @@
 import { RadioGroup } from "radix-ui";
-import { RadioItem } from "../../../components/Forms/RadioItem";
-import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
+import { RadioItem } from "@/components/Forms/RadioItem";
+import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
 import { ArrowRight, ShoppingBag } from "react-feather";
 import { isAxiosError } from "axios";
 import { useBookDetail } from "./useBookDetail";

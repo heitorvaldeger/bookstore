@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
-import { SideBarMenu } from "../../components/Menus/SideBarMenu";
-import { Header } from "../../components/Headers/Header";
-import { SubHeader } from "../../components/Headers/SubHeader";
+import { SideBarMenu } from "@/components/Menus/SideBarMenu";
+import { Header } from "@/components/Headers/Header";
+import { SubHeader } from "@/components/Headers/SubHeader";
 
 export const DefaultLayout = () => {
   return (

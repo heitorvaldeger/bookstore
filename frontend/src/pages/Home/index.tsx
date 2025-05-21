@@ -1,6 +1,6 @@
-import productSlide from "../../assets/images/product-slide.png";
-import promotionDisplay from "../../assets/images/promotion-display.png";
-import { BookCard } from "../../components/Cards/BookCard";
+import productSlide from "@/assets/images/product-slide.png";
+import promotionDisplay from "@/assets/images/promotion-display.png";
+import { BookCard } from "@/components/Cards/BookCard";
 import { CaretRightIcon } from "@radix-ui/react-icons";
 import { CategoryList } from "./components/CategoryList";
 import { useHome } from "./useHome";

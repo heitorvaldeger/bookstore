@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
-import { fetchBookByQuery } from "../../../api/fetch-book-by-query";
-import { fetchBooks } from "../../../api/fetch-books";
+import { fetchBookByQuery } from "@/api/fetch-book-by-query";
+import { fetchBooks } from "@/api/fetch-books";
 
 export const useBookSearch = () => {
   const [searchParams] = useSearchParams();

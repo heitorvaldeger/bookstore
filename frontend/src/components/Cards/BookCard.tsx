@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { convertPriceBook } from "../../utils";
+import { convertPriceBook } from "@/utils";
 
 interface BookCardProps {
   idBook: number;

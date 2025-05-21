@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import { fetchBook } from "../../../api/fetch-book";
+import { fetchBook } from "@/api/fetch-book";
 import { useState } from "react";
-import { useCart } from "../../../contexts/CartContext";
-import { convertPriceBook } from "../../../utils";
+import { useCart } from "@/contexts/CartContext";
+import { convertPriceBook } from "@/utils";
 
 export const useBookDetail = () => {
   const { id } = useParams();

@@ -1,4 +1,4 @@
-import { BookCard } from "../../../components/Cards/BookCard";
+import { BookCard } from "@/components/Cards/BookCard";
 import { useBookSearch } from "./useBookSearch";
 
 export const BookSearch = () => {

@@ -4,10 +4,10 @@ import {
   useState,
   type PropsWithChildren,
 } from "react";
-import type { Book } from "../models/book";
-import type { BookOrder } from "../models/book-order";
-import { convertPriceBook } from "../utils";
-import { createOrder } from "../api/create-order";
+import type { Book } from "@/models/book";
+import type { BookOrder } from "@/models/book-order";
+import { convertPriceBook } from "@/utils";
+import { createOrder } from "@/api/create-order";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 

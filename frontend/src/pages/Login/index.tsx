@@ -1,6 +1,6 @@
-import logoImage from "../../assets/images/logo.png";
+import logoImage from "@/assets/images/logo.png";
 import { Loader } from "react-feather";
-import { Input } from "../../components/Forms/Input";
+import { Input } from "@/components/Forms/Input";
 import { useLogin } from "./useLogin";
 
 export const Login = () => {

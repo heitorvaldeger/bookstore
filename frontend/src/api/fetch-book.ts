@@ -1,5 +1,5 @@
-import { api } from "../lib/axios";
-import type { Book } from "../models/book";
+import { api } from "@/lib/axios";
+import type { Book } from "@/models/book";
 
 interface FetchBookParams {
   idBook: string;

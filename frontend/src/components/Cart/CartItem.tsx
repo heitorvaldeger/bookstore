@@ -1,7 +1,7 @@
-import { useCart } from "../../contexts/CartContext";
-import type { BookOrder } from "../../models/book-order";
-import { convertPriceBook } from "../../utils";
-import { InputNumberIncremental } from "../Forms/InputNumberIncremental";
+import { useCart } from "@/contexts/CartContext";
+import type { BookOrder } from "@/models/book-order";
+import { convertPriceBook } from "@/utils";
+import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
 
 interface CartItemProps {
   bookOrder: BookOrder;

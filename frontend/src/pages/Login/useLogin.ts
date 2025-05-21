@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessagesValidation } from "../../constans/messages-validation";
-import { signIn } from "../../api/sign-in";
+import { MessagesValidation } from "@/constans/messages-validation";
+import { signIn } from "@/api/sign-in";
 
 const signInFormSchema = z.object({
   email: z

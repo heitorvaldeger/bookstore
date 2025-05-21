@@ -1,7 +1,7 @@
 import { Home as HomeIcon, Bell, Settings, User } from "react-feather";
 
-import avatarImage from "../../assets/images/avatar.png";
-import logoImage from "../../assets/images/logo.png";
+import avatarImage from "@/assets/images/avatar.png";
+import logoImage from "@/assets/images/logo.png";
 import { BookMenu } from "./BookMenu";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router";

@@ -1,5 +1,5 @@
 import { AlignLeft, Search } from "react-feather";
-import { Input } from "../../Forms/Input";
+import { Input } from "@/components/Forms/Input";
 import { useSubHeader } from "./useSubHeader";
 
 export const SubHeader = () => {

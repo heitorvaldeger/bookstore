@@ -1,7 +1,7 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 import { ShoppingBag } from "react-feather";
-import { useCart } from "../../contexts/CartContext";
+import { useCart } from "@/contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const CartDialog = () => {

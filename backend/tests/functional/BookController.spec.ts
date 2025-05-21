@@ -67,21 +67,21 @@ test.group('Book Controller', (group) => {
   }) => {
     await BookFactory.merge([
       {
-        author: 'George Orwell',
+        autor: 'George Orwell',
         titulo: '1984',
-        description:
+        descricao:
           'Um romance distópico sobre um regime totalitário que controla todos os aspectos da vida dos cidadãos, incluindo seus pensamentos.',
       },
       {
-        author: 'Jane Austen',
+        autor: 'Jane Austen',
         titulo: 'Orgulho e Preconceito',
-        description:
+        descricao:
           'Uma história sobre amor, classe social e orgulho, centrada na vida de Elizabeth Bennet e Mr. Darcy na Inglaterra do século XIX.',
       },
       {
-        author: 'Haruki Murakami',
+        autor: 'Haruki Murakami',
         titulo: 'Kafka à Beira-Mar',
-        description:
+        descricao:
           'Uma história surreal e simbólica sobre um adolescente que foge de casa e um homem idoso com habilidades misteriosas.',
       },
     ]).createMany(3)
@@ -94,7 +94,7 @@ test.group('Book Controller', (group) => {
 
     expect(response.status()).toBe(200)
     expect(body.length).toBe(1)
-    expect(body[0].author).toBe('George Orwell')
+    expect(body[0].autor).toBe('George Orwell')
 
     const anotherBody = anotherResponse.body()
     expect(response.status()).toBe(200)
@@ -123,8 +123,8 @@ test.group('Book Controller', (group) => {
   test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
     const payload = {
       titulo: 'any_title',
-      description: 'any_description',
-      author: 'any_author',
+      descricao: 'any_description',
+      autor: 'any_author',
       imageURL: 'https://any-url.com',
       category: BookCategoryEnum.BIBLE,
       preco: 999,
@@ -157,9 +157,9 @@ test.group('Book Controller', (group) => {
           field: 'titulo',
         },
         {
-          message: 'The author field must be defined',
+          message: 'The autor field must be defined',
           rule: 'required',
-          field: 'author',
+          field: 'autor',
         },
         {
           message: 'The stock field must be defined',
@@ -188,7 +188,7 @@ test.group('Book Controller', (group) => {
       .put(`/books/${book.id}`)
       .json({
         titulo: 'another_title',
-        description: 'another_description',
+        descricao: 'another_description',
       })
       .loginAs(user)
 
@@ -196,7 +196,7 @@ test.group('Book Controller', (group) => {
 
     expect(response.status()).toBe(200)
     expect(body.titulo).toBe('another_title')
-    expect(body.description).toBe('another_description')
+    expect(body.descricao).toBe('another_description')
   })
 
   test("/PUT - return 404 if a book doesn't exists on update", async ({ client, expect }) => {

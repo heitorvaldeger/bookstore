@@ -19,8 +19,8 @@ export const getBooksByFilter = vine.compile(
 export const createBookValidator = vine.compile(
   vine.object({
     titulo: vine.string().minLength(3),
-    author: vine.string().minLength(3),
-    description: vine.string().optional(),
+    autor: vine.string().minLength(3),
+    descricao: vine.string().optional(),
     imageURL: vine.string().url().optional(),
     stock: vine.number().positive(),
     preco: vine.number().positive().withoutDecimals(),
@@ -35,8 +35,8 @@ export const updateBookValidator = vine.compile(
       .regex(/^\d+$/)
       .transform((value) => Number(value)),
     titulo: vine.string().minLength(3).optional(),
-    author: vine.string().minLength(3).optional(),
-    description: vine.string().optional().optional(),
+    autor: vine.string().minLength(3).optional(),
+    descricao: vine.string().optional().optional(),
     imageURL: vine.string().url().optional().optional(),
     stock: vine.number().positive().optional(),
     preco: vine.number().positive().optional(),

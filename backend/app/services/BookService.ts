@@ -61,7 +61,7 @@ export class BookService {
 
   private filterByAuthor(query: ModelQueryBuilderContract<typeof Book, Book>) {
     if (this.qSearch) {
-      query.orWhereILike('author', `%${this.qSearch}%`)
+      query.orWhereILike('autor', `%${this.qSearch}%`)
     }
 
     return this
@@ -69,7 +69,7 @@ export class BookService {
 
   private filterByDescription(query: ModelQueryBuilderContract<typeof Book, Book>) {
     if (this.qSearch) {
-      query.orWhereILike('description', `%${this.qSearch}%`)
+      query.orWhereILike('descricao', `%${this.qSearch}%`)
     }
 
     return this

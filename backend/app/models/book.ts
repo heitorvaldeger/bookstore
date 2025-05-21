@@ -10,10 +10,10 @@ export default class Book extends BaseModel {
   declare titulo: string
 
   @column()
-  declare author: string
+  declare autor: string
 
   @column()
-  declare description: string
+  declare descricao: string
 
   @column()
   declare preco: number

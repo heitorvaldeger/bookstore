@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { convertNumberToBrazilianRealFormat } from "../../utils";
 
 interface BookCardProps {
@@ -15,20 +15,15 @@ export const BookCard = ({
   price,
   imageURL,
 }: BookCardProps) => {
-  const navigate = useNavigate();
   const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
     price / 100
   );
 
   const isNew = false;
 
-  const handleClickBookCard = () => {
-    navigate(`books/${idBook}`);
-  };
-
   return (
-    <div
-      onClick={handleClickBookCard}
+    <Link
+      to={`/books/${idBook}`}
       className="flex flex-col space-y-2 cursor-pointer"
     >
       <div className="rounded-lg relative">
@@ -50,6 +45,6 @@ export const BookCard = ({
       <p className="font-bold text-xs text-gray-900">
         {valueBrazilianFormatted}
       </p>
-    </div>
+    </Link>
   );
 };

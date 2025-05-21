@@ -6,22 +6,32 @@ import { signIn } from "../../api/sign-in";
 import * as z from "zod";
 import { Loader } from "react-feather";
 import { useNavigate } from "react-router";
+import { MessagesValidation } from "../../constans/messages-validation";
+import { Input } from "../../components/Forms/Input";
 
 const signInFormSchema = z.object({
-  email: z.string().email().trim(),
-  password: z.string().trim(),
+  email: z
+    .string()
+    .email(MessagesValidation.MUST_BE_VALID_EMAIL)
+    .min(1, MessagesValidation.MUST_BE_REQUIRED),
+  password: z.string().min(1, MessagesValidation.MUST_BE_REQUIRED),
 });
 
 type SignInForm = z.infer<typeof signInFormSchema>;
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { handleSubmit, register } = useForm<SignInForm>({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<SignInForm>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
       email: "",
       password: "",
     },
+    mode: "onSubmit",
   });
 
   const { mutateAsync: authenticate, isPending } = useMutation({
@@ -53,11 +63,11 @@ export const Login = () => {
               <label htmlFor="email" className="font-medium text-sm">
                 E-mail
               </label>
-              <input
+              <Input
                 {...register("email")}
                 type="email"
-                required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
+                error={errors.email?.message}
               />
             </div>
 
@@ -65,11 +75,11 @@ export const Login = () => {
               <label htmlFor="password" className="font-medium text-sm">
                 Senha
               </label>
-              <input
+              <Input
                 {...register("password")}
                 type="password"
-                required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
+                error={errors.password?.message}
               />
             </div>
 

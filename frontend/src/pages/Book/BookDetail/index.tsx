@@ -8,11 +8,10 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../../api/fetch-book";
 import { convertNumberToBrazilianRealFormat } from "../../../utils";
 import { isAxiosError } from "axios";
+import { useCart } from "../../../contexts/CartContext";
 
 export const BookDetail = () => {
-  const [color, setColor] = useState("Azul");
   const { id } = useParams();
-
   const {
     data: book,
     error,
@@ -23,6 +22,10 @@ export const BookDetail = () => {
     enabled: !!id,
     retry: false,
   });
+  const { addBookToCart } = useCart();
+
+  const [color, setColor] = useState("Azul");
+  const [qty, setQty] = useState(1);
 
   const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
     (book?.preco ?? 0) / 100
@@ -31,6 +34,12 @@ export const BookDetail = () => {
   const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
     (book?.preco ?? 0) / 2 / 100
   );
+
+  const handleAddBookToCartClick = () => {
+    if (qty > 0 && book) {
+      addBookToCart(book, qty);
+    }
+  };
 
   if (isAxiosError(error)) {
     if (error.status === 404) {
@@ -132,11 +141,19 @@ export const BookDetail = () => {
               </p>
             </div>
 
-            <InputNumberIncremental />
+            <InputNumberIncremental
+              value={qty}
+              onValueChange={(value: number) => {
+                setQty(value);
+              }}
+            />
           </div>
 
           <div className="my-10 flex flex-col gap-4">
-            <button className="flex items-center w-[290px] h-[45.71px] justify-center gap-3.5 rounded-lg bg-gray-950 text-white">
+            <button
+              onClick={handleAddBookToCartClick}
+              className="cursor-pointer flex items-center w-[290px] h-[45.71px] justify-center gap-3.5 rounded-lg bg-gray-950 text-white"
+            >
               <ShoppingBag />
               <span className="font-bold font-inter text-sm">
                 Adicionar à sacola

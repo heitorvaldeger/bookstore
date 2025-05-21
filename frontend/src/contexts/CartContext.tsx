@@ -7,11 +7,16 @@ import {
 import type { Book } from "../models/book";
 
 interface Cart {
-  books: Book[];
+  books: {
+    id: number;
+    titulo: string;
+    autor: string;
+    quantidade: number;
+  }[];
 }
 interface CartContextProps {
   cart: Cart;
-  addBookToCart: (book: Book) => void;
+  addBookToCart: (book: Book, qty: number) => void;
   getQtyBookCart: () => number;
 }
 const CartContext = createContext({} as CartContextProps);
@@ -21,10 +26,18 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     books: [],
   });
 
-  const addBookToCart = (book: Book) => {
+  const addBookToCart = (book: Book, qty: number) => {
     setCart((prev) => ({
       ...prev,
-      books: [...prev.books, book],
+      books: [
+        ...prev.books,
+        {
+          id: book.id,
+          titulo: book.titulo,
+          autor: book.autor,
+          quantidade: qty,
+        },
+      ],
     }));
   };
 

@@ -50,11 +50,7 @@ export const CartDialog = () => {
                       Cristianismo puro e simples, CS LEWIS
                     </p>
                     <p className="text-teal-700 font-bold ">R$467,90</p>
-                    <InputNumberIncremental
-                      container={{
-                        className: "w-4/8",
-                      }}
-                    />
+                    <InputNumberIncremental containerClassName="w-4/8" />
                   </div>
                 </div>
               ))}

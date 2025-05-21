@@ -57,11 +57,11 @@ export const BookDetail = () => {
         <span>{">"}</span>
         <span>Livros</span>
       </div>
-      <div className="flex gap-8">
+      <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
         <section className="flex-1">
           <img
             src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
-            className="rounded-xl"
+            className="rounded-xl max-w-[473px] mx-auto lg:mx-0"
           />
         </section>
         <section className="flex-1 space-y-2">

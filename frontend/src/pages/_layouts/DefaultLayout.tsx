@@ -10,7 +10,7 @@ export const DefaultLayout = () => {
         <SideBarMenu />
       </div>
 
-      <section className="bg-zinc-50 h-full w-full px-6 space-y-4">
+      <section className="bg-zinc-50 w-full px-6 space-y-4 h-full min-h-screen">
         <Header />
         <SubHeader />
         <Outlet />

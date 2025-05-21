@@ -14,7 +14,7 @@ export default class Order extends BaseModel {
   @column()
   declare cliente: string
 
-  @column.dateTime({ autoCreate: true, serializeAs: null })
+  @column.dateTime({ autoCreate: true, serializeAs: 'data' })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })

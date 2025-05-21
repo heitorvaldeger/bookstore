@@ -34,7 +34,7 @@ test.group('Services order service', (t) => {
     const books = order.books.map((book) => ({
       id: book.id,
       titulo: book.titulo,
-      quantidade: book.$extras.pivot_quantity,
+      quantidade: book.$extras.pivot_quantidade,
     }))
 
     expect(orders[0].items).toEqual(books)

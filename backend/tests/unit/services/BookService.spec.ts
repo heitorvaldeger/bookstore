@@ -11,13 +11,13 @@ import db from '@adonisjs/lucid/services/db'
 import { TransactionClientContract } from '@adonisjs/lucid/types/database'
 
 const bookToSave = {
-  title: 'any_title',
-  description: 'any_description',
-  author: 'any_author',
-  imageURL: 'any_image',
-  category: BookCategoryEnum.BIBLE,
-  price: 999,
-  stock: 100,
+  titulo: 'any_title',
+  descricao: 'any_description',
+  autor: 'any_author',
+  imagem: 'any_image',
+  categoria: BookCategoryEnum.BIBLE,
+  preco: 999,
+  estoque: 100,
 }
 
 test.group('Services book service', (group) => {
@@ -78,11 +78,11 @@ test.group('Services book service', (group) => {
 
     const bookToUpdate: BookSaveDTO = {
       ...bookToSave,
-      description: 'another_description',
+      descricao: 'another_description',
     }
     const bookUpdated = await sut.update(book.id, bookToUpdate)
 
-    expect(bookUpdated.description).toBe(bookToUpdate.description)
+    expect(bookUpdated.descricao).toBe(bookToUpdate.descricao)
   })
 
   test("it should return an exception on delete if book doesn't exists", async ({ expect }) => {
@@ -102,16 +102,16 @@ test.group('Services book service', (group) => {
     expect(bookDeleted?.deletedAt).toBeTruthy()
   })
 
-  test('it should filter a book list by author', async ({ expect }) => {
+  test('it should filter a book list by autor', async ({ expect }) => {
     await BookFactory.merge([
       {
-        author: 'George Orwell',
+        autor: 'George Orwell',
       },
       {
-        author: 'Lewis Carrol',
+        autor: 'Lewis Carrol',
       },
       {
-        author: 'George Orwell',
+        autor: 'George Orwell',
         deletedAt: DateTime.now(),
       },
     ]).createMany(3)
@@ -120,50 +120,50 @@ test.group('Services book service', (group) => {
     const books = await sut.getBooksByFilter('george')
 
     expect(books.length).toBe(1)
-    expect(books[0].author).toBe('George Orwell')
+    expect(books[0].autor).toBe('George Orwell')
 
     const anotherBooks = await sut.getBooksByFilter('carrol')
 
     expect(anotherBooks.length).toBe(1)
-    expect(anotherBooks[0].author).toBe('Lewis Carrol')
+    expect(anotherBooks[0].autor).toBe('Lewis Carrol')
   })
 
-  test('it should filter a book list by title', async ({ expect }) => {
+  test('it should filter a book list by titulo', async ({ expect }) => {
     await BookFactory.merge([
       {
-        title: 'Alice no País das Maravilhas',
+        titulo: 'Alice no País das Maravilhas',
       },
       {
-        title: '1984',
+        titulo: '1984',
       },
     ]).createMany(2)
     const sut = new BookService()
     const books = await sut.getBooksByFilter('alice')
 
     expect(books.length).toBe(1)
-    expect(books[0].title).toBe('Alice no País das Maravilhas')
+    expect(books[0].titulo).toBe('Alice no País das Maravilhas')
 
     const anotherBooks = await sut.getBooksByFilter('1984')
 
     expect(anotherBooks.length).toBe(1)
-    expect(anotherBooks[0].title).toBe('1984')
+    expect(anotherBooks[0].titulo).toBe('1984')
   })
 
-  test('it should filter a book list by description', async ({ expect }) => {
+  test('it should filter a book list by descricao', async ({ expect }) => {
     await BookFactory.merge([
       {
-        author: 'any description for a book',
+        autor: 'any descricao for a book',
       },
       {
-        author: 'another description for a book',
+        autor: 'another descricao for a book',
       },
     ]).createMany(2)
     const sut = new BookService()
-    const books = await sut.getBooksByFilter('any description')
+    const books = await sut.getBooksByFilter('any descricao')
 
     expect(books.length).toBe(1)
 
-    const anotherBooks = await sut.getBooksByFilter('another description')
+    const anotherBooks = await sut.getBooksByFilter('another descricao')
 
     expect(anotherBooks.length).toBe(1)
   })

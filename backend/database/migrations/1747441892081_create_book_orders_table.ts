@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.integer('order_id').unsigned().references('orders.id')
       table.unique(['book_id', 'order_id'])
 
-      table.integer('quantity')
+      table.integer('quantidade')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

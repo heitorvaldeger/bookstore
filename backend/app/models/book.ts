@@ -7,25 +7,25 @@ export default class Book extends BaseModel {
   declare id: number
 
   @column()
-  declare title: string
+  declare titulo: string
 
   @column()
-  declare author: string
+  declare autor: string
 
   @column()
-  declare description: string
+  declare descricao: string
 
   @column()
-  declare price: number
+  declare preco: number
 
-  @column({ serializeAs: 'imageURL' })
-  declare imageURL: string
-
-  @column()
-  declare stock: number
+  @column({ serializeAs: 'imagem' })
+  declare imagem: string
 
   @column()
-  declare category: BookCategoryEnum
+  declare estoque: number
+
+  @column()
+  declare categoria: BookCategoryEnum
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime

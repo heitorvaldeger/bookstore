@@ -67,21 +67,21 @@ test.group('Book Controller', (group) => {
   }) => {
     await BookFactory.merge([
       {
-        author: 'George Orwell',
-        title: '1984',
-        description:
+        autor: 'George Orwell',
+        titulo: '1984',
+        descricao:
           'Um romance distópico sobre um regime totalitário que controla todos os aspectos da vida dos cidadãos, incluindo seus pensamentos.',
       },
       {
-        author: 'Jane Austen',
-        title: 'Orgulho e Preconceito',
-        description:
+        autor: 'Jane Austen',
+        titulo: 'Orgulho e Preconceito',
+        descricao:
           'Uma história sobre amor, classe social e orgulho, centrada na vida de Elizabeth Bennet e Mr. Darcy na Inglaterra do século XIX.',
       },
       {
-        author: 'Haruki Murakami',
-        title: 'Kafka à Beira-Mar',
-        description:
+        autor: 'Haruki Murakami',
+        titulo: 'Kafka à Beira-Mar',
+        descricao:
           'Uma história surreal e simbólica sobre um adolescente que foge de casa e um homem idoso com habilidades misteriosas.',
       },
     ]).createMany(3)
@@ -94,7 +94,7 @@ test.group('Book Controller', (group) => {
 
     expect(response.status()).toBe(200)
     expect(body.length).toBe(1)
-    expect(body[0].author).toBe('George Orwell')
+    expect(body[0].autor).toBe('George Orwell')
 
     const anotherBody = anotherResponse.body()
     expect(response.status()).toBe(200)
@@ -122,13 +122,13 @@ test.group('Book Controller', (group) => {
 
   test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
     const payload = {
-      title: 'any_title',
-      description: 'any_description',
-      author: 'any_author',
-      imageURL: 'https://any-url.com',
-      category: BookCategoryEnum.BIBLE,
-      price: 999,
-      stock: 100,
+      titulo: 'any_title',
+      descricao: 'any_description',
+      autor: 'any_author',
+      imagem: 'https://any-url.com',
+      categoria: BookCategoryEnum.BIBLE,
+      preco: 999,
+      estoque: 100,
     }
 
     const user = await makeUser()
@@ -152,29 +152,29 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The title field must be defined',
+          message: 'The titulo field must be defined',
           rule: 'required',
-          field: 'title',
+          field: 'titulo',
         },
         {
-          message: 'The author field must be defined',
+          message: 'The autor field must be defined',
           rule: 'required',
-          field: 'author',
+          field: 'autor',
         },
         {
-          message: 'The stock field must be defined',
+          message: 'The estoque field must be defined',
           rule: 'required',
-          field: 'stock',
+          field: 'estoque',
         },
         {
-          message: 'The price field must be defined',
+          message: 'The preco field must be defined',
           rule: 'required',
-          field: 'price',
+          field: 'preco',
         },
         {
-          message: 'The category field must be defined',
+          message: 'The categoria field must be defined',
           rule: 'required',
-          field: 'category',
+          field: 'categoria',
         },
       ],
     })
@@ -187,16 +187,16 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/${book.id}`)
       .json({
-        title: 'another_title',
-        description: 'another_description',
+        titulo: 'another_title',
+        descricao: 'another_description',
       })
       .loginAs(user)
 
     const body = response.body()
 
     expect(response.status()).toBe(200)
-    expect(body.title).toBe('another_title')
-    expect(body.description).toBe('another_description')
+    expect(body.titulo).toBe('another_title')
+    expect(body.descricao).toBe('another_description')
   })
 
   test("/PUT - return 404 if a book doesn't exists on update", async ({ client, expect }) => {
@@ -204,7 +204,7 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/9999`)
       .json({
-        title: 'another title',
+        titulo: 'another titulo',
       })
       .loginAs(user)
 
@@ -221,7 +221,7 @@ test.group('Book Controller', (group) => {
     const response = await client
       .put(`/books/${book.id}`)
       .json({
-        price: 'any_value',
+        preco: 'any_value',
       })
       .loginAs(user)
 
@@ -231,9 +231,9 @@ test.group('Book Controller', (group) => {
     expect(body).toEqual({
       errors: [
         {
-          message: 'The price field must be a number',
+          message: 'The preco field must be a number',
           rule: 'number',
-          field: 'price',
+          field: 'preco',
         },
       ],
     })

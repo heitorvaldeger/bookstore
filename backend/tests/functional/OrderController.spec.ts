@@ -27,8 +27,8 @@ test.group('Order Controller', (group) => {
       books: [
         {
           id: 'any_value',
-          title: '',
-          quantity: -1,
+          titulo: '',
+          quantidade: -1,
         },
       ],
     })
@@ -44,8 +44,8 @@ test.group('Order Controller', (group) => {
     expect(responseOrderWithFieldsInvalid.body()).toEqual({
       errors: [
         {
-          field: 'customer',
-          message: 'The customer field must be defined',
+          field: 'cliente',
+          message: 'The cliente field must be defined',
           rule: 'required',
         },
         {
@@ -54,14 +54,14 @@ test.group('Order Controller', (group) => {
           field: 'books.0.id',
         },
         {
-          message: 'The title field must be defined',
+          message: 'The titulo field must be defined',
           rule: 'required',
-          field: 'books.0.title',
+          field: 'books.0.titulo',
         },
         {
-          message: 'The quantity field must be positive',
+          message: 'The quantidade field must be positive',
           rule: 'positive',
-          field: 'books.0.quantity',
+          field: 'books.0.quantidade',
         },
       ],
     })
@@ -70,8 +70,8 @@ test.group('Order Controller', (group) => {
     expect(responseOrderWithoutBooks.body()).toEqual({
       errors: [
         {
-          field: 'customer',
-          message: 'The customer field must be defined',
+          field: 'cliente',
+          message: 'The cliente field must be defined',
           rule: 'required',
         },
         {
@@ -86,12 +86,12 @@ test.group('Order Controller', (group) => {
   test('/POST - return 201 with creation a book on success', async ({ client, expect }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
-      quantity: 2,
+      titulo: book.titulo,
+      quantidade: 2,
     }))
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: booksPayload,
     })
 
@@ -105,18 +105,18 @@ test.group('Order Controller', (group) => {
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
-      quantity: 2,
+      titulo: book.titulo,
+      quantidade: 2,
     }))
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: [
         ...booksPayload,
         {
           id: 999,
-          title: 'any_title',
-          quantity: 3,
+          titulo: 'any_title',
+          quantidade: 3,
         },
       ],
     })
@@ -132,30 +132,30 @@ test.group('Order Controller', (group) => {
     })
   })
 
-  test('/POST - return some error with 400 if book stock is not avaiable', async ({
+  test('/POST - return some error with 400 if book estoque is not avaiable', async ({
     client,
     expect,
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      title: book.title,
-      quantity: 2,
+      titulo: book.titulo,
+      quantidade: 2,
     }))
 
-    booksPayload[0].quantity = 2000
+    booksPayload[0].quantidade = 2000
 
     const baseBook = booksPayload[0]
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: booksPayload,
     })
 
     const exception = new OrderCreateForBooksException([
       {
         bookId: baseBook.id,
-        bookTitle: baseBook.title,
-        error: `Book ${baseBook.title} out of stock`,
+        bookTitle: baseBook.titulo,
+        error: `Book ${baseBook.titulo} out of estoque`,
       },
     ])
     expect(response.status()).toBe(400)

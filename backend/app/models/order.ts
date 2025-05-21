@@ -12,7 +12,7 @@ export default class Order extends BaseModel {
   declare status: OrderStatusEnum
 
   @column()
-  declare customer: string
+  declare cliente: string
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime
@@ -21,7 +21,7 @@ export default class Order extends BaseModel {
   declare updatedAt: DateTime
 
   @manyToMany(() => Book, {
-    pivotColumns: ['quantity'],
+    pivotColumns: ['quantidade'],
   })
   declare books: ManyToMany<typeof Book>
 }

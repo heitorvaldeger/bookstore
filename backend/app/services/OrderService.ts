@@ -37,14 +37,14 @@ export class OrderService {
       if (!bookItem) {
         errors.push({
           bookId: book.id,
-          bookTitle: book.title,
-          error: `Book ${book.title} not found`,
+          bookTitle: book.titulo,
+          error: `Book ${book.titulo} not found`,
         })
-      } else if (book.quantity > bookItem.stock) {
+      } else if (book.quantidade > bookItem.estoque) {
         errors.push({
           bookId: bookItem.id,
-          bookTitle: bookItem.title,
-          error: `Book ${bookItem.title} out of stock`,
+          bookTitle: bookItem.titulo,
+          error: `Book ${bookItem.titulo} out of estoque`,
         })
       }
     }
@@ -60,11 +60,11 @@ export class OrderService {
     for (const book of order.books) {
       await newOrder.related('books').attach({
         [book.id]: {
-          quantity: book.quantity,
+          quantidade: book.quantidade,
         },
       })
       const bookItem = await Book.query().where('id', book.id).first()
-      bookItem!.stock = bookItem!.stock - book.quantity
+      bookItem!.estoque = bookItem!.estoque - book.quantidade
       await bookItem?.save()
     }
 
@@ -73,8 +73,8 @@ export class OrderService {
 
   private getOrderTotalField(order: Order) {
     const total = order.books.reduce((acc, books) => {
-      const quantity = books.$extras.pivot_quantity
-      return acc + quantity * books.price
+      const quantidade = books.$extras.pivot_quantity
+      return acc + quantidade * books.preco
     }, 0)
 
     return total
@@ -83,8 +83,8 @@ export class OrderService {
   private getBook(book: Book) {
     return {
       id: book.id,
-      title: book.title,
-      quantity: book.$extras.pivot_quantity,
+      titulo: book.titulo,
+      quantidade: book.$extras.pivot_quantity,
     }
   }
 }

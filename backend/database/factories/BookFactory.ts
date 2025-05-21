@@ -7,7 +7,7 @@ export const BookFactory = factory
     return {
       autor: faker.person.fullName(),
       titulo: faker.lorem.sentence(3),
-      category: BookCategoryEnum.SCIENCE,
+      categoria: BookCategoryEnum.SCIENCE,
       descricao: faker.lorem.sentence(5),
       imageURL: faker.internet.url(),
       preco: 999,

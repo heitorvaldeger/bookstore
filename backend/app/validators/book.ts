@@ -24,7 +24,7 @@ export const createBookValidator = vine.compile(
     imageURL: vine.string().url().optional(),
     estoque: vine.number().positive(),
     preco: vine.number().positive().withoutDecimals(),
-    category: vine.enum(BookCategoryEnum),
+    categoria: vine.enum(BookCategoryEnum),
   })
 )
 
@@ -40,7 +40,7 @@ export const updateBookValidator = vine.compile(
     imageURL: vine.string().url().optional().optional(),
     estoque: vine.number().positive().optional(),
     preco: vine.number().positive().optional(),
-    category: vine.enum(BookCategoryEnum).optional(),
+    categoria: vine.enum(BookCategoryEnum).optional(),
   })
 )
 

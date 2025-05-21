@@ -25,7 +25,7 @@ export default class Book extends BaseModel {
   declare estoque: number
 
   @column()
-  declare category: BookCategoryEnum
+  declare categoria: BookCategoryEnum
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime

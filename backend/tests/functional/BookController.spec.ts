@@ -126,7 +126,7 @@ test.group('Book Controller', (group) => {
       descricao: 'any_description',
       autor: 'any_author',
       imageURL: 'https://any-url.com',
-      category: BookCategoryEnum.BIBLE,
+      categoria: BookCategoryEnum.BIBLE,
       preco: 999,
       estoque: 100,
     }
@@ -172,9 +172,9 @@ test.group('Book Controller', (group) => {
           field: 'preco',
         },
         {
-          message: 'The category field must be defined',
+          message: 'The categoria field must be defined',
           rule: 'required',
-          field: 'category',
+          field: 'categoria',
         },
       ],
     })

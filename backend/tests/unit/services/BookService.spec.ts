@@ -15,7 +15,7 @@ const bookToSave = {
   descricao: 'any_description',
   autor: 'any_author',
   imageURL: 'any_image',
-  category: BookCategoryEnum.BIBLE,
+  categoria: BookCategoryEnum.BIBLE,
   preco: 999,
   estoque: 100,
 }

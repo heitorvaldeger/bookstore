@@ -12,7 +12,7 @@ export default class extends BaseSchema {
       table.integer('preco')
       table.text('image_url').nullable()
       table.integer('estoque')
-      table.enum('category', ['bible', 'teology', 'philosophy', 'science', 'others'])
+      table.enum('categoria', ['bible', 'teology', 'philosophy', 'science', 'others'])
       table.timestamp('created_at')
       table.timestamp('updated_at')
       table.timestamp('deleted_at')

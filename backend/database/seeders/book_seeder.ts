@@ -13,14 +13,14 @@ export default class extends BaseSeeder {
         estoque: 12,
         preco: 4590,
         imageURL: 'https://m.media-amazon.com/images/I/91ebghaV-eL.jpg',
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
       },
       {
         titulo: 'The Selfish Gene',
         autor: 'Richard Dawkins',
         estoque: 8,
         preco: 3999,
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
         descricao:
           "As influential today as when it was first published, The Selfish Gene has become a classic exposition of evolutionary thought. Professor Dawkins articulates a gene's eye view of evolution - a view giving centre stage to these persistent units of information, and in which organisms can be seen as vehicles for their replication.",
         imageURL: 'https://m.media-amazon.com/images/I/61dtRkUbfRL._AC_UF1000,1000_QL80_.jpg',
@@ -32,7 +32,7 @@ export default class extends BaseSeeder {
         estoque: 100,
         preco: 2999,
         imageURL: 'https://m.media-amazon.com/images/I/71U0MvNYxpL._AC_UF1000,1000_QL80_.jpg',
-        category: BookCategoryEnum.BIBLE,
+        categoria: BookCategoryEnum.BIBLE,
       },
       {
         titulo: 'Cosmos',
@@ -42,7 +42,7 @@ export default class extends BaseSeeder {
         imageURL: 'https://m.media-amazon.com/images/I/710C5x4MzwL.jpg',
         descricao:
           'Renowned astronomer Carl Sagan’s classic bestseller that “dives into the past, present, and future of science, dealing with the mind-staggering enormity of the cosmos in which we exist” (Associated Press)—with an Introduction by Ann Druyan and a Foreword by Neil deGrasse Tyson',
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
       },
       {
         titulo: 'The Origin of Species',
@@ -51,7 +51,7 @@ export default class extends BaseSeeder {
           "Charles Darwin's classic, which sparked a public uproar, changed the trajectory of science, and has continued to alter how we see the world.",
         estoque: 10,
         preco: 4250,
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
         imageURL: 'https://m.media-amazon.com/images/I/71z2XfoLFfL.jpg',
       },
       {
@@ -61,7 +61,7 @@ export default class extends BaseSeeder {
           'From a trusted advisor and devoted friend of Mother Teresa comes a “powerful” (The Washington Free Beacon) firsthand account of the miraculous woman behind the saint and a book that is “rich in reflection on contemporary sanctity” (George Weigel).',
         estoque: 50,
         preco: 999,
-        category: BookCategoryEnum.BIBLE,
+        categoria: BookCategoryEnum.BIBLE,
         imageURL: 'https://m.media-amazon.com/images/I/71RJKnRyzJL._SY522_.jpg',
       },
       {
@@ -72,14 +72,14 @@ export default class extends BaseSeeder {
         descricao:
           'From renowned historian Yuval Noah Harari comes a groundbreaking narrative of humanity’s creation and evolution—a #1 international bestseller—that explores the ways in which biology and history have defined us and enhanced our understanding of what it means to be “human.”',
         imageURL: 'https://m.media-amazon.com/images/I/716E6dQ4BXL._SY522_.jpg',
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
       },
       {
         titulo: "God's Stories as told by God's Children",
         autor: 'The Bible for Normal People',
         estoque: 30,
         preco: 1499,
-        category: BookCategoryEnum.BIBLE,
+        categoria: BookCategoryEnum.BIBLE,
         imageURL: 'https://m.media-amazon.com/images/I/81IlG7Il73L._SY522_.jpg',
         descricao:
           'Featuring the voices of 55 biblical scholars, theologians, and storytellers from around the world, God’s Stories as told by God’s Children is a beautifully illustrated storybook Bible that integrates biblical scholarship into engaging storytelling.',
@@ -91,7 +91,7 @@ export default class extends BaseSeeder {
           'In his mega bestseller, Thinking, Fast and Slow, Daniel Kahneman, world-famous psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.',
         estoque: 9,
         preco: 5200,
-        category: BookCategoryEnum.SCIENCE,
+        categoria: BookCategoryEnum.SCIENCE,
         imageURL: 'https://m.media-amazon.com/images/I/71wvKXWfcML._SY522_.jpg',
       },
       {
@@ -101,7 +101,7 @@ export default class extends BaseSeeder {
           'The extraordinary, beloved novel about the ability of books to feed the soul even in the darkest of times.',
         estoque: 7,
         preco: 3500,
-        category: BookCategoryEnum.OTHERS,
+        categoria: BookCategoryEnum.OTHERS,
         imageURL: 'https://m.media-amazon.com/images/I/81cQAtrq2iL._SY522_.jpg',
       },
     ])

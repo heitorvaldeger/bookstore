@@ -7,5 +7,5 @@ export interface BookSaveDTO {
   estoque: number
   preco: number
   imageURL?: string
-  category: BookCategoryEnum
+  categoria: BookCategoryEnum
 }

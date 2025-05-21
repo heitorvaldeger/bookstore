@@ -8,11 +8,11 @@ export enum BookCategoryEnum {
 
 export interface Book {
   id: number;
-  title: string;
-  author: string;
-  description: string;
-  price: number;
-  imageURL: string;
-  stock: number;
-  category: BookCategoryEnum;
+  titulo: string;
+  autor: string;
+  descricao: string;
+  preco: number;
+  imagem: string;
+  estoque: number;
+  categoria: BookCategoryEnum;
 }

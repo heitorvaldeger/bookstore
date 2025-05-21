@@ -1,41 +1,11 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import logoImage from "../../assets/images/logo.png";
-import { signIn } from "../../api/sign-in";
-import * as z from "zod";
+import logoImage from "@/assets/images/logo.png";
 import { Loader } from "react-feather";
-import { useNavigate } from "react-router";
-
-const signInFormSchema = z.object({
-  email: z.string().email().trim(),
-  password: z.string().trim(),
-});
-
-type SignInForm = z.infer<typeof signInFormSchema>;
+import { Input } from "@/components/Forms/Input";
+import { useLogin } from "./useLogin";
 
 export const Login = () => {
-  const navigate = useNavigate();
-  const { handleSubmit, register } = useForm<SignInForm>({
-    resolver: zodResolver(signInFormSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const { mutateAsync: authenticate, isPending } = useMutation({
-    mutationFn: signIn,
-  });
-
-  const handleSignIn = async (data: SignInForm) => {
-    try {
-      await authenticate(data);
-      navigate("/");
-    } catch (error) {
-      alert("Invalid Credentials");
-    }
-  };
+  const { handleSignIn, handleSubmit, register, isPending, errors } =
+    useLogin();
 
   return (
     <main className="flex h-screen items-center">
@@ -53,11 +23,11 @@ export const Login = () => {
               <label htmlFor="email" className="font-medium text-sm">
                 E-mail
               </label>
-              <input
+              <Input
                 {...register("email")}
                 type="email"
-                required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
+                error={errors.email?.message}
               />
             </div>
 
@@ -65,11 +35,11 @@ export const Login = () => {
               <label htmlFor="password" className="font-medium text-sm">
                 Senha
               </label>
-              <input
+              <Input
                 {...register("password")}
                 type="password"
-                required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
+                error={errors.password?.message}
               />
             </div>
 

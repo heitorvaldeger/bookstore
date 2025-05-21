@@ -1,36 +1,23 @@
 import { RadioGroup } from "radix-ui";
-import { RadioItem } from "../../../components/Forms/RadioItem";
-import { useState } from "react";
-import { InputNumberIncremental } from "../../../components/Forms/InputNumberIncremental";
+import { RadioItem } from "@/components/Forms/RadioItem";
+import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
 import { ArrowRight, ShoppingBag } from "react-feather";
-import { useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchBook } from "../../../api/fetch-book";
-import { convertNumberToBrazilianRealFormat } from "../../../utils";
 import { isAxiosError } from "axios";
+import { useBookDetail } from "./useBookDetail";
 
 export const BookDetail = () => {
-  const [color, setColor] = useState("Azul");
-  const { id } = useParams();
-
   const {
-    data: book,
     error,
     isLoading,
-  } = useQuery({
-    queryKey: ["books", id],
-    queryFn: () => fetchBook({ idBook: id ?? "" }),
-    enabled: !!id,
-    retry: false,
-  });
-
-  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.price ?? 0) / 100
-  );
-
-  const valueInstallmentBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    (book?.price ?? 0) / 2 / 100
-  );
+    book,
+    qty,
+    valueBrazilianFormatted,
+    valueInstallmentBrazilianFormatted,
+    color,
+    handleUpdateColorRadio,
+    handleQtyChange,
+    handleAddBookToCartClick,
+  } = useBookDetail();
 
   if (isAxiosError(error)) {
     if (error.status === 404) {
@@ -60,13 +47,13 @@ export const BookDetail = () => {
       <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
         <section className="flex-1">
           <img
-            src={book?.imageURL ?? "/images/cover-not-avaiable.png"}
+            src={book?.imagem ?? "/images/cover-not-avaiable.png"}
             className="rounded-xl max-w-[473px] mx-auto lg:mx-0"
           />
         </section>
         <section className="flex-1 space-y-2">
           <p className="text-4xl font-bold">
-            {book?.title}, {book?.author}
+            {book?.titulo}, {book?.autor}
           </p>
           <div>
             <p className="text-teal-700 font-bold text-2xl font-inter">
@@ -78,7 +65,7 @@ export const BookDetail = () => {
           </div>
 
           <div>
-            <p>{book?.description}</p>
+            <p>{book?.descricao}</p>
           </div>
 
           <div className="space-y-2 mt-10">
@@ -103,7 +90,7 @@ export const BookDetail = () => {
             </p>
             <RadioGroup.Root
               defaultValue={color}
-              onValueChange={setColor}
+              onValueChange={handleUpdateColorRadio}
               className="flex gap-4"
             >
               <RadioGroup.Item value="Laranja" asChild>
@@ -132,11 +119,17 @@ export const BookDetail = () => {
               </p>
             </div>
 
-            <InputNumberIncremental />
+            <InputNumberIncremental
+              value={qty}
+              onValueChange={handleQtyChange}
+            />
           </div>
 
           <div className="my-10 flex flex-col gap-4">
-            <button className="flex items-center w-[290px] h-[45.71px] justify-center gap-3.5 rounded-lg bg-gray-950 text-white">
+            <button
+              onClick={handleAddBookToCartClick}
+              className="cursor-pointer flex items-center w-[290px] h-[45.71px] justify-center gap-3.5 rounded-lg bg-gray-950 text-white"
+            >
               <ShoppingBag />
               <span className="font-bold font-inter text-sm">
                 Adicionar à sacola

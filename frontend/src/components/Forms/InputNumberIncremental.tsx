@@ -1,13 +1,36 @@
 import { Minus, Plus } from "react-feather";
 
-export const InputNumberIncremental = () => {
+interface InputNumberIncremental {
+  value?: number;
+  containerClassName?: string;
+  minValue?: number;
+  onValueChange: (value: number) => void;
+}
+export const InputNumberIncremental = ({
+  onValueChange,
+  containerClassName,
+  minValue = 1,
+  value = 1,
+}: InputNumberIncremental) => {
+  const handleMinusButtonClick = () => {
+    if (value > 0 && value > minValue) {
+      onValueChange(value - 1);
+    }
+  };
+
+  const handlePlusButtonClick = () => {
+    onValueChange(value + 1);
+  };
+
   return (
-    <div className="border-[0.5px] border-gray-500 w-1/6 px-2.5 py-2 rounded-md flex justify-between">
-      <button className="cursor-pointer">
+    <div
+      className={`border-[0.5px] border-gray-500 w-1/6 px-2.5 py-2 rounded-md flex justify-between ${containerClassName}`}
+    >
+      <button onClick={handleMinusButtonClick} className="cursor-pointer">
         <Minus size={14} />
       </button>
-      <span className="font-bold text-sm font-inter">5</span>
-      <button className="cursor-pointer">
+      <span className="font-bold text-sm font-inter">{value}</span>
+      <button onClick={handlePlusButtonClick} className="cursor-pointer">
         <Plus size={14} />
       </button>
     </div>

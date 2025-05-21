@@ -1,23 +1,21 @@
 import { Link } from "react-router";
-import { convertNumberToBrazilianRealFormat } from "../../utils";
+import { convertPriceBook } from "@/utils";
 
 interface BookCardProps {
   idBook: number;
-  title: string;
-  author: string;
-  price: number;
-  imageURL?: string;
+  titulo: string;
+  autor: string;
+  preco: number;
+  imagem?: string;
 }
 export const BookCard = ({
   idBook,
-  title,
-  author,
-  price,
-  imageURL,
+  titulo,
+  autor,
+  preco,
+  imagem,
 }: BookCardProps) => {
-  const valueBrazilianFormatted = convertNumberToBrazilianRealFormat(
-    price / 100
-  );
+  const valueBrazilianFormatted = convertPriceBook(preco);
 
   const isNew = false;
 
@@ -33,14 +31,14 @@ export const BookCard = ({
           </div>
         )}
         <img
-          src={imageURL ?? "/images/cover-not-avaiable.png"}
+          src={imagem ?? "/images/cover-not-avaiable.png"}
           alt=""
           className="object-fill h-[265px]"
         />
       </div>
 
       <p className="font-normal text-xs">
-        {title}, {author}
+        {titulo}, {autor}
       </p>
       <p className="font-bold text-xs text-gray-900">
         {valueBrazilianFormatted}

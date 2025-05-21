@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# Bookstore (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web construída como parte do desafio técnico para a seleção de desenvolvedor web na Buzzmonitor. Essa aplicação deve ser integrada ao seu backend. O layout da aplicação segue o modelo base do figma https://www.figma.com/design/cHOmIJPhHhkFfRSls5SSgr/[buzzcreator]-Etapa-Desafio?node-id=3-69&t=J2Yq9bRIqZkYdULg-1
 
-Currently, two official plugins are available:
+# Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Listagem de livros
+- Busca por título, autor ou descrição
+- Ver os **detalhes de um livro** com descrição, imagem e preço.
+- Adicionar livros ao **carrinho**.
+- Visualizar o **carrinho** com os itens e o total.
+- Simular o **checkout** (envio do pedido).
+- Área administrativa que simula cadastro, edição e exclusão de livros
 
-## Expanding the ESLint configuration
+# Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Vite
+- TailwindCSS
+- Radix UI
+- Vaul (Drawer Menu)
+- React Hook Form
+- Zod
+- React Query
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Passos para execução do projeto
+
+1. Clone o repositório:
+
+```bash
+  git clone https://github.com/heitorvaldeger/bookstore.git
+  &&
+  cd bookstore/frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+  npm install
+  # ou
+  yarn install
 ```
+
+3. Copie o arquivo .env.example
+
+```bash
+  cp .env.example .env
+```
+
+4. Preencha a variável VITE_API_URL com o endpoint para a API, por exemplo:
+
+```bash
+  # http://localhost:8080
+```
+
+5. Execute a aplicação
+
+```bash
+  npm run dev
+  # ou
+  yarn dev
+```
+
+6. A aplicação será iniciada na porta padrão do Vite: 5173

@@ -7,12 +7,16 @@ import {
 import type { Book } from "../models/book";
 import type { BookOrder } from "../models/book-order";
 import { convertPriceBook } from "../utils";
+import { createOrder } from "../api/create-order";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 interface Cart {
   books: BookOrder[];
 }
 interface CartContextProps {
   cart: Cart;
+  handleCreateOrder: () => Promise<void>;
   addBookToCart: (book: Book, qty: number) => void;
   updateBookTotalInCart: (idBook: number, qty: number) => void;
   getQtyBookCart: () => number;
@@ -24,6 +28,32 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<Cart>({
     books: [],
   });
+
+  const { mutateAsync: createOrderFn } = useMutation({
+    mutationFn: createOrder,
+  });
+
+  const handleCreateOrder = async () => {
+    try {
+      const response = await createOrderFn({
+        cliente: "José da Silva",
+        books: cart.books.map((book) => ({
+          id: book.id,
+          quantidade: book.quantidade,
+        })),
+      });
+
+      if (response.status === 400) {
+        toast.error("Falha ao criar um pedido");
+        return;
+      }
+
+      toast.success("Pedido criado com sucesso!");
+    } catch (error) {
+      toast.error("Falha ao criar um pedido");
+      console.log(error);
+    }
+  };
 
   const addBookToCart = (book: Book, qty: number) => {
     setCart((prev) => ({
@@ -70,6 +100,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     <CartContext
       value={{
         cart,
+        handleCreateOrder,
         addBookToCart,
         updateBookTotalInCart,
         getQtyBookCart,

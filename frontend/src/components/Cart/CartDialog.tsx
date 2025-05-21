@@ -5,7 +5,7 @@ import { useCart } from "../../contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const CartDialog = () => {
-  const { getTotalCart, getQtyBookCart, cart } = useCart();
+  const { handleCreateOrder, getTotalCart, getQtyBookCart, cart } = useCart();
 
   return (
     <Dialog.Root>
@@ -75,7 +75,10 @@ export const CartDialog = () => {
                 </div>
               </div>
 
-              <button className="max-w-[174px] bg-teal-700 text-white px-6 py-2 rounded-lg font-medium text-sm leading-5">
+              <button
+                onClick={() => handleCreateOrder()}
+                className="max-w-[174px] bg-teal-700 text-white px-6 py-2 rounded-lg font-medium text-sm leading-5 cursor-pointer"
+              >
                 Finalizar compra
               </button>
             </footer>

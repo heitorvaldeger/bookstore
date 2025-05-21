@@ -1,6 +1,42 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import logoImage from "../../assets/images/logo.png";
+import { signIn } from "../../api/sign-in";
+import * as z from "zod";
+import { Loader } from "react-feather";
+import { useNavigate } from "react-router";
+
+const signInFormSchema = z.object({
+  email: z.string().email().trim(),
+  password: z.string().trim(),
+});
+
+type SignInForm = z.infer<typeof signInFormSchema>;
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const { handleSubmit, register } = useForm<SignInForm>({
+    resolver: zodResolver(signInFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const { mutateAsync: authenticate, isPending } = useMutation({
+    mutationFn: signIn,
+  });
+
+  const handleSignIn = async (data: SignInForm) => {
+    try {
+      await authenticate(data);
+      navigate("/");
+    } catch (error) {
+      alert("Invalid Credentials");
+    }
+  };
+
   return (
     <main className="flex h-screen items-center">
       <section className="flex-1 flex flex-col items-center space-y-4">
@@ -9,12 +45,16 @@ export const Login = () => {
         <div className="space-y-4 w-[447px] px-[4.5rem] pt-[1.813rem] pb-[2.188rem] flex flex-col items-center border-[3px] border-gray-200 rounded-3xl shadow-lg">
           <p className="font-bold text-2xl">Login da marca</p>
 
-          <form className="space-y-4 w-full flex flex-col items-center">
+          <form
+            onSubmit={handleSubmit(handleSignIn)}
+            className="space-y-4 w-full flex flex-col items-center"
+          >
             <div className="flex flex-col w-full">
               <label htmlFor="email" className="font-medium text-sm">
                 E-mail
               </label>
               <input
+                {...register("email")}
                 type="email"
                 required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
@@ -26,14 +66,18 @@ export const Login = () => {
                 Senha
               </label>
               <input
+                {...register("password")}
                 type="password"
                 required
                 className="border-[1px] border-zinc-100 py-2 px-1 rounded-lg"
               />
             </div>
 
-            <button className="cursor-pointer bg-teal-700 w-full text-sm font-medium py-2 px-6 text-white rounded-lg">
-              Entrar
+            <button
+              type="submit"
+              className="cursor-pointer bg-teal-700 w-full text-sm font-medium py-2 px-6 text-white rounded-lg flex items-center justify-center"
+            >
+              {isPending ? <Loader className="animate-spin" /> : "Entrar"}
             </button>
             <button className="border-zinc-100 cursor-pointer font-medium text-xs text-gray-500 border-[1px] rounded-lg py-2 px-6 w-3/4">
               Esqueci minha senha
@@ -43,7 +87,7 @@ export const Login = () => {
 
         <p className="flex gap-2 items-center">
           Não possui conta?
-          <p className="text-teal-700 underline">Click Aqui!</p>
+          <span className="text-teal-700 underline">Click Aqui!</span>
         </p>
       </section>
       <section className="relative h-screen lg:hidden xl:block">

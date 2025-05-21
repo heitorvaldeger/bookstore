@@ -44,8 +44,8 @@ test.group('Order Controller', (group) => {
     expect(responseOrderWithFieldsInvalid.body()).toEqual({
       errors: [
         {
-          field: 'customer',
-          message: 'The customer field must be defined',
+          field: 'cliente',
+          message: 'The cliente field must be defined',
           rule: 'required',
         },
         {
@@ -70,8 +70,8 @@ test.group('Order Controller', (group) => {
     expect(responseOrderWithoutBooks.body()).toEqual({
       errors: [
         {
-          field: 'customer',
-          message: 'The customer field must be defined',
+          field: 'cliente',
+          message: 'The cliente field must be defined',
           rule: 'required',
         },
         {
@@ -91,7 +91,7 @@ test.group('Order Controller', (group) => {
     }))
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: booksPayload,
     })
 
@@ -110,7 +110,7 @@ test.group('Order Controller', (group) => {
     }))
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: [
         ...booksPayload,
         {
@@ -147,7 +147,7 @@ test.group('Order Controller', (group) => {
     const baseBook = booksPayload[0]
 
     const response = await client.post('/orders').json({
-      customer: 'any_customer',
+      cliente: 'any_customer',
       books: booksPayload,
     })
 

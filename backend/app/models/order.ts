@@ -12,7 +12,7 @@ export default class Order extends BaseModel {
   declare status: OrderStatusEnum
 
   @column()
-  declare customer: string
+  declare cliente: string
 
   @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime

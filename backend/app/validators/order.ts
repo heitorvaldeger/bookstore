@@ -2,7 +2,7 @@ import vine from '@vinejs/vine'
 
 export const createOrderValidator = vine.compile(
   vine.object({
-    customer: vine.string().maxLength(100),
+    cliente: vine.string().maxLength(100),
     books: vine.array(
       vine.object({
         id: vine.number().positive(),

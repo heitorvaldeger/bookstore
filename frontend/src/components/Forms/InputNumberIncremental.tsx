@@ -1,8 +1,15 @@
+import type { HTMLAttributes } from "react";
 import { Minus, Plus } from "react-feather";
 
-export const InputNumberIncremental = () => {
+interface InputNumberIncremental {
+  container: HTMLAttributes<HTMLDivElement>;
+}
+export const InputNumberIncremental = ({
+  container,
+}: InputNumberIncremental) => {
+  container.className = `border-[0.5px] border-gray-500 w-1/6 px-2.5 py-2 rounded-md flex justify-between ${container.className}`;
   return (
-    <div className="border-[0.5px] border-gray-500 w-1/6 px-2.5 py-2 rounded-md flex justify-between">
+    <div {...container}>
       <button className="cursor-pointer">
         <Minus size={14} />
       </button>

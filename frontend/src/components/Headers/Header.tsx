@@ -1,6 +1,7 @@
-import { Menu, ShoppingBag } from "react-feather";
+import { Menu } from "react-feather";
 import { SideBarMenu } from "../Menus/SideBarMenu";
 import { Drawer } from "vaul";
+import { CartDialog } from "../Dialogs/CartDialog";
 
 export const Header = () => {
   return (
@@ -19,7 +20,7 @@ export const Header = () => {
         </Drawer.Root>
       </div>
       <span className="font-bold text-3xl text-gray-700">Todos Livros</span>
-      <ShoppingBag size={17} />
+      <CartDialog />
     </header>
   );
 };

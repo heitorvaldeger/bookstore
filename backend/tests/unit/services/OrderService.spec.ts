@@ -27,17 +27,18 @@ test.group('Services order service', (t) => {
     const orders = await sut.getAll()
 
     expect(orders.length).toBe(1)
-    expect(orders[0].items.length).toBe(5)
+    expect(orders[0].itens.length).toBe(5)
     expect(orders[0].id).toBe(order.id)
 
     await order.load('books')
     const books = order.books.map((book) => ({
       id: book.id,
       titulo: book.titulo,
+      autor: book.autor,
       quantidade: book.$extras.pivot_quantidade,
     }))
 
-    expect(orders[0].items).toEqual(books)
+    expect(orders[0].itens).toEqual(books)
   })
 
   test("it should return errors if any book doesn't exists", async ({ expect }) => {
@@ -55,7 +56,6 @@ test.group('Services order service', (t) => {
         {
           id: 999,
           quantidade: 10,
-          titulo: 'any_title',
         },
       ],
     })
@@ -65,8 +65,7 @@ test.group('Services order service', (t) => {
       errors: [
         {
           bookId: 999,
-          bookTitle: 'any_title',
-          error: 'Book any_title not found',
+          error: 'Livro #999 não encontrado',
         },
       ],
     })
@@ -93,8 +92,7 @@ test.group('Services order service', (t) => {
       errors: [
         {
           bookId: bookBase.id,
-          bookTitle: bookBase.titulo,
-          error: `Book ${bookBase.titulo} out of estoque`,
+          error: `Livro ${bookBase.titulo} fora de estoque`,
         },
       ],
     })
@@ -127,7 +125,6 @@ test.group('Services order service', (t) => {
         {
           id: book.id,
           quantidade: 2,
-          titulo: book.titulo,
         },
       ],
     })

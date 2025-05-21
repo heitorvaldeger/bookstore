@@ -27,7 +27,6 @@ test.group('Order Controller', (group) => {
       books: [
         {
           id: 'any_value',
-          titulo: '',
           quantidade: -1,
         },
       ],
@@ -52,11 +51,6 @@ test.group('Order Controller', (group) => {
           message: 'The id field must be a number',
           rule: 'number',
           field: 'books.0.id',
-        },
-        {
-          message: 'The titulo field must be defined',
-          rule: 'required',
-          field: 'books.0.titulo',
         },
         {
           message: 'The quantidade field must be positive',
@@ -105,7 +99,6 @@ test.group('Order Controller', (group) => {
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      titulo: book.titulo,
       quantidade: 2,
     }))
 
@@ -115,14 +108,13 @@ test.group('Order Controller', (group) => {
         ...booksPayload,
         {
           id: 999,
-          titulo: 'any_title',
           quantidade: 3,
         },
       ],
     })
 
     const exception = new OrderCreateForBooksException([
-      { bookId: 999, bookTitle: 'any_title', error: 'Book any_title not found' },
+      { bookId: 999, error: 'Livro #999 não encontrado' },
     ])
     expect(response.status()).toBe(400)
     expect(response.body()).toEqual({
@@ -138,7 +130,6 @@ test.group('Order Controller', (group) => {
   }) => {
     const booksPayload = books.map((book) => ({
       id: book.id,
-      titulo: book.titulo,
       quantidade: 2,
     }))
 
@@ -154,8 +145,7 @@ test.group('Order Controller', (group) => {
     const exception = new OrderCreateForBooksException([
       {
         bookId: baseBook.id,
-        bookTitle: baseBook.titulo,
-        error: `Book ${baseBook.titulo} out of estoque`,
+        error: `Livro ${books[0].titulo} fora de estoque`,
       },
     ])
     expect(response.status()).toBe(400)
@@ -172,6 +162,6 @@ test.group('Order Controller', (group) => {
     const body = response.body()
     expect(response.status()).toBe(200)
     expect(body.length).toBe(1)
-    expect(body[0].items.length).toBe(5)
+    expect(body[0].itens.length).toBe(5)
   })
 })

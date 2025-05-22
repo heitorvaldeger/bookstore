@@ -13,14 +13,14 @@ export const CartItem = ({ bookOrder }: CartItemProps) => {
 
   return (
     <div className="flex gap-6" key={bookOrder.id}>
-      <div className="max-w-44">
+      <div className="flex-1 lg:max-w-44">
         <img
           src={bookOrder.imagem ?? "/images/books/book-1.png"}
           alt=""
-          className="rounded-lg"
+          className="rounded-lg object-fill"
         />
       </div>
-      <div className="w-fit space-y-2">
+      <div className="flex-1 lg:w-fit space-y-2">
         <p className="font-bold leading-[100%]">
           {bookOrder.titulo}, {bookOrder.autor}
         </p>
@@ -30,7 +30,7 @@ export const CartItem = ({ bookOrder }: CartItemProps) => {
           onValueChange={(value) => {
             updateBookTotalInCart(bookOrder.id, value);
           }}
-          containerClassName="w-4/8"
+          containerClassName="w-3/4 lg:w-4/8"
         />
       </div>
     </div>

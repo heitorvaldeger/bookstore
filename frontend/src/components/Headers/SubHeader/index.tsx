@@ -1,4 +1,4 @@
-import { AlignLeft, Search } from "react-feather";
+import { Search } from "react-feather";
 import { Input } from "@/components/Forms/Input";
 import { useSubHeader } from "./useSubHeader";
 
@@ -19,10 +19,6 @@ export const SubHeader = () => {
           error={errors.q?.message}
         />
       </form>
-      <button className="flex gap-2 items-center border-[1px] rounded-full px-2 border-slate-200 cursor-pointer">
-        <AlignLeft size={18} />
-        <span className="text-xs">Ordernar</span>
-      </button>
     </div>
   );
 };

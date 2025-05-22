@@ -23,3 +23,14 @@ test("show book details with correct values", async ({ page }) => {
   await expect(page.getByText("A Brief History of Time")).toBeVisible();
   await expect(page.getByText("R$ 45,90")).toBeVisible();
 });
+
+test("navigate to book detail page", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  await page
+    .getByRole("link", { name: "A Brief History of Time," })
+    .first()
+    .click();
+
+  expect(page.url()).toContain("/books/1");
+});

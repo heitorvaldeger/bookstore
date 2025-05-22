@@ -139,7 +139,7 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     # Crie a cópia e renomeie
     cp .env.example .env.test
 
-    # Gere uma chave
+    # Gere uma chave (Se optou por não usar o Docker)
     node ace generate:key
    ```
 

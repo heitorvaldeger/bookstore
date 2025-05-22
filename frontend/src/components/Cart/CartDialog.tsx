@@ -27,7 +27,7 @@ export const CartDialog = () => {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-gray-500 opacity-30 animate-overlayShow" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 max-h-[74vh] max-w-[485px] bg-white -translate-1/2 rounded-3xl border-[3px] border-slate-200 animate-contentShow">
+        <Dialog.Content className="fixed overflow-auto lg:overflow-hidden top-1/2 left-1/2 max-h-[74vh] w-5/6 lg:max-w-[485px] bg-white -translate-1/2 rounded-3xl border-[3px] border-slate-200 animate-contentShow">
           <main className="px-6 py-4">
             <header className="flex justify-between border-b-[1px] border-b-slate-200 pb-4">
               <div className="flex gap-4 items-center">
@@ -50,7 +50,7 @@ export const CartDialog = () => {
               </Dialog.Close>
             </header>
 
-            <div className="py-6 overflow-auto max-h-96 space-y-4">
+            <div className="py-6 lg:overflow-auto lg:max-h-96 space-y-4">
               {cart.books.map((book) => (
                 <CartItem bookOrder={book} />
               ))}

@@ -43,10 +43,10 @@ export const BookDetail = () => {
         <span>Livros</span>
       </div>
       <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
-        <section className="flex-1">
+        <section className="flex-1 lg:max-w-[500px]">
           <img
             src={book?.imagem ?? "/images/cover-not-avaiable.png"}
-            className="rounded-xl max-w-[473px] mx-auto lg:mx-0"
+            className="rounded-xl w-full"
           />
         </section>
         <section className="flex-1 space-y-2">
@@ -141,7 +141,7 @@ export const BookDetail = () => {
             </button>
           </div>
 
-          <div className="space-y-1 my-4 w-fit">
+          <div className="space-y-1 my-4">
             <p className="font-bold text-lg font-inter">Cálculo de frete</p>
 
             <div className="space-y-1">
@@ -158,7 +158,7 @@ export const BookDetail = () => {
               <p className="mx-4 text-sm underline">Não sei o meu CEP</p>
             </div>
 
-            <div className="flex flex-col gap-2 my-4">
+            <div className="flex flex-col gap-2 my-4 max-w-[500px]">
               {Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}

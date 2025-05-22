@@ -19,9 +19,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="flex justify-center gap-2">
-        <CategoryList />
-      </div>
+      <CategoryList />
 
       <section className="flex flex-col gap-2">
         <p className="font-bold text-lg">Novidades</p>

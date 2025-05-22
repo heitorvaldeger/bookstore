@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 name: bookstore
 services:
   db:
@@ -11,11 +11,11 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - ./bookstore-db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_DATABASE}"]
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_DATABASE}']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -29,14 +29,19 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - "5433:5432"
+      - '5433:5432'
   api:
     container_name: bookstore-api
     build:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: ["sh", "-c", "node ace migration:run --force && node ace db:seed && node ./bin/server.js"]
+    command:
+      [
+        'sh',
+        '-c',
+        'node ace generate:key && node ace migration:run --force && node ace db:seed && node ./bin/server.js',
+      ]
     ports:
       - 8080:8080
     env_file:

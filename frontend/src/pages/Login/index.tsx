@@ -1,4 +1,3 @@
-import logoImage from "@/assets/images/logo.png";
 import { Loader } from "react-feather";
 import { Input } from "@/components/Forms/Input";
 import { useLogin } from "./useLogin";
@@ -13,7 +12,7 @@ export const Login = () => {
       <section className="flex-1 flex flex-col items-center space-y-4 px-2">
         <Link to="/">
           <img
-            src={logoImage}
+            src="images/logo.png"
             alt="Logo - Bookstore"
             className="w-[126px] cursor-pointer"
           />

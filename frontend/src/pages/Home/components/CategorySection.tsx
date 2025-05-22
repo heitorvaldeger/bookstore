@@ -26,7 +26,7 @@ const categories = [
     label: "Outros...",
   },
 ];
-export const CategoryList = () => {
+export const CategorySection = () => {
   return (
     <RadioGroup.Root
       defaultValue="all"

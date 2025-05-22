@@ -2,6 +2,7 @@ import logoImage from "@/assets/images/logo.png";
 import { Loader } from "react-feather";
 import { Input } from "@/components/Forms/Input";
 import { useLogin } from "./useLogin";
+import { Link } from "react-router";
 
 export const Login = () => {
   const { handleSignIn, handleSubmit, register, isPending, errors } =
@@ -9,10 +10,16 @@ export const Login = () => {
 
   return (
     <main className="flex h-screen items-center">
-      <section className="flex-1 flex flex-col items-center space-y-4">
-        <img src={logoImage} alt="Logo - Bookstore" className="w-[126px]" />
+      <section className="flex-1 flex flex-col items-center space-y-4 px-2">
+        <Link to="/">
+          <img
+            src={logoImage}
+            alt="Logo - Bookstore"
+            className="w-[126px] cursor-pointer"
+          />
+        </Link>
 
-        <div className="space-y-4 w-[447px] px-[4.5rem] pt-[1.813rem] pb-[2.188rem] flex flex-col items-center border-[3px] border-gray-200 rounded-3xl shadow-lg">
+        <div className="space-y-4 w-full max-w-96 md:max-w-[447px] px-[4.5rem] pt-[1.813rem] pb-[2.188rem] flex flex-col items-center border-[3px] border-gray-200 rounded-3xl shadow-lg">
           <p className="font-bold text-2xl">Login da marca</p>
 
           <form
@@ -49,7 +56,7 @@ export const Login = () => {
             >
               {isPending ? <Loader className="animate-spin" /> : "Entrar"}
             </button>
-            <button className="border-zinc-100 cursor-pointer font-medium text-xs text-gray-500 border-[1px] rounded-lg py-2 px-6 w-3/4">
+            <button className="border-zinc-100 cursor-pointer font-medium text-xs text-gray-500 border-[1px] rounded-lg py-2 px-6 lg:w-3/4">
               Esqueci minha senha
             </button>
           </form>
@@ -60,7 +67,7 @@ export const Login = () => {
           <span className="text-teal-700 underline">Click Aqui!</span>
         </p>
       </section>
-      <section className="relative h-screen sm:hidden xl:block">
+      <section className="relative h-screen hidden lg:block">
         <div className="absolute flex flex-col justify-center 2xl:min-w-3/4 px-6 mt-28 md:w-3/4">
           <p className="font-bold 2xl:text-4xl md:text-2xl text-white leading-[100%]">
             Bem-vindo{"(a)"} de volta ao the Library

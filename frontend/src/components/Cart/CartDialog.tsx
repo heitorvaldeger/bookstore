@@ -5,10 +5,17 @@ import { useCart } from "@/contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const CartDialog = () => {
-  const { handleCreateOrder, getTotalCart, getQtyBookCart, cart } = useCart();
+  const {
+    handleCreateOrder,
+    getTotalCart,
+    getQtyBookCart,
+    toggleModalCartOpen,
+    isModalCartOpen,
+    cart,
+  } = useCart();
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={isModalCartOpen} onOpenChange={toggleModalCartOpen}>
       <Dialog.Trigger asChild>
         <div className="flex flex-col items-center relative">
           <div className="w-4 absolute bg-teal-700 ml-5 -mt-2 text-white text-xs rounded-full flex justify-center items-center">

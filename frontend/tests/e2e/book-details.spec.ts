@@ -1,5 +1,20 @@
 import { Messages } from "@/constans/messages";
+import { BookCategoryEnum } from "@/models/book";
 import { test, expect } from "@playwright/test";
+
+test.beforeAll(async ({ request }) => {
+  await request.post(`${process.env.VITE_API_URL}/books`, {
+    data: {
+      titulo: "Livro de Teste",
+      autor: "Autor de Teste",
+      descricao: "Descricao de Teste",
+      categoria: BookCategoryEnum.SCIENCE,
+      estoque: 100,
+      imagem: "",
+      preco: 9999,
+    },
+  });
+});
 
 test("book details cart actions", async ({ page }) => {
   await page.goto("/books/1", { waitUntil: "networkidle" });

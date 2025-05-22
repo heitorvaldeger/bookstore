@@ -16,3 +16,10 @@ test("book details cart actions", async ({ page }) => {
 
   await expect(page.getByTestId("cart-quantity")).toContainText("1");
 });
+
+test("show book details with correct values", async ({ page }) => {
+  await page.goto("/books/1", { waitUntil: "networkidle" });
+
+  await expect(page.getByText("A Brief History of Time")).toBeVisible();
+  await expect(page.getByText("R$ 45,90")).toBeVisible();
+});

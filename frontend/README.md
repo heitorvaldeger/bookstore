@@ -22,6 +22,7 @@ Aplicação web construída como parte do desafio técnico para a seleção de d
 - Zod
 - React Query
 - Axios
+- Playwright (testes end-to-end)
 
 # Decisões Técnicas
 
@@ -70,3 +71,31 @@ Aplicação web construída como parte do desafio técnico para a seleção de d
 ```
 
 6. A aplicação será iniciada na porta padrão do Vite: 5173
+
+# Executando os testes
+
+1. Copie o arquivo .env.example
+
+```bash
+  cp .env.example .env
+```
+
+2. Preencha a variável VITE_API_URL com o endpoint para a API, por exemplo:
+
+```bash
+  # http://localhost:8080
+```
+
+3. Execute o comando
+
+```bash
+  npm run test:e2e
+  # ou
+  yarn test:e2e
+```
+
+4. Caso queira visualizar o relatório de testes (Opcional)
+
+```bash
+  npx playwright show-report
+```

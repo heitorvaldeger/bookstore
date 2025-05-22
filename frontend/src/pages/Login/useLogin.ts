@@ -6,6 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MessagesValidation } from "@/constans/messages-validation";
 import { signIn } from "@/api/sign-in";
 import { useAdmin } from "@/contexts/AdminContext";
+import { toast } from "sonner";
+import { Messages } from "@/constans/messages";
+import { isAxiosError } from "axios";
 
 const signInFormSchema = z.object({
   email: z
@@ -44,7 +47,11 @@ export const useLogin = () => {
       setLoggedState();
       navigate("/");
     } catch (error) {
-      alert("Invalid Credentials");
+      if (isAxiosError(error) && error.status === 401) {
+        toast.error(Messages.INVALID_CREDENTIALS);
+        return;
+      }
+      toast.error(Messages.GENERIC_ERROR);
     }
   };
 

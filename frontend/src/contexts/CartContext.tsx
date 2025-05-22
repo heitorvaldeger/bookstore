@@ -10,6 +10,7 @@ import { convertPriceBook } from "@/utils";
 import { createOrder } from "@/api/create-order";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { Messages } from "@/constans/messages";
 
 interface Cart {
   books: BookOrder[];
@@ -41,7 +42,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const handleCreateOrder = async () => {
     try {
       if (cart.books.length === 0) {
-        toast.error("Atenção, carrinho vazio!");
+        toast.error(Messages.CART_EMPTY);
         return;
       }
 
@@ -53,13 +54,13 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         })),
       });
 
-      toast.success("Pedido criado com sucesso!");
+      toast.success(Messages.ORDER_CREATED);
       setIsModalCartOpen(false);
       setCart({
         books: [],
       });
     } catch (error) {
-      toast.error("Falha ao criar um pedido");
+      toast.error(Messages.ORDER_FAILED);
       console.log(error);
     }
   };

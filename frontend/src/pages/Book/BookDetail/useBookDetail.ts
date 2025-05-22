@@ -4,6 +4,8 @@ import { fetchBook } from "@/api/fetch-book";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { convertPriceBook } from "@/utils";
+import { toast } from "sonner";
+import { Messages } from "@/constans/messages";
 
 export const useBookDetail = () => {
   const { id } = useParams();
@@ -31,8 +33,10 @@ export const useBookDetail = () => {
     if (qty > 0 && book) {
       if (hasBook(book)) {
         incrementQtyBookToTotalInCart(book.id, qty);
+        toast.success(Messages.CART_UPDATED);
       } else {
         addBookToCart(book, qty);
+        toast.success(Messages.CART_ADDED);
       }
     }
   };

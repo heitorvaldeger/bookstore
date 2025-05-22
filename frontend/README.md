@@ -21,6 +21,15 @@ Aplicação web construída como parte do desafio técnico para a seleção de d
 - React Hook Form
 - Zod
 - React Query
+- Axios
+
+# Decisões Técnicas
+
+- Uso do Vite: optei pelo uso dessa ferramenta devido ao escopo ser mais simples, com boa parte dos componentes sendo renderizado do lado do cliente
+- Uso do TailwindCSS e Radix UI: optei pelo uso dessas ferramentas devido a simplicidade em trabalhar com elas, com foco maior no TailwindCSS, além disso com o objetivo de deixar os layouts responsivos e mais próximos ao que foi proposto no Figma
+- Uso do React Query: optei pelo seu uso devido a presença de recursos úteis no trabalho com requisições com o servidor, principalmente o seu cacheamento de dados e a presença de estados para indicar os andamento das requisições, sem falar no tratamento de retentativas caso alguma requisição apresente problema
+- Sobre o projeto: optei por seguir com uma separação baseada em contextos da aplicação, por exemplo, separação dos componentes que são utilizados somente em páginas e componentes genéricos (com alguns componentes específicos nessa mesma estrutura), além de separar em **models/**, **/api (p/ requisições)**, **constans/ (p/ armazenar mensagens da aplicação)**.
+- Sobre o ContextAPI: segui utilizando o ContextAPI devido a simplicidade em se criar estados para este projeto em específico, podendo ser escalado com ajuda do Redux ou Zustand em estados mais complexos.
 
 # Passos para execução do projeto
 

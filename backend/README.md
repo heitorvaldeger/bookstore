@@ -81,7 +81,7 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     password: 1234
   ```
 
-5. Execução sem o docker
+### Execução sem o docker
 
 - Preencha o arquivo .env com os seguintes valores:
 
@@ -90,15 +90,15 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     # ⚠️ Informe as mesmas credenciais no .env do seu banco de dados
 
     TZ=UTC
-    PORT=3333
+    PORT=8080
     HOST=localhost
     LOG_LEVEL=info
-    APP_KEY=BeR9QdMBIhBri2H8zVhmkNKW3jK3fou5
+    APP_KEY=
     NODE_ENV=development
     DB_HOST=127.0.0.1
     DB_PORT=5432
-    DB_USER="root"
-    DB_PASSWORD="root"
+    DB_USER=
+    DB_PASSWORD=
     DB_DATABASE=bookstore
     SESSION_DRIVER=memory
   ```
@@ -108,6 +108,9 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
   ```bash
     # Instala as dependências
     npm install
+
+    # Gere a chave
+    node ace generate:key
 
     # Executa as migrações
     node ace migration:run
@@ -130,25 +133,31 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 ## Executando os testes
 
-1. Crie uma cópia do arquivo .env.example e renomeie para .env.test:
+1. Crie uma cópia do arquivo .env.example:
 
    ```bash
-     cp .env.example .env.test
+    # Crie a cópia e renomeie
+    cp .env.example .env.test
+
+    # Gere uma chave
+    node ace generate:key
    ```
 
 2. Preencha o arquivo .env.test com os seguintes valores:
 
    ```bash
+      # ⚠️ Atenção: Caso alguma variável seja "preenchida" como vazio, automaticamente o valor dessa variável será lida do .env
+
      TZ=UTC
      PORT=3333
      HOST=localhost
      LOG_LEVEL=info
-     APP_KEY=BeR9QdMBIhBri2H8zVhmkNKW3jK3fou5
+     APP_KEY=
      NODE_ENV=test
      DB_HOST=127.0.0.1
-     DB_PORT=5433
-     DB_USER="root"
-     DB_PASSWORD="root"
+     DB_PORT=5432
+     DB_USER=
+     DB_PASSWORD=
      DB_DATABASE=bookstore
      SESSION_DRIVER=memory
    ```
@@ -173,5 +182,3 @@ A documentação foi elaborada utilizando o Postman e se encontra disponível em
 
 1. Importe o arquivo .json utilizando o Postman
 2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Como no GIF abaixo
-   
-   ![alt text](import-postman.gif)

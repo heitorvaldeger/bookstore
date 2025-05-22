@@ -26,11 +26,11 @@ const categories = [
     label: "Outros...",
   },
 ];
-export const CategoryList = () => {
+export const CategorySection = () => {
   return (
     <RadioGroup.Root
       defaultValue="all"
-      className="grid grid-cols-2 gap-4 lg:grid-cols-6"
+      className="grid grid-cols-2 gap-4 lg:flex lg:items-center lg:justify-center"
     >
       {categories.map((category) => (
         <RadioGroup.Item key={category.id} value={category.id} asChild>

@@ -37,7 +37,7 @@ export const ColorChoiceSection = () => {
         className="flex gap-4"
       >
         {colors.map((color) => (
-          <RadioGroup.Item value={color.label} asChild>
+          <RadioGroup.Item key={color.label} value={color.label} asChild>
             <div
               className={`w-7 h-7 cursor-pointer ${color.className} rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2`}
             ></div>

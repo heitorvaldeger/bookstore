@@ -50,11 +50,14 @@ export const BookDetail = () => {
           />
         </section>
         <section className="flex-1 space-y-2">
-          <p className="text-4xl font-bold">
+          <p data-testid="book.title-author" className="text-4xl font-bold">
             {book?.titulo}, {book?.autor}
           </p>
           <div>
-            <p className="text-teal-700 font-bold text-2xl font-inter">
+            <p
+              data-testid="book.price"
+              className="text-teal-700 font-bold text-2xl font-inter"
+            >
               {valueBrazilianFormatted}
             </p>
             <p className="font-inter">

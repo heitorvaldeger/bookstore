@@ -19,14 +19,12 @@ export const BookDetail = () => {
     handleAddBookToCartClick,
   } = useBookDetail();
 
-  if (isAxiosError(error)) {
-    if (error.status === 404) {
-      return (
-        <div className="h-screen">
-          <span>Nenhum livro encontrado</span>
-        </div>
-      );
-    }
+  if (isAxiosError(error) && error.status === 404) {
+    return (
+      <div className="h-screen">
+        <span>Nenhum livro encontrado</span>
+      </div>
+    );
   }
 
   if (isLoading) {

@@ -10,12 +10,14 @@ import { convertPriceBook } from "@/utils";
 import { createOrder } from "@/api/create-order";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { Messages } from "@/constans/messages";
 
 interface Cart {
   books: BookOrder[];
 }
 interface CartContextProps {
   cart: Cart;
+  isModalCartOpen: boolean;
   handleCreateOrder: () => Promise<void>;
   addBookToCart: (book: Book, qty: number) => void;
   updateBookTotalInCart: (idBook: number, qty: number) => void;
@@ -23,6 +25,7 @@ interface CartContextProps {
   getQtyBookCart: () => number;
   getTotalCart: () => string;
   hasBook: (book: Book) => boolean;
+  toggleModalCartOpen: (open: boolean) => void;
 }
 const CartContext = createContext({} as CartContextProps);
 
@@ -30,6 +33,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<Cart>({
     books: [],
   });
+  const [isModalCartOpen, setIsModalCartOpen] = useState(false);
 
   const { mutateAsync: createOrderFn } = useMutation({
     mutationFn: createOrder,
@@ -37,7 +41,12 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const handleCreateOrder = async () => {
     try {
-      const response = await createOrderFn({
+      if (cart.books.length === 0) {
+        toast.error(Messages.CART_EMPTY);
+        return;
+      }
+
+      await createOrderFn({
         cliente: "José da Silva",
         books: cart.books.map((book) => ({
           id: book.id,
@@ -45,14 +54,13 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         })),
       });
 
-      if (response.status === 400) {
-        toast.error("Falha ao criar um pedido");
-        return;
-      }
-
-      toast.success("Pedido criado com sucesso!");
+      toast.success(Messages.ORDER_CREATED);
+      setIsModalCartOpen(false);
+      setCart({
+        books: [],
+      });
     } catch (error) {
-      toast.error("Falha ao criar um pedido");
+      toast.error(Messages.ORDER_FAILED);
       console.log(error);
     }
   };
@@ -119,10 +127,15 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     );
   };
 
+  const toggleModalCartOpen = (open: boolean) => {
+    setIsModalCartOpen(open);
+  };
+
   return (
     <CartContext
       value={{
         cart,
+        isModalCartOpen,
         handleCreateOrder,
         addBookToCart,
         updateBookTotalInCart,
@@ -130,6 +143,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         getQtyBookCart,
         getTotalCart,
         hasBook,
+        toggleModalCartOpen,
       }}
     >
       {children}

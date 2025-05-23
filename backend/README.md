@@ -43,7 +43,7 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 3. Crie uma cópia do arquivo .env.example e renomeie para .env:
    ```bash
-     cp .env.example .env
+     cp .env.example .env .env.test
    ```
 
 ### Execução com o Docker
@@ -133,13 +133,20 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 ## Executando os testes
 
+⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom na porta 5433, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente.
+
+⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados.
+
 1. Crie uma cópia do arquivo .env.example:
 
    ```bash
     # Crie a cópia e renomeie
     cp .env.example .env.test
 
-    # Gere uma chave (Se optou por não usar o Docker)
+    # Instala as dependências (Caso não tenha feito)
+    npm install
+
+    # Gere a chave (Caso não tenha utilizado o docker/Se já existir não precisa sobrescrever)
     node ace generate:key
    ```
 
@@ -169,10 +176,6 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
    ```
 
    ![alt text](coverage.png)
-
-#### ⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente
-
-#### ⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados
 
 ## Documentação
 

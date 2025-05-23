@@ -23,7 +23,7 @@ test.group('Order Controller', (group) => {
     client,
     expect,
   }) => {
-    const orderWithFieldsInvalid = client.post('/orders').json({
+    const orderWithFieldsInvalid = client.post('/api/orders').json({
       books: [
         {
           id: 'any_value',
@@ -32,7 +32,7 @@ test.group('Order Controller', (group) => {
       ],
     })
 
-    const orderWithoutBooks = client.post('/orders').json({})
+    const orderWithoutBooks = client.post('/api/orders').json({})
 
     const [responseOrderWithFieldsInvalid, responseOrderWithoutBooks] = await Promise.all([
       orderWithFieldsInvalid,
@@ -78,7 +78,7 @@ test.group('Order Controller', (group) => {
   })
 
   test('/POST - return 422 if books list is empty on order', async ({ client, expect }) => {
-    const response = await client.post('/orders').json({
+    const response = await client.post('/api/orders').json({
       cliente: 'any_cliente',
       books: [],
     })
@@ -102,7 +102,7 @@ test.group('Order Controller', (group) => {
       quantidade: 2,
     }))
 
-    const response = await client.post('/orders').json({
+    const response = await client.post('/api/orders').json({
       cliente: 'any_customer',
       books: booksPayload,
     })
@@ -120,7 +120,7 @@ test.group('Order Controller', (group) => {
       quantidade: 2,
     }))
 
-    const response = await client.post('/orders').json({
+    const response = await client.post('/api/orders').json({
       cliente: 'any_customer',
       books: [
         ...booksPayload,
@@ -155,7 +155,7 @@ test.group('Order Controller', (group) => {
 
     const baseBook = booksPayload[0]
 
-    const response = await client.post('/orders').json({
+    const response = await client.post('/api/orders').json({
       cliente: 'any_customer',
       books: booksPayload,
     })
@@ -175,7 +175,7 @@ test.group('Order Controller', (group) => {
   })
 
   test('/GET - return a list of orders with success', async ({ client, expect }) => {
-    const response = await client.get('/orders')
+    const response = await client.get('/api/orders')
 
     const body = response.body()
     expect(response.status()).toBe(200)

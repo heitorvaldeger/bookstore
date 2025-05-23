@@ -22,10 +22,11 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 ## Decisões Técnicas
 
-- Foco maior em testes unitários e de integração
+- Foco maior em testes unitários, integração e end-to-end
 - Escolha de campo soft delete na exclusão de um livro, visto que, a exclusão de um livro poderia acarretar na remoção dos pedidos já vinculados
 - Tratamento de exceções customizadas e seguindo o contexto de sua ação
-- Adotei que o preço livro ficasse como múltiplo de 100, para evitar problemas de ponto flutuante
+- Preço do livro como inteiro e múltiplo de 100, para facilitar cálculos
+- Uso de cookies e sessão na autenticação do usuário
 
 ## Passos para execução
 

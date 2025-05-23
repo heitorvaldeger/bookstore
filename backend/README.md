@@ -76,9 +76,15 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
   ```
 
 - Será criada as credenciais automaticamente:
+
   ```bash
     email: mail@mail.com
     password: 1234
+  ```
+
+- O servidor será executado em:
+  ```
+    http://${HOST_NAME}:%{HOST_PORT}/api
   ```
 
 ### Execução sem o docker
@@ -126,9 +132,15 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     password: 1234
   ```
 
-- Execute o servidor (ouvindo na porta escolhida no .env)
+- Execute o servidor
+
   ```bash
     node ace serve
+  ```
+
+- O servidor será executado em:
+  ```
+    http://${HOST_NAME}:%{HOST_PORT}/api
   ```
 
 ## Executando os testes
@@ -181,4 +193,8 @@ A documentação foi elaborada utilizando o Postman e se encontra disponível em
 ### Passos para reprodução
 
 1. Importe o arquivo .json utilizando o Postman
-2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Como no GIF abaixo
+2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Por exemplo:
+
+```
+  http://${HOST_NAME}:%{HOST_PORT}/api
+```

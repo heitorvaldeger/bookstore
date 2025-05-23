@@ -1,7 +1,7 @@
 import { BookCategoryEnum, type Book } from "@/models/book";
 import { test as base } from "@playwright/test";
 
-const baseURL = `${process.env.VITE_API_URL}/books`;
+const baseURL = `${process.env.VITE_API_URL}/api/books`;
 
 type CustomFixture = {
   book: Book;

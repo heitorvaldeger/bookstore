@@ -31,6 +31,7 @@ Aplicação web construída como parte do desafio técnico para a seleção de d
 - Uso do React Query: optei pelo seu uso devido a presença de recursos úteis no trabalho com requisições com o servidor, principalmente o seu cacheamento de dados e a presença de estados para indicar os andamento das requisições, sem falar no tratamento de retentativas caso alguma requisição apresente problema
 - Sobre o projeto: optei por seguir com uma separação baseada em contextos da aplicação, por exemplo, separação dos componentes que são utilizados somente em páginas e componentes genéricos (com alguns componentes específicos nessa mesma estrutura), além de separar em **models/**, **/api (p/ requisições)**, **constans/ (p/ armazenar mensagens da aplicação)**.
 - Sobre o ContextAPI: segui utilizando o ContextAPI devido a simplicidade em se criar estados para este projeto em específico, podendo ser escalado com ajuda do Redux ou Zustand em estados mais complexos.
+- Separação da lógica de negócios da interface, uso de hooks para isso.
 
 # Passos para execução do projeto
 

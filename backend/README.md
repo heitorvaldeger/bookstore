@@ -41,9 +41,9 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
      cd bookstore/backend
    ```
 
-3. Crie uma cópia do arquivo .env.example e renomeie para .env:
+3. Crie uma cópia do arquivo .env.example e renomeie para .env e .env.test:
    ```bash
-     cp .env.example .env .env.test
+     cp .env.example .env && cp .env.example .env.test
    ```
 
 ### Execução com o Docker
@@ -140,14 +140,11 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 1. Crie uma cópia do arquivo .env.example:
 
    ```bash
-    # Crie a cópia e renomeie
+    # Crie a cópia e renomeie (Caso não tenha feito)
     cp .env.example .env.test
 
     # Instala as dependências (Caso não tenha feito)
     npm install
-
-    # Gere a chave (Caso não tenha utilizado o docker/Se já existir não precisa sobrescrever)
-    node ace generate:key
    ```
 
 2. Preencha o arquivo .env.test com os seguintes valores:
@@ -163,8 +160,8 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
      NODE_ENV=test
      DB_HOST=127.0.0.1
      DB_PORT=5432
-     DB_USER=
-     DB_PASSWORD=
+     DB_USER="root"
+     DB_PASSWORD="root"
      DB_DATABASE=bookstore
      SESSION_DRIVER=memory
    ```

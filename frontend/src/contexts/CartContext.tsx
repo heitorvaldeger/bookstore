@@ -19,6 +19,7 @@ interface CartContextProps {
   cart: Cart;
   isModalCartOpen: boolean;
   handleCreateOrder: () => Promise<void>;
+  deleteBookFromCart: (idBook: number) => void;
   addBookToCart: (book: Book, qty: number) => void;
   updateBookTotalInCart: (idBook: number, qty: number) => void;
   incrementQtyBookToTotalInCart: (idBook: number, qty: number) => void;
@@ -94,6 +95,14 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }));
   };
 
+  const deleteBookFromCart = (idBook: number) => {
+    setCart((prev) => ({
+      ...prev,
+      books: [...prev.books].filter((item) => item.id !== idBook),
+    }));
+    toast.success(Messages.BOOK_DELETED_CART);
+  };
+
   const incrementQtyBookToTotalInCart = (idBook: number, qty: number) => {
     setCart((prev) => {
       return {
@@ -139,6 +148,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         handleCreateOrder,
         addBookToCart,
         updateBookTotalInCart,
+        deleteBookFromCart,
         incrementQtyBookToTotalInCart,
         getQtyBookCart,
         getTotalCart,

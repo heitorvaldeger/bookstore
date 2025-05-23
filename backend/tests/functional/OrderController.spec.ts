@@ -108,7 +108,7 @@ test.group('Order Controller', (group) => {
     })
 
     expect(response.status()).toBe(201)
-    expect(response.body().status).toBe(OrderStatusEnum.PENDING)
+    expect(response.body().status).toBe(OrderStatusEnum.PAID)
   })
 
   test("/POST - return some error with 400 if any book doesn't exist", async ({

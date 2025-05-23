@@ -110,11 +110,11 @@ test.group('Services order service', (t) => {
 
     expect(newOrder).toBeTruthy()
     expect(newOrder.id).toBeTruthy()
-    expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
+    expect(newOrder.status).toBe(OrderStatusEnum.PAID)
     expect(newOrder.books.length).toBe(10)
   })
 
-  test('it should discount quantidade correctly on create order', async ({ expect }) => {
+  test('it should discount quantity correctly on create order', async ({ expect }) => {
     const sut = new OrderService()
 
     const book = await BookFactory.merge({ estoque: 5 }).create()
@@ -132,7 +132,7 @@ test.group('Services order service', (t) => {
 
     expect(newOrder).toBeTruthy()
     expect(newOrder.id).toBeTruthy()
-    expect(newOrder.status).toBe(OrderStatusEnum.PENDING)
+    expect(newOrder.status).toBe(OrderStatusEnum.PAID)
     expect(newOrder.books.length).toBe(1)
     expect(bookFromDb?.estoque).toBe(3)
   })

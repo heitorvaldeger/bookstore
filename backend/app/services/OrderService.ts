@@ -51,7 +51,7 @@ export class OrderService {
     }
 
     const newOrder = await Order.create({
-      status: OrderStatusEnum.PENDING,
+      status: OrderStatusEnum.PAID,
     })
 
     for (const book of order.books) {

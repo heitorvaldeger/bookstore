@@ -6,11 +6,11 @@
 ### Frontend
 Contém toda a estrutura visual com base no protótipo do [Figma](https://www.figma.com/design/cHOmIJPhHhkFfRSls5SSgr/-buzzcreator--Etapa-Desafio?node-id=3-69)
 
-Para acessar clique [aqui](https://github.com/heitorvaldeger/bookstore/frontend)
+Para acessar clique [aqui](https://github.com/heitorvaldeger/bookstore/tree/main/frontend)
 
 ### Backend
 Contém toda a estrutura da API de acordo com os requisitos propostos
-Para acessar clique [aqui](https://github.com/heitorvaldeger/bookstore/backend)
+Para acessar clique [aqui](https://github.com/heitorvaldeger/bookstore/tree/main/backend)
 
 ## Stack utilizada
 

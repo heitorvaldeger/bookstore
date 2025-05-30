@@ -51,6 +51,7 @@ test.group('Services order service', (t) => {
       titulo: book.titulo,
     }))
     const newOrderPromise = sut.create({
+      cliente: 'any_cliente',
       books: [
         ...booksToOrder,
         {
@@ -83,6 +84,7 @@ test.group('Services order service', (t) => {
     const bookBase = booksToOrder[0]
 
     const newOrderPromise = sut.create({
+      cliente: 'any_cliente',
       books: booksToOrder,
     })
 
@@ -105,12 +107,13 @@ test.group('Services order service', (t) => {
       quantidade: 5,
       titulo: book.titulo,
     }))
-    const newOrder = await sut.create({ books: booksToOrder })
+    const newOrder = await sut.create({ cliente: 'any_cliente', books: booksToOrder })
     await newOrder.load('books')
 
     expect(newOrder).toBeTruthy()
     expect(newOrder.id).toBeTruthy()
     expect(newOrder.status).toBe(OrderStatusEnum.PAID)
+    expect(newOrder.cliente).toBe('any_cliente')
     expect(newOrder.books.length).toBe(10)
   })
 
@@ -119,6 +122,7 @@ test.group('Services order service', (t) => {
 
     const book = await BookFactory.merge({ estoque: 5 }).create()
     const newOrder = await sut.create({
+      cliente: 'any_cliente',
       books: [
         {
           id: book.id,
@@ -132,6 +136,7 @@ test.group('Services order service', (t) => {
 
     expect(newOrder).toBeTruthy()
     expect(newOrder.id).toBeTruthy()
+    expect(newOrder.cliente).toBe('any_cliente')
     expect(newOrder.status).toBe(OrderStatusEnum.PAID)
     expect(newOrder.books.length).toBe(1)
     expect(bookFromDb?.estoque).toBe(3)

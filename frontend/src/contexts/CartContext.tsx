@@ -88,7 +88,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       ...prev,
       books: [...prev.books].map((item) => {
         if (item.id === idBook) {
-          item.quantidade = qty;
+          return {
+            ...item,
+            quantidade: qty,
+          };
         }
         return item;
       }),
@@ -125,7 +128,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   };
 
   const getQtyBookCart = () => {
-    return cart.books.length;
+    return cart.books.reduce((acc, book) => {
+      return (acc += book.quantidade);
+    }, 0);
   };
 
   const getTotalCart = () => {

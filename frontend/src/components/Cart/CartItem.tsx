@@ -10,7 +10,7 @@ interface CartItemProps {
 
 export const CartItem = ({ bookOrder }: CartItemProps) => {
   const { updateBookTotalInCart, deleteBookFromCart } = useCart();
-  const itemTotal = convertPriceBook(bookOrder.preco * bookOrder.quantidade);
+  const itemTotal = convertPriceBook(bookOrder.preco);
 
   return (
     <div className="flex gap-6" key={bookOrder.id}>

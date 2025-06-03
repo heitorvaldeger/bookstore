@@ -26,14 +26,14 @@ test.group('Book Controller', (group) => {
   })
 
   test('/GET - return 200 with all books in database', async ({ client, expect }) => {
-    const response = await client.get('/books')
+    const response = await client.get('/api/books')
 
     expect(response.status()).toBe(200)
     expect(response.body()).toEqual(books.map((book) => book.serialize()))
   })
 
   test('/GET - return 200 with a book if id valid is provided', async ({ client, expect }) => {
-    const response = await client.get(`/books/search/${books[0].id}`)
+    const response = await client.get(`/api/books/search/${books[0].id}`)
 
     const book = response.body()
 
@@ -45,7 +45,7 @@ test.group('Book Controller', (group) => {
     client,
     expect,
   }) => {
-    const response = await client.get('/books/search/any_value')
+    const response = await client.get('/api/books/search/any_value')
 
     const body = response.body()
 
@@ -86,8 +86,8 @@ test.group('Book Controller', (group) => {
       },
     ]).createMany(3)
     const [response, anotherResponse] = await Promise.all([
-      client.get(`/books/search`).qs({ q: 'George' }),
-      client.get(`/books/search`).qs({ q: 'história' }),
+      client.get(`/api/books/search`).qs({ q: 'George' }),
+      client.get(`/api/books/search`).qs({ q: 'história' }),
     ])
 
     const body = response.body()
@@ -105,7 +105,7 @@ test.group('Book Controller', (group) => {
     client,
     expect,
   }) => {
-    const response = await client.get(`/books/search`)
+    const response = await client.get(`/api/books/search`)
 
     const body = response.body()
     expect(response.status()).toBe(422)
@@ -133,7 +133,7 @@ test.group('Book Controller', (group) => {
 
     const user = await makeUser()
 
-    const response = await client.post('/books').json(payload).loginAs(user)
+    const response = await client.post('/api/books').json(payload).loginAs(user)
 
     const { id, ...body } = response.body()
 
@@ -144,7 +144,7 @@ test.group('Book Controller', (group) => {
 
   test('/POST - return 422 if book fields is invalid', async ({ client, expect }) => {
     const user = await makeUser()
-    const response = await client.post('/books').json({}).loginAs(user)
+    const response = await client.post('/api/books').json({}).loginAs(user)
 
     const body = response.body()
 
@@ -185,7 +185,7 @@ test.group('Book Controller', (group) => {
 
     const book = await BookFactory.create()
     const response = await client
-      .put(`/books/${book.id}`)
+      .put(`/api/books/${book.id}`)
       .json({
         titulo: 'another_title',
         descricao: 'another_description',
@@ -202,7 +202,7 @@ test.group('Book Controller', (group) => {
   test("/PUT - return 404 if a book doesn't exists on update", async ({ client, expect }) => {
     const user = await makeUser()
     const response = await client
-      .put(`/books/9999`)
+      .put(`/api/books/9999`)
       .json({
         titulo: 'another titulo',
       })
@@ -219,7 +219,7 @@ test.group('Book Controller', (group) => {
 
     const book = await BookFactory.create()
     const response = await client
-      .put(`/books/${book.id}`)
+      .put(`/api/books/${book.id}`)
       .json({
         preco: 'any_value',
       })
@@ -243,7 +243,7 @@ test.group('Book Controller', (group) => {
     const user = await makeUser()
 
     const book = await BookFactory.create()
-    const response = await client.delete(`/books/${book.id}`).loginAs(user)
+    const response = await client.delete(`/api/books/${book.id}`).loginAs(user)
 
     expect(response.status()).toBe(204)
   })
@@ -251,14 +251,14 @@ test.group('Book Controller', (group) => {
   test("/DELETE - return 404 if a book doesn't exists on delete", async ({ client, expect }) => {
     const user = await makeUser()
 
-    const response = await client.delete(`/books/99999`).loginAs(user)
+    const response = await client.delete(`/api/books/99999`).loginAs(user)
     expect(response.status()).toBe(404)
   })
 
   test('/DELETE - return 422 if id passed is invalid on delete', async ({ client, expect }) => {
     const user = await makeUser()
 
-    const response = await client.delete(`/books/any_value`).loginAs(user)
+    const response = await client.delete(`/api/books/any_value`).loginAs(user)
 
     const body = response.body()
 

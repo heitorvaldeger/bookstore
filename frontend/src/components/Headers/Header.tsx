@@ -13,7 +13,7 @@ export const Header = () => {
           </Drawer.Trigger>
           <Drawer.Portal>
             <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-            <Drawer.Content className="bg-white absolute left-0 top-0 bottom-0 overflow-y-auto outline-none max-h-screen overflow-auto">
+            <Drawer.Content className="bg-white absolute left-0 top-0 bottom-0 overflow-y-auto outline-none h-auto overflow-auto">
               <SideBarMenu />
             </Drawer.Content>
           </Drawer.Portal>

@@ -11,7 +11,7 @@ test.group('Auth Controller', (group) => {
   })
 
   test('/POST - return 204 if credentials are correct', async ({ client, expect }) => {
-    const response = await client.post('/auth/login').json({
+    const response = await client.post('/api/auth/login').json({
       email: 'any_mail@mail.com',
       password: 'password',
     })
@@ -20,7 +20,7 @@ test.group('Auth Controller', (group) => {
   })
 
   test('/POST - return 401 if credentials are incorrect', async ({ client, expect }) => {
-    const response = await client.post('/auth/login').json({
+    const response = await client.post('/api/auth/login').json({
       email: 'another_mail@mail.com',
       password: 'another_password',
     })

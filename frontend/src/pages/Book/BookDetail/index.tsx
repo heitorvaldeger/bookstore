@@ -1,9 +1,11 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "@/components/Forms/RadioItem";
 import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
-import { ArrowRight, ShoppingBag } from "react-feather";
+import { ShoppingBag } from "react-feather";
 import { isAxiosError } from "axios";
 import { useBookDetail } from "./useBookDetail";
+import { ColorChoiceSection } from "./components/ColorChoiceSection";
+import { ShippingSection } from "./components/ShippingSection";
 
 export const BookDetail = () => {
   const {
@@ -13,20 +15,16 @@ export const BookDetail = () => {
     qty,
     valueBrazilianFormatted,
     valueInstallmentBrazilianFormatted,
-    color,
-    handleUpdateColorRadio,
     handleQtyChange,
     handleAddBookToCartClick,
   } = useBookDetail();
 
-  if (isAxiosError(error)) {
-    if (error.status === 404) {
-      return (
-        <div className="h-screen">
-          <span>Nenhum livro encontrado</span>
-        </div>
-      );
-    }
+  if (isAxiosError(error) && error.status === 404) {
+    return (
+      <div className="h-screen">
+        <span>Nenhum livro encontrado</span>
+      </div>
+    );
   }
 
   if (isLoading) {
@@ -45,18 +43,21 @@ export const BookDetail = () => {
         <span>Livros</span>
       </div>
       <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
-        <section className="flex-1">
+        <section className="flex-1 lg:max-w-[500px]">
           <img
             src={book?.imagem ?? "/images/cover-not-avaiable.png"}
-            className="rounded-xl max-w-[473px] mx-auto lg:mx-0"
+            className="rounded-xl w-full"
           />
         </section>
         <section className="flex-1 space-y-2">
-          <p className="text-4xl font-bold">
+          <p data-testid="book.title-author" className="text-4xl font-bold">
             {book?.titulo}, {book?.autor}
           </p>
           <div>
-            <p className="text-teal-700 font-bold text-2xl font-inter">
+            <p
+              data-testid="book.price"
+              className="text-teal-700 font-bold text-2xl font-inter"
+            >
               {valueBrazilianFormatted}
             </p>
             <p className="font-inter">
@@ -83,33 +84,7 @@ export const BookDetail = () => {
             </RadioGroup.Root>
           </div>
 
-          <div className="space-y-2 my-6">
-            <p className="font-inter font-bold text-lg">
-              Cor:
-              <span className="font-inter font-normal mx-1">{color}</span>
-            </p>
-            <RadioGroup.Root
-              defaultValue={color}
-              onValueChange={handleUpdateColorRadio}
-              className="flex gap-4"
-            >
-              <RadioGroup.Item value="Laranja" asChild>
-                <div className="w-7 h-7 cursor-pointer bg-orange-300 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
-              </RadioGroup.Item>
-              <RadioGroup.Item value="Azul" asChild>
-                <div className="w-7 h-7 cursor-pointer bg-blue-400 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
-              </RadioGroup.Item>
-              <RadioGroup.Item value="Amarelo Claro" asChild>
-                <div className="w-7 h-7 cursor-pointer bg-orange-200 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
-              </RadioGroup.Item>
-              <RadioGroup.Item value="Branco" asChild>
-                <div className="w-7 h-7 cursor-pointer border-[1px] border-zinc-200 bg-white rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
-              </RadioGroup.Item>
-              <RadioGroup.Item value="Cinza" asChild>
-                <div className="w-7 h-7 cursor-pointer bg-gray-400 rounded-full data-[state=checked]:border-2 data-[state=checked]:border-white data-[state=checked]:outline-2"></div>
-              </RadioGroup.Item>
-            </RadioGroup.Root>
-          </div>
+          <ColorChoiceSection />
 
           <div className="space-y-4 my-4">
             <div>
@@ -143,42 +118,7 @@ export const BookDetail = () => {
             </button>
           </div>
 
-          <div className="space-y-1 my-4 w-fit">
-            <p className="font-bold text-lg font-inter">Cálculo de frete</p>
-
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  placeholder="Digite seu CEP para calcular"
-                  className="border-[1px] w-xs rounded-lg px-4 py-3 bg-white border-slate-900 pl-4 text-sm font-inter"
-                />
-                <button className="bg-black text-white p-3.5 rounded-lg">
-                  <ArrowRight size={17} />
-                </button>
-              </div>
-              <p className="mx-4 text-sm underline">Não sei o meu CEP</p>
-            </div>
-
-            <div className="flex flex-col gap-2 my-4">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="border-[0.88px] border-gray-200 px-4 py-2 flex justify-between items-center rounded-lg"
-                >
-                  <div className="flex flex-col">
-                    <span className="text-sm text-gray-800 font-semibold font-inter">
-                      Nome do Frete
-                    </span>
-                    <span className="font-inter text-sm text-gray-800 font-light">
-                      Prazo
-                    </span>
-                  </div>
-                  <span className="font-inter text-sm font-light">Preço</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ShippingSection />
         </section>
       </div>
     </div>

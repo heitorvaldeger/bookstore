@@ -23,6 +23,7 @@ export const BookCard = ({
     <Link
       to={`/books/${idBook}`}
       className="flex flex-col space-y-2 cursor-pointer"
+      data-testid={`book-card-${idBook}`}
     >
       <div className="rounded-lg relative">
         {isNew && (

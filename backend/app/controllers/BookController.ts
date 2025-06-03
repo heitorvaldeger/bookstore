@@ -17,7 +17,12 @@ export default class BookController {
   async getAll({ response }: HttpContext) {
     try {
       const books = await this.bookService.getAll()
-      return response.status(200).json(books.map((book) => book.serialize()))
+      return response.status(200).json(
+        books.map((book) => ({
+          testId: 1,
+          ...book.serialize(),
+        }))
+      )
     } catch (error) {
       throw error
     }

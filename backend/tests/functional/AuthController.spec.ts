@@ -39,4 +39,10 @@ test.group('Auth Controller', (group) => {
     expect(body.email).toBe('any_mail@mail.com')
     expect(body.password).toBeFalsy()
   })
+
+  test('/GET - return 204 if user is not logged', async ({ client, expect }) => {
+    const response = await client.get('/api/auth/me')
+
+    expect(response.status()).toBe(204)
+  })
 })

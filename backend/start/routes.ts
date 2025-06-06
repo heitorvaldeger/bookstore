@@ -18,6 +18,7 @@ router
     router
       .group(() => {
         router.post('login', [AuthController, 'login'])
+        router.get('/me', [AuthController, 'me'])
       })
       .prefix('auth')
 

@@ -18,11 +18,9 @@ export default class OrderController {
     }
   }
 
-  async getAll({ response }: HttpContext) {
+  async getAll() {
     try {
-      const orders = await this.orderService.getAll()
-
-      return response.status(200).json(orders)
+      return await this.orderService.getAll()
     } catch (error) {
       throw error
     }

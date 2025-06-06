@@ -1,11 +1,10 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessagesValidation } from "@/constans/messages-validation";
 import { signIn } from "@/api/sign-in";
-import { useAdmin } from "@/contexts/AdminContext";
 import { toast } from "sonner";
 import { Messages } from "@/constans/messages";
 import { isAxiosError } from "axios";
@@ -35,16 +34,19 @@ export const useLogin = () => {
     mode: "onSubmit",
   });
 
-  const { setLoggedState } = useAdmin();
-
+  const qc = useQueryClient()
   const { mutateAsync: authenticate, isPending } = useMutation({
     mutationFn: signIn,
+    onSuccess() {
+      qc.invalidateQueries({
+        queryKey: ['me']
+      })
+    },
   });
 
   const handleSignIn = async (data: SignInForm) => {
     try {
       await authenticate(data);
-      setLoggedState();
       navigate("/");
     } catch (error) {
       if (isAxiosError(error) && error.status === 401) {

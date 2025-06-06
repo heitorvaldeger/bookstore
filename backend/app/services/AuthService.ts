@@ -12,4 +12,13 @@ export class AuthService {
 
     await this.auth.use('web').login(user)
   }
+
+  async getUserLogged() {
+    const isUserLogged = await this.auth.check()
+    if (isUserLogged) {
+      return this.auth.user?.serialize()
+    }
+
+    return null
+  }
 }

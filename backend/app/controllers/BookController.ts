@@ -14,30 +14,30 @@ import {
 export default class BookController {
   constructor(private readonly bookService: BookService) {}
 
-  async getAll({ response }: HttpContext) {
+  async getAll() {
     try {
       const books = await this.bookService.getAll()
-      return response.status(200).json(books.map((book) => book.serialize()))
+      return books.map((book) => book.serialize())
     } catch (error) {
       throw error
     }
   }
 
-  async getBookById({ request, response }: HttpContext) {
+  async getBookById({ request }: HttpContext) {
     try {
       const payload = await getBookByIdValidator.validate(request.params())
       const book = await this.bookService.getBookById(payload.id)
-      return response.status(200).json(book)
+      return book
     } catch (error) {
       throw error
     }
   }
 
-  async getBooksByFilter({ request, response }: HttpContext) {
+  async getBooksByFilter({ request }: HttpContext) {
     try {
       const payload = await getBooksByFilter.validate(request.qs())
       const books = await this.bookService.getBooksByFilter(payload.q)
-      return response.status(200).json(books.map((book) => book.serialize()))
+      return books.map((book) => book.serialize())
     } catch (error) {
       throw error
     }
@@ -47,13 +47,13 @@ export default class BookController {
     try {
       const payload = await createBookValidator.validate(request.all())
       const book = await this.bookService.create(payload)
-      return response.status(200).json(book.serialize())
+      return response.status(201).json(book.serialize())
     } catch (error) {
       throw error
     }
   }
 
-  async update({ request, response }: HttpContext) {
+  async update({ request }: HttpContext) {
     try {
       const { id, ...payload } = await updateBookValidator.validate({
         ...request.params(),
@@ -61,7 +61,7 @@ export default class BookController {
       })
       const book = await this.bookService.update(id, payload)
 
-      return response.status(200).json(book)
+      return book
     } catch (error) {
       throw error
     }
@@ -70,9 +70,9 @@ export default class BookController {
   async delete({ request, response }: HttpContext) {
     try {
       const { id } = await deleteBookValidator.validate(request.params())
-      const book = await this.bookService.delete(id)
+      await this.bookService.delete(id)
 
-      return response.status(204).json(book)
+      return response.status(204)
     } catch (error) {
       throw error
     }

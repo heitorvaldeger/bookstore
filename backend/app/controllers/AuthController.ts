@@ -18,4 +18,12 @@ export default class AuthController {
       throw error
     }
   }
+
+  async me() {
+    try {
+      return await this.authService.getUserLogged()
+    } catch (error) {
+      throw error
+    }
+  }
 }

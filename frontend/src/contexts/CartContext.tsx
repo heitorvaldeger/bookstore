@@ -19,6 +19,7 @@ interface CartContextProps {
   cart: Cart;
   isModalCartOpen: boolean;
   handleCreateOrder: () => Promise<void>;
+  deleteBookFromCart: (idBook: number) => void;
   addBookToCart: (book: Book, qty: number) => void;
   updateBookTotalInCart: (idBook: number, qty: number) => void;
   incrementQtyBookToTotalInCart: (idBook: number, qty: number) => void;
@@ -87,11 +88,22 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       ...prev,
       books: [...prev.books].map((item) => {
         if (item.id === idBook) {
-          item.quantidade = qty;
+          return {
+            ...item,
+            quantidade: qty,
+          };
         }
         return item;
       }),
     }));
+  };
+
+  const deleteBookFromCart = (idBook: number) => {
+    setCart((prev) => ({
+      ...prev,
+      books: [...prev.books].filter((item) => item.id !== idBook),
+    }));
+    toast.success(Messages.BOOK_DELETED_CART);
   };
 
   const incrementQtyBookToTotalInCart = (idBook: number, qty: number) => {
@@ -116,7 +128,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   };
 
   const getQtyBookCart = () => {
-    return cart.books.length;
+    return cart.books.reduce((acc, book) => {
+      return (acc += book.quantidade);
+    }, 0);
   };
 
   const getTotalCart = () => {
@@ -139,6 +153,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         handleCreateOrder,
         addBookToCart,
         updateBookTotalInCart,
+        deleteBookFromCart,
         incrementQtyBookToTotalInCart,
         getQtyBookCart,
         getTotalCart,

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:test": "vite --port 50789 --mode test",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:e2e": "touch playwright/.auth/user.json && npx playwright test"
+    "test:e2e": "mkdir -p playwright/.auth/ && touch playwright/.auth/user.json && npx playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

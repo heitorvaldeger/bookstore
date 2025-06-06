@@ -2,14 +2,15 @@ import { useCart } from "@/contexts/CartContext";
 import type { BookOrder } from "@/models/book-order";
 import { convertPriceBook } from "@/utils";
 import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
+import { Trash } from "react-feather";
 
 interface CartItemProps {
   bookOrder: BookOrder;
 }
 
 export const CartItem = ({ bookOrder }: CartItemProps) => {
-  const { updateBookTotalInCart } = useCart();
-  const itemTotal = convertPriceBook(bookOrder.preco * bookOrder.quantidade);
+  const { updateBookTotalInCart, deleteBookFromCart } = useCart();
+  const itemTotal = convertPriceBook(bookOrder.preco);
 
   return (
     <div className="flex gap-6" key={bookOrder.id}>
@@ -24,7 +25,12 @@ export const CartItem = ({ bookOrder }: CartItemProps) => {
         <p className="font-bold leading-[100%]">
           {bookOrder.titulo}, {bookOrder.autor}
         </p>
-        <p className="text-teal-700 font-bold ">{itemTotal}</p>
+        <div className="flex gap-2 items-center">
+          <p className="text-teal-700 font-bold ">{itemTotal}</p>
+          <button onClick={() => deleteBookFromCart(bookOrder.id)}>
+            <Trash size={17} className="text-red-500" />
+          </button>
+        </div>
         <InputNumberIncremental
           value={bookOrder.quantidade}
           onValueChange={(value) => {

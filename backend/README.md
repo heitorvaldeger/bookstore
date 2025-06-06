@@ -22,10 +22,11 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
 ## Decisões Técnicas
 
-- Foco maior em testes unitários e de integração
+- Foco maior em testes unitários, integração e end-to-end
 - Escolha de campo soft delete na exclusão de um livro, visto que, a exclusão de um livro poderia acarretar na remoção dos pedidos já vinculados
 - Tratamento de exceções customizadas e seguindo o contexto de sua ação
-- Adotei que o preço livro ficasse como múltiplo de 100, para evitar problemas de ponto flutuante
+- Preço do livro como inteiro e múltiplo de 100, para facilitar cálculos
+- Uso de cookies e sessão na autenticação do usuário
 
 ## Passos para execução
 
@@ -41,9 +42,9 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
      cd bookstore/backend
    ```
 
-3. Crie uma cópia do arquivo .env.example e renomeie para .env:
+3. Crie uma cópia do arquivo .env.example e renomeie para .env e .env.test:
    ```bash
-     cp .env.example .env
+     cp .env.example .env && cp .env.example .env.test
    ```
 
 ### Execução com o Docker
@@ -76,12 +77,18 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
   ```
 
 - Será criada as credenciais automaticamente:
+
   ```bash
     email: mail@mail.com
     password: 1234
   ```
 
-5. Execução sem o docker
+- O servidor será executado em:
+  ```
+    http://${HOST_NAME}:%{HOST_PORT}/api
+  ```
+
+### Execução sem o docker
 
 - Preencha o arquivo .env com os seguintes valores:
 
@@ -90,15 +97,15 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     # ⚠️ Informe as mesmas credenciais no .env do seu banco de dados
 
     TZ=UTC
-    PORT=3333
+    PORT=8080
     HOST=localhost
     LOG_LEVEL=info
-    APP_KEY=BeR9QdMBIhBri2H8zVhmkNKW3jK3fou5
+    APP_KEY=
     NODE_ENV=development
     DB_HOST=127.0.0.1
     DB_PORT=5432
-    DB_USER="root"
-    DB_PASSWORD="root"
+    DB_USER=
+    DB_PASSWORD=
     DB_DATABASE=bookstore
     SESSION_DRIVER=memory
   ```
@@ -108,6 +115,9 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
   ```bash
     # Instala as dependências
     npm install
+
+    # Gere a chave
+    node ace generate:key
 
     # Executa as migrações
     node ace migration:run
@@ -123,30 +133,46 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
     password: 1234
   ```
 
-- Execute o servidor (ouvindo na porta escolhida no .env)
+- Execute o servidor
+
   ```bash
     node ace serve
   ```
 
+- O servidor será executado em:
+  ```
+    http://${HOST_NAME}:%{HOST_PORT}/api
+  ```
+
 ## Executando os testes
 
-1. Crie uma cópia do arquivo .env.example e renomeie para .env.test:
+⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom na porta 5433, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente.
+
+⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados.
+
+1. Crie uma cópia do arquivo .env.example:
 
    ```bash
-     cp .env.example .env.test
+    # Crie a cópia e renomeie (Caso não tenha feito)
+    cp .env.example .env.test
+
+    # Instala as dependências (Caso não tenha feito)
+    npm install
    ```
 
 2. Preencha o arquivo .env.test com os seguintes valores:
 
    ```bash
+      # ⚠️ Atenção: Caso alguma variável seja "preenchida" como vazio, automaticamente o valor dessa variável será lida do .env
+
      TZ=UTC
      PORT=3333
      HOST=localhost
      LOG_LEVEL=info
-     APP_KEY=BeR9QdMBIhBri2H8zVhmkNKW3jK3fou5
+     APP_KEY=
      NODE_ENV=test
      DB_HOST=127.0.0.1
-     DB_PORT=5433
+     DB_PORT=5432
      DB_USER="root"
      DB_PASSWORD="root"
      DB_DATABASE=bookstore
@@ -161,10 +187,6 @@ A arquitetura adotada seguiu um modelo mais simples de arquitetura em 3 camadas 
 
    ![alt text](coverage.png)
 
-#### ⚠️ PS: Caso esteja utilizando o docker, na execução do comando **npm run up**, será criado um container chamado db-hom, esse container pode ser utilizado para a execução dos testes, seguindo as configurações corretas das variáveis de ambiente
-
-#### ⚠️ PS: Não precisa executar as migrações para os testes, essa operação já será realizada automicamente, bem como o rollback, quando eles forem executados
-
 ## Documentação
 
 A documentação foi elaborada utilizando o Postman e se encontra disponível em docs/
@@ -172,6 +194,8 @@ A documentação foi elaborada utilizando o Postman e se encontra disponível em
 ### Passos para reprodução
 
 1. Importe o arquivo .json utilizando o Postman
-2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Como no GIF abaixo
-   
-   ![alt text](import-postman.gif)
+2. Adicione uma variável de ambiente na collection "Bookstore - API" com o nome "url" e com o valor referente ao host e porta do servidor. Por exemplo:
+
+```
+  http://${HOST_NAME}:%{HOST_PORT}/api
+```

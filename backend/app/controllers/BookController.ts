@@ -26,8 +26,7 @@ export default class BookController {
   async getBookById({ request }: HttpContext) {
     try {
       const payload = await getBookByIdValidator.validate(request.params())
-      const book = await this.bookService.getBookById(payload.id)
-      return book
+      return await this.bookService.getBookById(payload.id)
     } catch (error) {
       throw error
     }
@@ -59,9 +58,7 @@ export default class BookController {
         ...request.params(),
         ...request.all(),
       })
-      const book = await this.bookService.update(id, payload)
-
-      return book
+      return await this.bookService.update(id, payload)
     } catch (error) {
       throw error
     }

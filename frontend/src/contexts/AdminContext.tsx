@@ -1,29 +1,37 @@
+import { fetchUser } from "@/api/fetch-user";
+import { Loading } from "@/components/Loading";
+import { useQuery } from "@tanstack/react-query";
 import {
   createContext,
   useContext,
-  useState,
   type PropsWithChildren,
 } from "react";
 
 export interface AdminContextProps {
   isLogged: boolean;
-  setLoggedState: () => void;
 }
 
 const AdminContext = createContext({} as AdminContextProps);
 
 export const AdminProvider = ({ children }: PropsWithChildren) => {
-  const [isLogged, setIsLogged] = useState(false);
+  const {
+    data: user,
+    isLoading,
+  } = useQuery({
+    queryKey: ["me"],
+    queryFn: () => fetchUser(),
+  });
 
-  const setLoggedState = () => {
-    setIsLogged(true);
-  };
+  const isLogged = !!user
+
+  if (isLoading) {
+    return <Loading/>
+  }
 
   return (
     <AdminContext
       value={{
         isLogged,
-        setLoggedState,
       }}
     >
       {children}

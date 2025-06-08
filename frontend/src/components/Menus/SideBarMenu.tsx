@@ -4,7 +4,6 @@ import { BookMenu } from "./BookMenu";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router";
 import { useAdmin } from "@/contexts/AdminContext";
-import { AdminMenu } from "./AdminMenu";
 
 export const SideBarMenu = () => {
   const { isLogged } = useAdmin();
@@ -46,7 +45,7 @@ export const SideBarMenu = () => {
             Acessar sistema
           </Link>
         ) : (
-          <AdminMenu />
+          <span className="text-xs">Bem vindo, você está logado</span>
         )}
       </div>
 

@@ -1,80 +1,37 @@
-import * as z from "zod";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 import { type ComponentProps } from "react";
 import { Button } from "../Forms/Button";
 import { Input } from "../Forms/Input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { MessagesValidation } from "@/constans/messages-validation";
+import { BookCategoryEnum, type Book } from "@/models/book";
+import { useBookDialog } from "./useBookDialog";
 
-const saveBookFormSchema = z.object({
-  titulo: z.string().min(3, MessagesValidation.MUST_BE_STRING_LEAST(3)),
-  autor: z.string().min(3, MessagesValidation.MUST_BE_STRING_LEAST(3)),
-  descricao: z.string().optional(),
-  imagem: z.string().url(MessagesValidation.MUST_BE_URL_VALID).nullable(),
-  estoque: z
-    .number({
-      message: MessagesValidation.MUST_BE_NUMBER,
-    })
-    .positive(),
-  preco: z
-    .number({
-      message: MessagesValidation.MUST_BE_NUMBER,
-    })
-    .positive()
-    .transform((arg) => arg * 100),
-});
+interface BookDialogProps extends ComponentProps<typeof Dialog.Trigger> {
+  book?: Book;
+}
 
-type SaveBookFormSchema = z.infer<typeof saveBookFormSchema>;
-
-type BookDialogProps = ComponentProps<typeof Dialog.Trigger>;
-export const BookDialog = ({ children }: BookDialogProps) => {
+export const BookDialog = ({ children, book }: BookDialogProps) => {
   const {
+    onOpenDialogChange,
+    handleSaveBookClick,
     handleSubmit,
     register,
-    reset,
-    formState: { errors },
-  } = useForm<SaveBookFormSchema>({
-    resolver: zodResolver(saveBookFormSchema),
-    mode: "onSubmit",
-    defaultValues: {
-      imagem: null,
-    },
-  });
-
-  const handleSaveBookClick = async (data: SaveBookFormSchema) => {
-    try {
-      console.log(data);
-      // await authenticate(data);
-      // navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleCloseClick = () => {
-    reset();
-  };
+    errors,
+    isOpen,
+  } = useBookDialog(book);
 
   return (
-    <Dialog.Root
-      onOpenChange={(open) => {
-        if (!open) handleCloseClick();
-      }}
-    >
+    <Dialog.Root open={isOpen} onOpenChange={onOpenDialogChange}>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-gray-500 opacity-30 animate-overlayShow" />
         <Dialog.Content className="fixed overflow-auto lg:overflow-hidden top-1/2 left-1/2 max-h-[74vh] w-5/6 lg:max-w-[485px] bg-white -translate-1/2 rounded-3xl border-[3px] border-slate-200 animate-contentShow">
           <form
             className="px-6 py-4"
-            onSubmit={handleSubmit(handleSaveBookClick, (errors) => {
-              console.log(errors);
-            })}
+            onSubmit={handleSubmit(handleSaveBookClick)}
           >
             <header className="flex justify-between border-b-[1px] border-b-slate-200 pb-4">
-              <Dialog.Title>Novo Produto</Dialog.Title>
+              <Dialog.Title>{book ? "Editando" : "Novo"} Produto</Dialog.Title>
               <Dialog.Close asChild>
                 <div className="flex items-start justify-center cursor-pointer">
                   <Cross1Icon />
@@ -114,6 +71,7 @@ export const BookDialog = ({ children }: BookDialogProps) => {
                 <textarea
                   id="description"
                   className="border-[1px] w-full rounded-md bg-white border-slate-900 px-2 py-1"
+                  {...register("descricao")}
                 ></textarea>
               </div>
 
@@ -153,12 +111,30 @@ export const BookDialog = ({ children }: BookDialogProps) => {
                     id="price"
                     type="number"
                     className="border-[1px] w-full rounded-md bg-white border-slate-900 px-2 py-1"
+                    step="any"
                     {...register("preco", {
                       valueAsNumber: true,
                     })}
                     error={errors.preco?.message}
                   />
                 </div>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm" htmlFor="category">
+                  Categoria *
+                </label>
+                <select
+                  id="category"
+                  className="border-[1px] w-full rounded-md bg-white border-slate-900 px-2 py-1"
+                  {...register("categoria")}
+                >
+                  <option value={BookCategoryEnum.BIBLE}>Bíblia</option>
+                  <option value={BookCategoryEnum.PHILOSOPHY}>Filosofia</option>
+                  <option value={BookCategoryEnum.SCIENCE}>Ciência</option>
+                  <option value={BookCategoryEnum.TEOLOGY}>Teologia</option>
+                  <option value={BookCategoryEnum.OTHERS}>Outros</option>
+                </select>
               </div>
             </div>
 

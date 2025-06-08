@@ -6,7 +6,7 @@ interface BookCardProps {
   titulo: string;
   autor: string;
   preco: number;
-  imagem?: string;
+  imagem?: string | null;
 }
 export const BookCard = ({
   idBook,

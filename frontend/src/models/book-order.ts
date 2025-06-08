@@ -4,5 +4,5 @@ export interface BookOrder {
   autor: string;
   quantidade: number;
   preco: number;
-  imagem?: string;
+  imagem?: string | null;
 }

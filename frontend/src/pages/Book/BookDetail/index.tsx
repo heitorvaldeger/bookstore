@@ -1,13 +1,14 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "@/components/Forms/RadioItem";
 import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
-import { ShoppingBag, Trash } from "react-feather";
+import { Edit2, ShoppingBag, Trash } from "react-feather";
 import { isAxiosError } from "axios";
 import { useBookDetail } from "./useBookDetail";
 import { ColorChoiceSection } from "./components/ColorChoiceSection";
 import { ShippingSection } from "./components/ShippingSection";
 import { Button } from "@/components/Forms/Button";
 import { useAdmin } from "@/contexts/AdminContext";
+import { BookDialog } from "@/components/Dialogs/BookDialog";
 
 export const BookDetail = () => {
   const {
@@ -50,7 +51,7 @@ export const BookDetail = () => {
         </div>
 
         {isLogged && (
-          <div>
+          <div className="flex gap-2">
             <Button
               onClick={handleDeleteBookClick}
               className="flex items-center justify-center gap-2 text-white rounded-md bg-red-700 p-2"
@@ -58,6 +59,13 @@ export const BookDetail = () => {
               <Trash size={15} />
               Apagar
             </Button>
+
+            <BookDialog book={book}>
+              <Button className="bg-blue-500 p-2 rounded-md text-white flex gap-2 justify-center items-center font-bold text-sm">
+                <Edit2 size={15} />
+                Editar
+              </Button>
+            </BookDialog>
           </div>
         )}
       </div>

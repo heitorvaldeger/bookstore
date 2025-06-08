@@ -1,11 +1,14 @@
 import { RadioGroup } from "radix-ui";
 import { RadioItem } from "@/components/Forms/RadioItem";
 import { InputNumberIncremental } from "@/components/Forms/InputNumberIncremental";
-import { ShoppingBag } from "react-feather";
+import { Edit2, ShoppingBag, Trash } from "react-feather";
 import { isAxiosError } from "axios";
 import { useBookDetail } from "./useBookDetail";
 import { ColorChoiceSection } from "./components/ColorChoiceSection";
 import { ShippingSection } from "./components/ShippingSection";
+import { Button } from "@/components/Forms/Button";
+import { useAdmin } from "@/contexts/AdminContext";
+import { BookDialog } from "@/components/Dialogs/BookDialog";
 
 export const BookDetail = () => {
   const {
@@ -17,7 +20,10 @@ export const BookDetail = () => {
     valueInstallmentBrazilianFormatted,
     handleQtyChange,
     handleAddBookToCartClick,
+    handleDeleteBookClick,
   } = useBookDetail();
+
+  const { isLogged } = useAdmin();
 
   if (isAxiosError(error) && error.status === 404) {
     return (
@@ -37,10 +43,31 @@ export const BookDetail = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-1 text-black font-inter">
-        <span>Início</span>
-        <span>{">"}</span>
-        <span>Livros</span>
+      <div className="flex justify-between items-center">
+        <div className="flex gap-1 text-black font-inter">
+          <span>Início</span>
+          <span>{">"}</span>
+          <span>Livros</span>
+        </div>
+
+        {isLogged && (
+          <div className="flex gap-2">
+            <Button
+              onClick={handleDeleteBookClick}
+              className="flex items-center justify-center gap-2 text-white rounded-md bg-red-700 p-2"
+            >
+              <Trash size={15} />
+              Apagar
+            </Button>
+
+            <BookDialog book={book}>
+              <Button className="bg-blue-500 p-2 rounded-md text-white flex gap-2 justify-center items-center font-bold text-sm">
+                <Edit2 size={15} />
+                Editar
+              </Button>
+            </BookDialog>
+          </div>
+        )}
       </div>
       <div className="grid grid-cols-1 gap-4 lg:flex lg:gap-8">
         <section className="flex-1 lg:max-w-[500px]">

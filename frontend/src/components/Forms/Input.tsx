@@ -1,8 +1,6 @@
-import type { HTMLAttributes } from "react";
+import type { ComponentProps } from "react";
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  type: "text" | "password" | "email";
-  placeholder?: string;
+interface InputProps extends ComponentProps<"input"> {
   error?: string;
 }
 

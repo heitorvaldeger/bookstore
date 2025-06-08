@@ -1,10 +1,11 @@
-import { Home as HomeIcon, Bell, Settings, User } from "react-feather";
+import { Home as HomeIcon, Bell, Settings, User, Plus } from "react-feather";
 
 import { BookMenu } from "./BookMenu";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router";
 import { useAdmin } from "@/contexts/AdminContext";
-import { AdminMenu } from "./AdminMenu";
+import { BookDialog } from "../Dialogs/BookDialog";
+import { Button } from "../Forms/Button";
 
 export const SideBarMenu = () => {
   const { isLogged } = useAdmin();
@@ -46,7 +47,12 @@ export const SideBarMenu = () => {
             Acessar sistema
           </Link>
         ) : (
-          <AdminMenu />
+          <BookDialog>
+            <Button className="flex gap-2 items-center font-bold text-sm">
+              <Plus size={15} />
+              Novo Livro
+            </Button>
+          </BookDialog>
         )}
       </div>
 

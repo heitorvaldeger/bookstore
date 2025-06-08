@@ -12,7 +12,11 @@ export default class extends BaseSchema {
       table.integer('preco')
       table.text('imagem').nullable()
       table.integer('estoque')
-      table.enum('categoria', ['bible', 'teology', 'philosophy', 'science', 'others'])
+      table.enu('categoria', ['bible', 'teology', 'philosophy', 'science', 'others'], {
+        useNative: true,
+        enumName: 'categoria_type',
+        existingType: true,
+      })
       table.timestamp('created_at')
       table.timestamp('updated_at')
       table.timestamp('deleted_at')

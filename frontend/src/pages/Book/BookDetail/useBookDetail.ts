@@ -61,6 +61,7 @@ export const useBookDetail = () => {
 
   const handleDeleteBookClick = async () => {
     if (book) await deleteBookFn({ idBook: book.id });
+    toast.success(Messages.BOOK_DELETED);
   };
 
   return {

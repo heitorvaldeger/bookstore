@@ -120,7 +120,7 @@ test.group('Book Controller', (group) => {
     })
   })
 
-  test('/POST - return 200 if book was created with success', async ({ client, expect }) => {
+  test('/POST - return 201 if book was created with success', async ({ client, expect }) => {
     const payload = {
       titulo: 'any_title',
       descricao: 'any_description',
@@ -137,7 +137,7 @@ test.group('Book Controller', (group) => {
 
     const { id, ...body } = response.body()
 
-    expect(response.status()).toBe(200)
+    expect(response.status()).toBe(201)
     expect(id).toBeTruthy()
     expect(body).toEqual(payload)
   })
@@ -239,7 +239,7 @@ test.group('Book Controller', (group) => {
     })
   })
 
-  test('/DELETE - return 200 if book was deleted with success', async ({ client, expect }) => {
+  test('/DELETE - return 204 if book was deleted with success', async ({ client, expect }) => {
     const user = await makeUser()
 
     const book = await BookFactory.create()

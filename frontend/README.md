@@ -100,3 +100,8 @@ Aplicação web construída como parte do desafio técnico para a seleção de d
 ```bash
   npx playwright show-report
 ```
+
+## Recursos adicionados posteriormente
+
+- Criação de endpoint para ler dados do usuário, esse endpoint ajuda a validar o token do lado do servidor verificando se o usuário está autenticado ou não
+- Criação dos botões e modais para edição/criação/remoção de um livro

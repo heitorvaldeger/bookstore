@@ -13,11 +13,8 @@ import { Messages } from "@/constans/messages";
 const saveBookFormSchema = z.object({
   titulo: z.string().min(3, MessagesValidation.MUST_BE_STRING_LEAST(3)),
   autor: z.string().min(3, MessagesValidation.MUST_BE_STRING_LEAST(3)),
-  descricao: z.string().optional(),
-  imagem: z
-    .string()
-    .url(MessagesValidation.MUST_BE_URL_VALID)
-    .or(z.literal("")),
+  descricao: z.string().nullable(),
+  imagem: z.string().url(MessagesValidation.MUST_BE_URL_VALID).nullable(),
   estoque: z
     .number({
       message: MessagesValidation.MUST_BE_NUMBER,
@@ -44,7 +41,6 @@ export const useBookDialog = (book?: Book) => {
     resolver: zodResolver(saveBookFormSchema),
     mode: "onSubmit",
     defaultValues: {
-      imagem: undefined,
       ...book,
     },
   });

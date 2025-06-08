@@ -10,9 +10,9 @@ export interface Book {
   id: number;
   titulo: string;
   autor: string;
-  descricao?: string;
+  descricao?: string | null;
   preco: number;
-  imagem?: string;
+  imagem?: string | null;
   estoque: number;
   categoria: BookCategoryEnum;
 }
